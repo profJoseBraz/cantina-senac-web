@@ -1,7 +1,7 @@
 import "./Header.css";
 
 interface Prop {
-    onClick: () => void;
+    onClick?: () => void;
 };
 
 function Header({ onClick } : Prop) {
