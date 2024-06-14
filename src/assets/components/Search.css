@@ -1,0 +1,36 @@
+@media (max-width: 380px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5px;
+        margin-top: 5px;
+    }
+
+    .search {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .search input {
+        background-color: white;
+        border: 2px gray solid;
+        border-radius: 15px;
+        outline: none;
+        font-size: 14px;
+        color: black;
+        padding: 5px;
+        width: 340px;
+    }
+
+    .search i {
+        position: absolute;
+        right: 17px;
+    }
+
+    .filters {
+        margin-top: 7px;
+        display: flex;
+    }
+}
