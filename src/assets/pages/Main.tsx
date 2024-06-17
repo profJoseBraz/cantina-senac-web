@@ -19,7 +19,15 @@ function Main() {
     return (
         <>
             <div className="container">
-                <Header onClick={handleCart}></Header>
+
+                <Header
+                onClick={handleCart}
+                displayIconCart={true}
+                displayCounter={true}
+                displayCestaRetorno={false}
+                displayTitle={true}
+                ></Header>
+
                 <Search></Search>
                 
                 {/* <Cart
