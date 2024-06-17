@@ -5,9 +5,7 @@ import OrderReview from './assets/pages/OrderReview'
 function App() {
   return (
     <>
-      {/* <Main></Main> */}
-
-      <OrderReview />
+      <Main></Main>
     </>
   )
 }
