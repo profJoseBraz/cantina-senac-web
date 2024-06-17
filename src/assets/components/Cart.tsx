@@ -1,28 +1,46 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Cart.css'
 import paodequeijo from '../../../public/paodequijo-criativo.jpeg'
 import triangleBG from '../../../public/triangle-decoration-cart.svg'
 
 interface Props {
-  onClick?: () => void
+  onClickConfirm?: () => void
+  onClickDeleteProdCart?: () => void
 }
 
-const Cart = ({onClick}: Props) => {
+const Cart = ({onClickConfirm, onClickDeleteProdCart}: Props) => {
 
-  const [totalProduto, setTotalProduto] = useState(0)
-  
+  // interação quantiade dos produtos
+  const [amountProduto, setAmountProduto] = useState(1)
   const handleIncreaseTotal = () => {
-    setTotalProduto(totalProduto + 1)
+    setAmountProduto(amountProduto + 1)
   }
 
   const handleDecreaseTotal = () => {
-    if(totalProduto <= 0){
-      setTotalProduto(totalProduto)
+    if(amountProduto <= 1 ){
+      setAmountProduto(amountProduto)
     }
+
     else{
-      setTotalProduto(totalProduto - 1)
+      setAmountProduto(amountProduto - 1)
     }
   }
+
+  // equações para preços dos produtos
+  const stringProductPriceEach = '2.50'
+  const integerProductPriceEach = parseFloat(stringProductPriceEach)
+  const [subTotalProduto, setSubTotalProduto] = useState(0) 
+  const [totalProduto, setTotalProduto] = useState(0) 
+
+  const handleSetPriceSubTotalAndTotal = () => {
+    setSubTotalProduto(amountProduto * integerProductPriceEach)
+    setTotalProduto(subTotalProduto)
+  }
+
+  useEffect(() => {
+    handleSetPriceSubTotalAndTotal()
+  }, [amountProduto, subTotalProduto])
+  
 
   return (
     <>
@@ -34,6 +52,7 @@ const Cart = ({onClick}: Props) => {
             <div className="content-cart">
 
               <div className="box-produto-cart">
+              <i onClick={onClickDeleteProdCart} className="fa fa-trash" aria-hidden="true"></i>
                 <div className="img-counter-cart">
                   <img src={paodequeijo} alt="" />
 
@@ -44,7 +63,7 @@ const Cart = ({onClick}: Props) => {
                     </div>
 
                     <div className="numberQtt">
-                      <span>{totalProduto}</span>
+                      <span>{amountProduto}</span>
                     </div>
 
                     <div onClick={handleIncreaseTotal} className="sum">
@@ -56,18 +75,18 @@ const Cart = ({onClick}: Props) => {
 
                 <div className="infos-produto-cart">
                     <span className='name-produto'>Pão de queijo</span>
-                    <span className='preco-string'>Valor: <span className='preco-produto'>R$ 2,50 / un</span></span>
+                    <span className='preco-string'>Valor: <span className='preco-produto'>R$ {stringProductPriceEach} / un</span></span>
 
                     <div className="subtotal-produto">
-                      <span className='subtotal-string'>Subtotal: <span className='subtotal-preco'>R$ 2,50</span></span>  
+                      <span className='subtotal-string'>Subtotal: <span className='subtotal-preco'>R$ {subTotalProduto}</span></span>  
                     </div>             
                   </div>
               </div>
             </div>
-            <button onClick={onClick} >Confirmar Pedido <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
+            <button onClick={onClickConfirm} >Confirmar Pedido <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
 
             <div className="total-cart">
-              <span className='total-string'>Total: <span className='total-preco'>R$2,50</span></span>
+              <span className='total-string'>Total: <span className='total-preco'>R$ {totalProduto}</span></span>
             </div>
 
             <img className='triangle-one' src={triangleBG} alt="" />

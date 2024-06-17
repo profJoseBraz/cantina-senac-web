@@ -49,11 +49,20 @@
         width: 95%;
         height: 20%;
         display: flex;
+        position: relative;
 
         border: solid 1px black;
         border-radius: 10px;
         box-shadow: 1px 1px 2px black;
         z-index: 2;
+    }
+
+    .container-cart .content-cart .box-produto-cart .fa-trash{
+        position: absolute;
+        top: 6px;
+        left: 8px;
+
+        font-size: 18px;
     }
 
     .container-cart .content-cart .box-produto-cart .img-counter-cart{

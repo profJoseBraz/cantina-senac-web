@@ -12,13 +12,21 @@ function Main() {
         alert("Confirmar pedido");
     }
 
+    const handleDeleteProductFromCart = () => {
+        alert("Remover produto");
+    }
+
     return (
         <>
             <div className="container">
                 <Header onClick={handleCart}></Header>
                 <Search></Search>
                 
-                {/* <Cart onClick={handleConfirmOrder} /> */}
+                {/* <Cart
+                onClickConfirm={handleConfirmOrder}
+                onClickDeleteProdCart={handleDeleteProductFromCart}
+                /> */}
+                
             </div>
         </>
     );
