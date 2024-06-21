@@ -42,7 +42,7 @@ body {
     align-items: left;
 }
 
- .MyButton {
+.button{
     display: flex;
-    margin-left: 500px;
+    margin-left: 190px;
 }
