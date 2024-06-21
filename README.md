@@ -1,7 +1,7 @@
 # Cantina Senac 🍩🍰 ☕
-Web app em desenvolvimento para a cantina do Senac de Campo Mourão - PR
+Web app em desenvolvimento para a cantina do Senac de Campo Mourão - PR.
 
-# API para requisições
+# API
 Domínio: https://cantina-senac-api-prod.up.railway.app/
 
 Endpoins:
