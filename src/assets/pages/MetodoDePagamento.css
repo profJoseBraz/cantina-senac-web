@@ -1,6 +1,6 @@
 body {
     display: flex;
-    flex-direction: column;
+    display: flex;
     font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
@@ -14,6 +14,19 @@ body {
 .logo img {
     max-width: 100px;
     margin-left: 10%;
+    margin-top: 5%;
+}
+
+
+    .logo i{
+   max-width: 100px;
+   font-size: 50px;
+   width: 100px;
+   margin-left: 190px;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   color: rgb(21, 65, 211);
+   
 }
 
 .text h6{
@@ -38,6 +51,7 @@ body {
 .text_box .pagamento h6{
     display: flex;
     margin-top: 50px;
+    margin: 0;
     margin-right: 250px;
     align-items: left;
 }
@@ -45,4 +59,7 @@ body {
 .button{
     display: flex;
     margin-left: 190px;
+    margin-top: 18%;
+    margin-bottom: 4%;
 }
+
