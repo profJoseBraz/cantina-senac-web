@@ -22,6 +22,10 @@
         font-size: 42px;
     }
 
+    .cart button .shopping-return{
+        width: 50px;
+    }    
+
     .counter {
         color: white;
         background-color: rgb(44, 44, 175);
