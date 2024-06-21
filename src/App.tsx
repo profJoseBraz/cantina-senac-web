@@ -6,8 +6,8 @@ import OrderReview from './assets/pages/OrderReview'
 function App() {
   return (
     <>
-      {/* <Main></Main> */}
-      <Final></Final>
+      <Main></Main>
+      {/* <Final></Final> */}
     </>
   )
 }
