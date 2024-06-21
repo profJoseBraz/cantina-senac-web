@@ -38,8 +38,6 @@ Endpoins:
                 - https://cantina-senac-api-prod.up.railway.app/orders?customerName=Maria
             - date
                 - https://cantina-senac-api-prod.up.railway.app/orders?date=2024-01-01&operator=>
-            - value
-                - https://cantina-senac-api-prod.up.railway.app/orders?value=10&operator=<
 -  ## paymentMethod 💵💳
     - **GET**
         - Parâmetros
