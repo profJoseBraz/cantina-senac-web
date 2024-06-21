@@ -81,8 +81,10 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart}: Props) => {
                       <span className='subtotal-string'>Subtotal: <span className='subtotal-preco'>R$ {subTotalProduto}</span></span>  
                     </div>             
                   </div>
+                  
               </div>
             </div>
+
             <button onClick={onClickConfirm} >Confirmar Pedido <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
 
             <div className="total-cart">

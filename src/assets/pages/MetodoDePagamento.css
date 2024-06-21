@@ -1,38 +1,6 @@
 .body01 {
     display: flex;
-    display: flex;
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-}
-
-.b {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px;
-}
-
-.logo img {
-    max-width: 100px;
-    margin-left: 10%;
-    margin-top: 5%;
-}
-
-
-    .logo i{
-   max-width: 100px;
-   font-size: 50px;
-   width: 100px;
-   margin-left: 190px;
-   margin-top: 0px;
-   margin-bottom: 0px;
-   color: rgb(21, 65, 211);
-   
-}
-
-.text h6{
-    display: flex;
-    margin-top: 50%;
-    margin-left: 25%;  
+    flex-direction: column;
 }
 
 .text_box input{
@@ -62,4 +30,3 @@
     margin-top: 18%;
     margin-bottom: 4%;
 }
-

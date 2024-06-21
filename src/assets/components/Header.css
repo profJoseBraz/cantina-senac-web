@@ -15,6 +15,14 @@
         max-width: 100px;
     }
     
+    .cart {
+        width: 28%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+    }
     .cart button {
         background-color: rgba(0, 0, 0, 0);
         border: none;
@@ -23,7 +31,11 @@
     }
 
     .cart button .shopping-return{
-        width: 50px;
+        width: 60px;
+    }
+        
+    .cart button .review-return{
+        width: 75px;
     }    
 
     .counter {
@@ -36,6 +48,15 @@
         position: absolute;
         top: 22px;
         right: 8px;
+    }
+
+    .iconText{
+        position: absolute;
+        bottom: 0px;
+
+        font-size: 8px;
+        font-weight: 800;
+        color: rgba(0, 0, 0, 0.45);
     }
     
     .title {

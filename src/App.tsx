@@ -6,8 +6,13 @@ import OrderReview from './assets/pages/OrderReview'
 function App() {
   return (
     <>
-      <MetodoDePagamento>
-      </MetodoDePagamento>
+    
+      {/* <Main /> */}
+
+      <OrderReview />
+
+      {/* <MetodoDePagamento /> */}
+
     </>
   )
 }

@@ -21,12 +21,14 @@ const OrderReview = () => {
   return (
     <>
         <div className="container-orderReview">
-            <Header 
-                displayCestaRetorno={true}
-                displayIconCart={false}
-                displayCounter={false}
-                displayTitle={false}
-                onClick={handleReturnShoppingCart}
+            <Header
+            displayRevisaoPedidoRetorno={false}
+            displayCestaRetorno={true}
+            displayIconCart={false}
+            displayCounter={false}
+            displayTitle={false}
+            onClick={handleReturnShoppingCart}
+            textIconHeader="Voltar para o carrinho"
             />
 
             <TimelineOrder

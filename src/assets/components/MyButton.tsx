@@ -9,7 +9,7 @@ interface Props{
     largura?:string;
 }
 
-function MyButton(props:Props){
+function MyButton(props: Props){
     return(
         <button style={{background:`${props.bgColor}`, height:`${props.altura}`, width:`${props.largura}`,}}>{props.children}</button>
     )
