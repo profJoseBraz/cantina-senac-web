@@ -29,14 +29,17 @@
         align-items: center;
         margin-left: 20px;
         margin-right: 20px;
+        margin-bottom: 40px;
         border-top: 2px gray solid;
     }
 
     .recieve-code h3 {
+        margin: 0;
         font-weight: 300;
     }
 
     .recieve-code h2 {
+        margin: 0;
         margin-left: 5px;
     }
 
@@ -49,6 +52,7 @@
     }
 
     .recieve-resume h3 {
+        margin: 0;
         font-weight: 300;
     }
 
