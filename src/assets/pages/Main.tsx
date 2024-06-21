@@ -24,7 +24,15 @@ function Main() {
     return (
         <>
             <div className="container">
-                <Header onClick={handleCart}></Header>
+
+                <Header
+                onClick={handleCart}
+                displayIconCart={true}
+                displayCounter={true}
+                displayCestaRetorno={false}
+                displayTitle={true}
+                ></Header>
+
                 <Search></Search>
                 <div className="products">
                     <Product onClick={handleAddProduct} restrictType="Contém derivados de leite" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtdBLFQueGRO0CLe8MCGAuuWY4FEa9o6NKUQ&s" name="Pão de queijo" cost="3,00" desc="Caso seja nescessário, a descrição será adicionada aqui" quant={20}></Product>
