@@ -69,6 +69,48 @@ const OrderReview = () => {
                     <span>R$</span> <span>6,00</span>
                   </div>
                 </div>
+                <div className="order">
+                  <div className="order-img">
+                    <img src={paodequeijo} alt="" />
+                  </div>
+
+                  <div className="order-infos">
+                    <span className='order-nameProduct' >Pão de Queijo</span>
+                    <span className='order-qttProduct' >Unidades: 2</span>
+                  </div>
+                  
+                  <div className="order-price">
+                    <span>R$</span> <span>6,00</span>
+                  </div>
+                </div>
+                <div className="order">
+                  <div className="order-img">
+                    <img src={paodequeijo} alt="" />
+                  </div>
+
+                  <div className="order-infos">
+                    <span className='order-nameProduct' >Pão de Queijo</span>
+                    <span className='order-qttProduct' >Unidades: 2</span>
+                  </div>
+                  
+                  <div className="order-price">
+                    <span>R$</span> <span>6,00</span>
+                  </div>
+                </div>
+                <div className="order">
+                  <div className="order-img">
+                    <img src={paodequeijo} alt="" />
+                  </div>
+
+                  <div className="order-infos">
+                    <span className='order-nameProduct' >Pão de Queijo</span>
+                    <span className='order-qttProduct' >Unidades: 2</span>
+                  </div>
+                  
+                  <div className="order-price">
+                    <span>R$</span> <span>6,00</span>
+                  </div>
+                </div>
               </div>
 
               <div className="box-metodPay">

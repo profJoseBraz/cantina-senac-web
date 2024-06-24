@@ -1,146 +1,317 @@
+.container-orderReview{
+    width: 100%;
+    height: 100vh;
+}
+
+.content-orderReview{
+    width: 100%;
+    height: 65%;
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.content-orderReview .content-title-orderReview{
+    width: 100%;
+    height: auto;
+}
+
+.content-orderReview .content-title-orderReview span{
+    margin-left: 30px;
+    font-size: 30px;
+    font-weight: 400;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.content-orderReview .box-orders{
+    width: 90%;
+    height: 80%;
+    margin-top: 25px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    grid-auto-rows: 20%;
+    gap: 20px; 
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.content-orderReview .box-orders .order{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+}
+
+
+.content-orderReview .box-orders .order .order-img{
+    width: 30%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top: #E6E6E6 solid 2px;
+    border-left: #E6E6E6 solid 2px;
+    border-bottom: #E6E6E6 solid 2px;
+}
+
+.content-orderReview .box-orders .order .order-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.content-orderReview .box-orders .order .order-infos{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-top: #E6E6E6 solid 2px;
+    border-right: #E6E6E6 solid 2px;
+    border-bottom: #E6E6E6 solid 2px;
+}
+
+.content-orderReview .box-orders .order .order-infos .order-nameProduct{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.content-orderReview .box-orders .order .order-infos .order-qttProduct{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.content-orderReview .box-orders .order .order-price{
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top: #E6E6E6 solid 2px;
+    border-right: #E6E6E6 solid 2px;
+    border-bottom: #E6E6E6 solid 2px;
+}
+
+.content-orderReview .box-orders .order .order-price span{
+    color: green;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.content-orderReview .box-metodPay{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.content-orderReview .box-metodPay button{
+    width: 420px;
+    height: 50px;
+    margin-right: 30px;
+
+    border: none;
+    border-radius: 20px;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    background: linear-gradient(90deg, rgb(255, 156, 107), rgb(255, 104, 62), rgb(255, 156, 107), rgb(255, 104, 62));
+    background-size: 300%;
+    transition: background-position .5s;
+    text-shadow: 0px 0px 1px black;
+    box-shadow: 0px 0px 1px black;
+}
+
+.content-orderReview .box-metodPay button:hover{
+    background-position: right;
+    transition: background-position .5s, color .5s;
+    cursor: pointer;
+}
+
 @media (min-width: 1025px) and (max-width: 1350px) {
-    
+    .content-orderReview .box-orders{
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+        grid-auto-rows: 20%;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .content-orderReview .content-title-orderReview span{
+        font-size: 28px;
+    }
+
+    .content-orderReview .box-metodPay button{
+        width: 420px;
+        font-size: 19px;
+        margin-right: 20px;
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) and (max-height: 1400px) {
-    
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    
-}
-
-@media (max-width: 480px) {
-    .container-orderReview{
-        width: 100%;
-        height: 100vh;
-    }
-    
-    .content-orderReview{
-        width: 100%;
-        height: 65%;
-        margin-top: 50px;
-    
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    
-        overflow: hidden;
-    }
-    
-    .content-orderReview .content-title-orderReview{
-        width: 100%;
-        height: auto;
-    }
-    
-    .content-orderReview .content-title-orderReview span{
-        margin-left: 10px;
-        font-size: 13;
-        font-weight: 400;
-        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
-    }
-    
     .content-orderReview .box-orders{
-        width: 90%;
-        height: 80%;
-        margin-top: 5px;
-    
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    
-        overflow: auto;
+        grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));
+        grid-auto-rows: 20%;
+        gap: 20px;
+        margin-top: 10px;
     }
-    
-    .content-orderReview .box-orders .order{
-        width: 100%;
-        height: 20%;
-    
-        display: flex;
+
+    .content-orderReview .box-orders .order .order-price span{
+        font-size: 24px;
     }
-    
-    
-    .content-orderReview .box-orders .order .order-img{
-        width: 30%;
-        height: 100%;
-    
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    
-        border-top: #E6E6E6 solid 2px;
-        border-left: #E6E6E6 solid 2px;
-        border-bottom: #E6E6E6 solid 2px;
+
+    .content-orderReview .content-title-orderReview span{
+        font-size: 26px;
     }
-    
-    .content-orderReview .box-orders .order .order-img img{
-        width: 90%;
-        height: 90%;
+
+    .content-orderReview .box-metodPay button{
+        width: 400px;
+        font-size: 18px;
+        margin-right: 10px;
     }
-    
-    .content-orderReview .box-orders .order .order-infos{
-        width: 50%;
-        height: 100%;
-    
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    
-        border-top: #E6E6E6 solid 2px;
-        border-right: #E6E6E6 solid 2px;
-        border-bottom: #E6E6E6 solid 2px;
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+    .content-orderReview .box-orders{
+        grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));
+        grid-auto-rows: 20%;
+        gap: 20px;
+        margin-top: 10px;
     }
-    
+
     .content-orderReview .box-orders .order .order-infos .order-nameProduct{
-        font-size: 15px;
+        font-size: 25px;
         font-weight: 600;
     }
     
     .content-orderReview .box-orders .order .order-infos .order-qttProduct{
-        font-size: 10px;
+        font-size: 14px;
         font-weight: 400;
     }
     
-    .content-orderReview .box-orders .order .order-price{
-        width: 20%;
-        height: 100%;
+    .content-orderReview .box-orders .order .order-price span{
+        font-size: 22px;
+    }
+
+    .content-orderReview .content-title-orderReview span{
+        font-size: 25px;
+    }
+
+    .content-orderReview .box-metodPay button{
+        width: 350px;
+        font-size: 17px;
+        margin-right: 10px;
+    }
+}
+
+@media (min-width: 430px) and (max-width: 500px) {
+    .content-orderReview .box-orders{
+        grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));
+        grid-auto-rows: 20%;
+        gap: 20px;
+    }
+
+    .content-orderReview .box-orders .order .order-infos .order-nameProduct{
+        font-size: 23px;
+        font-weight: 600;
+    }
     
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    
-        border-top: #E6E6E6 solid 2px;
-        border-right: #E6E6E6 solid 2px;
-        border-bottom: #E6E6E6 solid 2px;
+    .content-orderReview .box-orders .order .order-infos .order-qttProduct{
+        font-size: 14px;
+        font-weight: 400;
     }
     
     .content-orderReview .box-orders .order .order-price span{
-        color: green;
-        font-size: 14px;
-        font-weight: 500;
+        font-size: 20px;
     }
-    
-    .content-orderReview .box-metodPay{
-        width: 100%;
-        height: auto;
-    
-        display: flex;
-        align-items: center;
-        justify-content: right;
+
+    .content-orderReview .content-title-orderReview span{
+        font-size: 22px;
     }
-    
+
     .content-orderReview .box-metodPay button{
-        width: 260px;
-        height: 35px;
+        width: 300px;
+        font-size: 16px;
         margin-right: 10px;
+    }
+}
+
+@media (min-width: 350px) and (max-width: 429px) {
+    .content-orderReview .box-orders{
+        grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));
+        grid-auto-rows: 20%;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .content-orderReview .box-orders .order .order-infos .order-nameProduct{
+        font-size: 19px;
+        font-weight: 600;
+    }
     
-        border: none;
-        border-radius: 20px;
+    .content-orderReview .box-orders .order .order-infos .order-qttProduct{
+        font-size: 14px;
+        font-weight: 400;
+    }
     
+    .content-orderReview .box-orders .order .order-price span{
+        font-size: 16px;
+    }
+
+    .content-orderReview .content-title-orderReview span{
+        font-size: 20px;
+    }
+
+    .content-orderReview .box-metodPay button{
+        width: 300px;
+        font-size: 15px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 349px) {
+    .content-orderReview .box-orders{
+        grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));
+        grid-auto-rows: 20%;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .content-orderReview .box-orders .order .order-infos .order-nameProduct{
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    .content-orderReview .box-orders .order .order-infos .order-qttProduct{
         font-size: 13px;
-        font-weight: 800;
+        font-weight: 400;
+    }
     
-        background-color: rgb(245, 113, 75);
+    .content-orderReview .box-orders .order .order-price span{
+        font-size: 15px;
+    }
+
+    .content-orderReview .content-title-orderReview span{
+        font-size: 18px;
+    }
+
+    .content-orderReview .box-metodPay button{
+        width: 200px;
+        font-size: 14px;
+        margin-right: 10px;
     }
 }
