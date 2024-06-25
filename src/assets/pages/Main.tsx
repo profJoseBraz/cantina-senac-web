@@ -31,6 +31,8 @@ function Main() {
                 displayCounter={true}
                 displayCestaRetorno={false}
                 displayTitle={true}
+                displayRevisaoPedidoRetorno={false}
+                textIconHeader=""
                 ></Header>
 
                 <Search></Search>
