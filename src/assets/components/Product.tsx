@@ -11,7 +11,7 @@ interface Prop {
     onClick: () => void;
 };
 
-function Product({ name, img, cost, desc, quant, restrictType, onClick } : Prop) {
+function Product({ name, img, cost, desc, quant, restrictType, onClick, } : Prop) {
     return (
         <>
             <div className="product">
