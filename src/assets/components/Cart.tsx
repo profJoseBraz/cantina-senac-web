@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { CSSProperties, useEffect, useState } from 'react'
 import './Cart.css'
 import paodequeijo from '../../../public/paodequijo-criativo.jpeg'
 import triangleBG from '../../../public/triangle-decoration-cart.svg'
@@ -6,9 +6,10 @@ import triangleBG from '../../../public/triangle-decoration-cart.svg'
 interface Props {
   onClickConfirm?: () => void
   onClickDeleteProdCart?: () => void
+  style?: CSSProperties
 }
 
-const Cart = ({onClickConfirm, onClickDeleteProdCart}: Props) => {
+const Cart = ({onClickConfirm, onClickDeleteProdCart, style}: Props) => {
 
   // interação quantiade dos produtos
   const [amountProduto, setAmountProduto] = useState(1)
@@ -44,7 +45,7 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart}: Props) => {
 
   return (
     <>
-        <aside className="container-cart">
+        <aside style={style} className="container-cart">
             <div className="title-cart">
                 <span>Meu Carrinho</span>
             </div>

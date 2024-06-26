@@ -1,7 +1,7 @@
 import "./Header.css";
 import cestaRetorno from '../../../public/cesta-com-voltar.png'
 import pedidoRetorno from '../../../public/voltarCardapio.png'
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 interface Prop {
     onClick?: () => void
@@ -11,9 +11,11 @@ interface Prop {
     displayTitle?: boolean
     displayRevisaoPedidoRetorno?: boolean
     textIconHeader?: ReactNode
+
+    styleCartIcon?: CSSProperties
 };
 
-function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, } : Prop) {
+function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartIcon, } : Prop) {
 
     return (
         <>
@@ -22,7 +24,7 @@ function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno,
                     <div className="logo">
                         <img src="/Senac_logo.svg.png"/>
                     </div>
-                    <div className="cart">
+                    <div style={styleCartIcon} className="cart">
                         <button onClick={onClick}>
                             {displayIconCart &&(<i className="fa fa-shopping-cart" aria-hidden="true"></i>)}
 
