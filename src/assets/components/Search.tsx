@@ -9,11 +9,7 @@ interface Props {
     onClickMarmitas: () => void
 }
 
-
-    const handleTodos = () => {
-        alert("todos");
-    };
-
+function Search({onClickSalgados, onClickTodos, onClickSobremesas, onClickBebidas, onClickMarmitas}: Props) {
     
     return (
         <>
