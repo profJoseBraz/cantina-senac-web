@@ -2,10 +2,12 @@
 import MyButton from '../components/MyButton'
 import TimelineOrder from '../components/TimelineOrder'
 import './MetodoDePagamento.css'
-import confirmed_icon from '../../../public/concluded-circle.png'
-import clocktime_icon from '../../../public/clocktime-circle.png'
-import empty_icon from '../../../public/empty-circle.png'
+import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
+import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
+import empty_icon from '../../img/icons_timeline/empty-circle.png'
 import Header from '../components/Header'
+import master from '../../img/icons_pagamento/MasterCard_early_1990s_logo.svg'
+import visa from '../../img/icons_pagamento/visa-logo-11.jpg'
 
 const MetodoDePagamento = () => {
 
@@ -22,11 +24,12 @@ const MetodoDePagamento = () => {
                 displayIconCart={false}
                 displayCounter={false}
                 displayTitle={false}
+                counterProductCart={0}
                 onClick={handleReturnOrderReview}
                 textIconHeader="Voltar para o pedido"
                 />
-
-                <TimelineOrder
+            <div className='Timeline'>
+            <TimelineOrder
                 shoppingCartLine={confirmed_icon}
                 orderReview={confirmed_icon}
                 payment={clocktime_icon}
@@ -43,8 +46,9 @@ const MetodoDePagamento = () => {
 
                 classNamePagamento='clocktime'
                 />
-
-
+              
+            </div>
+                
                 <div className='text'>
                     <h6>Nome para retirada no pedido:</h6>
                     <div className='text_box'>
@@ -76,7 +80,7 @@ const MetodoDePagamento = () => {
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div>
         </>
     )
 }

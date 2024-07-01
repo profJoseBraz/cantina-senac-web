@@ -2,10 +2,10 @@ import './OrderReview.css'
 import Header from '../components/Header'
 import TimelineOrder from '../components/TimelineOrder'
 
-import paodequeijo from '../../../public/paodequijo-criativo.jpeg'
-import confirmed_icon from '../../../public/concluded-circle.png'
-import clocktime_icon from '../../../public/clocktime-circle.png'
-import empty_icon from '../../../public/empty-circle.png'
+import paodequeijo from '../../img/produtos/salgados/paodequijo-criativo.jpeg'
+import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
+import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
+import empty_icon from '../../img/icons_timeline/empty-circle.png'
 
 
 const OrderReview = () => {
