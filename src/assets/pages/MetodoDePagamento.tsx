@@ -46,6 +46,7 @@ const MetodoDePagamento = () => {
 
                 classNamePagamento='clocktime'
                 />
+              
             </div>
                 
                 <div className='text'>
@@ -83,6 +84,7 @@ const MetodoDePagamento = () => {
                                 </div>
                     </div>
             </div>
+
         </>
     )
 }
