@@ -5,17 +5,18 @@ import { CSSProperties, ReactNode } from "react";
 
 interface Prop {
     onClick?: () => void
+    counterProductCart: number
     displayIconCart?: boolean
     displayCounter?: boolean
     displayCestaRetorno?: boolean
     displayTitle?: boolean
     displayRevisaoPedidoRetorno?: boolean
+    
     textIconHeader?: ReactNode
-
     styleCartIcon?: CSSProperties
 };
 
-function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartIcon, } : Prop) {
+function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartIcon, counterProductCart } : Prop) {
 
     return (
         <>
@@ -34,7 +35,7 @@ function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno,
 
                             {displayCounter &&(
                             <div className="counter">
-                                0
+                                {counterProductCart}
                             </div>)}
                         </button>
                         <span className="iconText" >{textIconHeader}</span>

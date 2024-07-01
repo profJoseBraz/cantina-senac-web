@@ -43,6 +43,7 @@
 
     margin-top: 20px;
     overflow-y: auto;
+    gap: 15px;
 }
 
 .container-cart .content-cart .box-produto-cart{
@@ -243,4 +244,9 @@
     right: -170px;
     z-index: 1;
     opacity: .3;
+}
+
+.emptyCart-warn{
+    color: rgba(0, 0, 0, 0.300);
+    font-weight: 700;
 }

@@ -75,48 +75,69 @@ function Main() {
     }
 
 
-// --- remover e adicionar produto do carrinho de compras ---
+// --- adicionar produto ao carrinho de compras ---
     const handleAddProduct = (product: any) => {
-        setProductsOnCart([...productsOnCart, product])
-        console.log(productsOnCart)
-    }
+    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.id_produto === product.id_produto);
 
+    if(!productAlreadyCart){
+        setProductsOnCart([...productsOnCart, product])
+        handleIncreaseTotal(product.id_produto)
+    }
+    else{
+        handleIncreaseTotal(product.id_produto)
+    }
+        console.log(productsOnCart)
+}
+
+// --- remover produto do carrinho de compras e zerar sua quantidade ---
     const handleDeleteProduct = (productId: any) => {
-        setProductsOnCart(productsOnCart.filter(product => product.id_produto != productId));
+        setProductsOnCart(productsOnCart.filter(product => product.id_produto != productId))
+
+        setCartQuantities(prev => ({
+            ...prev,
+            [productId]: 0
+        }))
       }
 
-// interação quantiade dos produtos
-    const [cartAmountProduto, setCartAmountProduto] = useState(1)
+// --- interação quantidade de cada produto ---
+    const [cartQuantities, setCartQuantities] = useState<{ [key: number]: number }>({})
 
     const handleIncreaseTotal = (productId: any) => {
-        setProductsOnCart(productsOnCart.map(product =>
-        product.id_produto === productId ? { ...product, quantidade: product.quantidade + 1 } : product
-      ))
-    }
+        setCartQuantities(prev => ({
+            ...prev,
+            [productId]: (prev[productId] || 0) + 1
+        }))
+    } 
 
-    const handleDecreaseTotal = (productId: any) => {
-        if(cartAmountProduto <= 1 ){
-            setProductsOnCart(productsOnCart.map(product =>
-            product.id_produto === productId ? { ...product, quantidade: product.quantidade} : product
-            ))
-        }
-
-        else{
-            setProductsOnCart(productsOnCart.map(product =>
-            product.id_produto === productId ? { ...product, quantidade: product.quantidade - 1 } : product
-            ))
-        }
+    const handleDecreaseTotal = (productId: number) => {
+        setCartQuantities(prev => ({
+            ...prev,
+            [productId]: prev[productId] > 1 ? prev[productId] - 1 : 1
+        }))
     }
+     console.log(cartQuantities)
+
 
 // --- inicializando um array para armazenar os produtos requisitados ---
     const [productsOnShop, setProductsOnShop] = useState<Products[]>([])
 
+
 // --- estado do carrinho (aberto = true // fechado = false) ---
     const [cartOpen, setCartOpen] = useState(false)
+
 
 // --- inicializando um array para armazenar os produtos do carrinho ---
     const [productsOnCart, setProductsOnCart] = useState<Products[]>([])
 
+
+// --- loop para somar todos os itens adicionados no carrinho ---
+    const handleSetTotal = () => {
+        let totalCart = 0;
+        for (let i = 0; i < productsOnCart.length; i++) {
+          totalCart += parseInt(productsOnCart[i].valor) * (cartQuantities[productsOnCart[i].id_produto])
+        }
+        return totalCart
+      }
     return (
         <>
             <div className="container">
@@ -128,6 +149,7 @@ function Main() {
                 displayTitle={true}
                 displayRevisaoPedidoRetorno={false}
                 textIconHeader=""
+                counterProductCart={productsOnCart.length}
 
                 styleCartIcon={{transform: cartOpen ?  "translateX(-40vh)" : "translateX(0)", transition: ".5s"}}
                 ></Header>
@@ -159,12 +181,13 @@ function Main() {
                 style={{width: cartOpen ?  "40vh" : "0", transition: ".4s"}}
                 onClickConfirm={handleConfirmOrder}
                 onClickDeleteProdCart={handleDeleteProduct}
-                onClickIncreaseAmount={handleIncreaseTotal}
-                onClickDecreaseAmount={handleDecreaseTotal}
+                onClickIncreaseQuantity={handleIncreaseTotal}
+                onClickDecreaseQuantity={handleDecreaseTotal}
 
                 productsCart={productsOnCart}
-                /> 
-                
+                cartQuantities={cartQuantities}
+                totalCart={handleSetTotal()}
+                />
             </div>
         </>
     );
