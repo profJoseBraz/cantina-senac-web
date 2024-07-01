@@ -1,7 +1,8 @@
 import "./Header.css";
-import cestaRetorno from '../../../public/cesta-com-voltar.png'
-import pedidoRetorno from '../../../public/voltarCardapio.png'
+import cestaRetorno from '../../img/icons_header/cesta-com-voltar.png';
+import pedidoRetorno from '../../img/icons_header/cesta-com-voltar.png';
 import { CSSProperties, ReactNode } from "react";
+import SenacLogo from '../../img/icons_header/Senac_logo.svg.png'
 
 interface Prop {
     onClick?: () => void
@@ -23,7 +24,7 @@ function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno,
             <header>
                 <div className="head">
                     <div className="logo">
-                        <img src="/Senac_logo.svg.png"/>
+                        <img src={SenacLogo}/>
                     </div>
                     <div style={styleCartIcon} className="cart">
                         <button onClick={onClick}>

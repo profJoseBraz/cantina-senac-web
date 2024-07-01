@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react'
 import './Cart.css'
-import paodequeijo from '../../../public/paodequijo-criativo.jpeg'
-import triangleBG from '../../../public/triangle-decoration-cart.svg'
+import paodequeijo from '../../img/produtos/salgados/paodequijo-criativo.jpeg'
+import triangleBG from '../../img/outros/triangle-decoration-cart.svg'
 
 interface Props {
   onClickConfirm?: () => void
