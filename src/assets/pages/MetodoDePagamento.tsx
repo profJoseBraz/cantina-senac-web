@@ -6,7 +6,7 @@ import confirmed_icon from '../../../public/concluded-circle.png'
 import clocktime_icon from '../../../public/clocktime-circle.png'
 import empty_icon from '../../../public/empty-circle.png'
 import Header from '../components/Header'
-import master from '../../../public/cartaoMaster.png'
+import master from '../../../public/MasterCard_early_1990s_logo.svg'
 import visa from '../../../public/visa-logo-11.jpg'
 
 const MetodoDePagamento = () => {
