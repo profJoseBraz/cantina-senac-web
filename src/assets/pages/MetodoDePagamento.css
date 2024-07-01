@@ -1,0 +1,32 @@
+.body01 {
+    display: flex;
+    flex-direction: column;
+}
+
+.text_box input{
+    display: flex;
+    margin-left: 25%;
+    margin-bottom: 45px;
+    background-color: transparent;
+    color: black;
+}
+
+.text_E_m_P h5{
+    display: flex;
+    margin-left: 5%;
+}
+
+.text_box .pagamento h6{
+    display: flex;
+    margin-top: 50px;
+    margin: 0;
+    margin-right: 250px;
+    align-items: left;
+}
+
+.button{
+    display: flex;
+    margin-left: 190px;
+    margin-top: 18%;
+    margin-bottom: 4%;
+}
