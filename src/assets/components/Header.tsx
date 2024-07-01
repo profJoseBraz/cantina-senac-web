@@ -5,7 +5,7 @@ import { CSSProperties, ReactNode } from "react";
 
 interface Prop {
     onClick?: () => void
-    counterProductCart: number
+    counterProductCart?: number
     displayIconCart?: boolean
     displayCounter?: boolean
     displayCestaRetorno?: boolean
