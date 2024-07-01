@@ -50,26 +50,34 @@ const MetodoDePagamento = () => {
             </div>
                 
                 <div className='text'>
-                    <h6>Nome para retirada no pedido:</h6>
-                    <div className='text_box'>
+                    <div className='name'>
+                        <h6>Nome para retirada no pedido:</h6>
                         <input type='text' />
+                        </div>
+                    <div className='text_box'>
                         <div className='text_E_m_P'>
                             <h5>Escolha o método de pagamento:</h5>
                             <div className='pagamento'>
-                                <h6><input type="radio" id="1" name='tipo-pagamento'/><a>PIX</a></h6>
-                                <h6><input type="radio" id="2" name='tipo-pagamento'/><a>Dinheiro</a></h6>
                                 <div className='payment-method'>
-                                    <h6> <input type="radio" id="3" name='tipo-pagamento'/><a>Cartão de Crédito</a></h6>
+                                    <h6><input type="radio" id="1" name='tipo-pagamento'/><a>Dinheiro</a></h6>
+                                    <div></div>
+                                </div>
+                                <div className='payment-method'>
+                                    <h6> <input type="radio" id="2" name='tipo-pagamento'/><a>Cartão de Crédito</a></h6>
                                     <div className='card'>
-                                        <img src={mester}></img>
+                                        <img src={master}></img>
                                         <img src={visa}></img>
                                     </div>
                                 </div>
-
-                                <h6> <input type="radio" id="4" name='tipo-pagamento' /><a> Cartão de Débito</a></h6>
-                                <div className='card'>
-                                        <img src={mester}></img>
-                                        <img src={visa}></img>
+                                <div className='payment-method'>
+                                <h6> <input type="radio" id="3" name='tipo-pagamento' /><a> Cartão de Débito</a></h6>
+                                    <div className='card'>
+                                            <img src={master}></img>
+                                            <img src={visa}></img>
+                                    </div>
+                                </div>
+                                <div className='pix'>
+                                    <span> - NÃO ACEITAMOS PIX - </span>
                                 </div>
                             </div>
                             <div className='button'>
