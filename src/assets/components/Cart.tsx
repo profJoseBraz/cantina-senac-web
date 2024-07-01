@@ -67,14 +67,14 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity, 
                   </div>
 
                   <div className="infos-produto-cart">
-                    <span className="name-produto">{product.nome}</span>
+                    <span className="name-produto">{product.nome_produto}</span>
                     <span className="preco-string">
-                      Valor: <span className="preco-produto">R$ {product.valor} / un</span>
+                      Valor: <span className="preco-produto">R$ {product.valor_produto} / un</span>
                     </span>
 
                     <div className="subtotal-produto">
                       <span className="subtotal-string">
-                        Subtotal: <span className="subtotal-preco">R$ {product.valor * cartQuantities[product.id_produto]}</span>
+                        Subtotal: <span className="subtotal-preco">R$ {product.valor_produto * cartQuantities[product.id_produto]}</span>
                       </span>
                     </div>
                   </div>
