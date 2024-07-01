@@ -2,46 +2,48 @@
 import MyButton from '../components/MyButton'
 import TimelineOrder from '../components/TimelineOrder'
 import './MetodoDePagamento.css'
-import vc from '../votarcardapio.png'
-import visa from '../visa-logo-11.jpg'
-import mester from '../mastercard-novo-logo.jpg'
-import paodequeijo from '../../../public/paodequijo-criativo.jpeg'
 import confirmed_icon from '../../../public/concluded-circle.png'
 import clocktime_icon from '../../../public/clocktime-circle.png'
 import empty_icon from '../../../public/empty-circle.png'
+import Header from '../components/Header'
 
 const MetodoDePagamento = () => {
+
+    const handleReturnOrderReview = () => {
+        alert("voltar para o resumo do pedido")
+    }
 
     return(
         <>
             <div className='body01'>
-            <div className='topo'>
-                 <div className='logo'>
-                        <img src="/Senac_logo.svg.png"/>
-                                    
-                                 </div> 
+                <Header 
+                displayRevisaoPedidoRetorno={true}
+                displayCestaRetorno={false}
+                displayIconCart={false}
+                displayCounter={false}
+                displayTitle={false}
+                onClick={handleReturnOrderReview}
+                textIconHeader="Voltar para o pedido"
+                />
 
-                                 <div className='vc'>
-                                        <img src={vc}></img>
-                                     </div>
+                <TimelineOrder
+                shoppingCartLine={confirmed_icon}
+                orderReview={confirmed_icon}
+                payment={clocktime_icon}
+                purshaceConfirmation={empty_icon} 
 
-                                    <TimelineOrder
-                        shoppingCartLine={confirmed_icon}
-                        orderReview={confirmed_icon}
-                        payment={clocktime_icon}
-                        purshaceConfirmation={empty_icon} 
+                colorDescOne="#0FA958"
+                opacityDescOne="1"
+                colorDescTwo="#0FA958"
+                opacityDescTwo="1"
+                colorDescThree="#699BF7"
+                opacityDescThree="1"
+                colorDescFour="black"
+                opacityDescFour="0.4"
 
-                        colorDescOne="#0FA958"
-                        opacityDescOne="1"
-                        colorDescTwo="#0FA958"
-                        opacityDescTwo="1"
-                        colorDescThree="#699BF7"
-                        opacityDescThree="1"
-                        colorDescFour="black"
-                        opacityDescFour="0.4"
+                classNamePagamento='clocktime'
+                />
 
-                        classNamePagamento='clocktime'
-                        />
 
                          <div className='text'>
                              <h6>Nome para retirada no pedido:</h6>
@@ -74,10 +76,12 @@ const MetodoDePagamento = () => {
                                                 </MyButton>
                                                 </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+            </div>
         </>
     )
 }
