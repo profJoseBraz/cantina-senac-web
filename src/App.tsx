@@ -9,11 +9,11 @@ function App() {
     <>
       {/* <Final></Final> */}
     
-      {/* <Main /> */}
+      <Main />
 
       {/* <OrderReview /> */}
 
-      <MetodoDePagamento />
+      {/* <MetodoDePagamento /> */}
 
     </>
   )
