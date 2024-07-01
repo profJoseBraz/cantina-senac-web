@@ -17,9 +17,14 @@ const MetodoDePagamento = () => {
             <div className='body01'>
             <div className='topo'>
                  <div className='logo'>
-                     <img src="/Senac_logo.svg.png"/>
-                         </div>
-                            
+                        <img src="/Senac_logo.svg.png"/>
+                                    
+                                 </div> 
+
+                                 <div className='vc'>
+                                        <img src={vc}></img>
+                                     </div>
+
                                     <TimelineOrder
                         shoppingCartLine={confirmed_icon}
                         orderReview={confirmed_icon}

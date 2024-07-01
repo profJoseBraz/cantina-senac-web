@@ -20,6 +20,7 @@
     max-width: 100px;
     margin-left: 10%;
     margin-top: 5%;
+    margin-right: 0px;
 }
 
 
@@ -39,7 +40,7 @@
     margin-top: 50pc;
     margin-left: 26px; 
     margin: 50px;
-    
+    margin-right: 0px;
 }
 
 .text_box input{
@@ -116,6 +117,7 @@ input[type="radio"]:checked{
 img {
     width: 75%;
     height: 75%;
+    border: 25px;
 }
 
 .card{
@@ -124,7 +126,19 @@ img {
     grid-template-columns: auto auto;
     justify-content: center;
     gap: 5px;
+    
     height: 20px;
     width: 50%;
     margin-left: 15px;
 }
+
+.vc img{
+    max-width: 100px;
+    font-size: 50px;
+    width: 100px;
+    margin-left: 190px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: rgb(21, 65, 211);
+
+}   
