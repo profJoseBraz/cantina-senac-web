@@ -87,6 +87,7 @@ function Main() {
         handleIncreaseTotal(product.id_produto)
     }
         console.log(productsOnCart)
+        console.log(product.imagem_produto)
 }
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
@@ -167,8 +168,8 @@ function Main() {
                         <Product
                         key={product.id_produto}
                         onClick={() => handleAddProduct(product)}
-                        restrictType={product.restricoes}
-                        img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtdBLFQueGRO0CLe8MCGAuuWY4FEa9o6NKUQ&s"
+                        restrictType={"product.restricoes"}
+                        img={product.imagem_produto}
                         name={product.nome}
                         cost={product.valor}
                         desc={product.descricao}
