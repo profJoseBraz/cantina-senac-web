@@ -2,23 +2,34 @@
     display: colum;
 }
 
-.text .name h6{
+.text{
     display: flex;
+    flex-direction: column;
+}
+
+.text .client{
+    display: flex;
+    flex-direction: column;
+    padding-left: 13px;
+    height: 50px;
+    width: 250px;
+    position: relative;
+}
+
+/* .text .client h6{
     margin-top: 50px;
     margin-left: 25px;
     margin-bottom: 0px;
-}
+} */
 
-.text .name input{
-    display: flex;  
-    width: 257px;
-    height: 20px;
-    margin-left: 25px;
-    margin-bottom: 45px;
+.text .client input{
+    width: 100%;
+    height: 100%;
     background-color: transparent;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 7px;
     color: black;
-    margin-bottom: 15px;
-    justify-content: center;
 }
 
 .text_E_m_P{
@@ -28,7 +39,6 @@
 
 .text_E_m_P h5{
     display: flex;
-    margin-bottom: 5%;
     border-bottom: solid .3vh rgb(161, 159, 159);
     text-align: center;
 }
@@ -36,7 +46,6 @@
 .text_box .pagamento h6{
     display: flex;
     margin: 18px;
-    margin-right: 100px;
     margin-bottom: 0px;
     align-items: left;
     margin-bottom: 0px;
