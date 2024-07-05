@@ -6,6 +6,7 @@ import OrderReview from './assets/pages/OrderReview'
 
 function App() {
   return (
+<<<<<<< Updated upstream
     <>
       {/* <Final></Final> */}
     
@@ -16,6 +17,16 @@ function App() {
       {/* <MetodoDePagamento /> */}
 
     </>
+=======
+    <HashRouter>
+      <Routes>
+        <Route path= "/" element = {<Main/>}/>
+        <Route path='/RevisãoDoPedido' element = {<OrderReview/>}/>
+        <Route path='/RevisãoDoPedido/MetodoDePagamento' element = {<MetodoDePagamento/>}/>
+        <Route path='/RevisãoDoPedido/MetodoDePagamento/CheckoutDaCompra' element = {<Final/>}/>
+      </Routes>
+    </HashRouter>      
+>>>>>>> Stashed changes
   )
 }
 

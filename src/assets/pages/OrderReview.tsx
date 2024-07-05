@@ -11,11 +11,19 @@ import empty_icon from '../../img/icons_timeline/empty-circle.png'
 const OrderReview = () => {
 
   const handleReturnShoppingCart = () => {
+<<<<<<< Updated upstream
     alert("Voltar para a tela do carrinho");
 }
 
   const handleMethodPay = () => {
     alert("Escolher método de pagamento");
+=======
+    navigate('/');
+}
+
+  const handleMethodPay = () => {
+    navigate('/RevisãoDoPedido/MetodoDePagamento');
+>>>>>>> Stashed changes
 }
 
   return (

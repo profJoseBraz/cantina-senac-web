@@ -72,7 +72,11 @@ function Main() {
 
 // --- botão dentro carrinho de compras --> Ir para a tela de Revisão do Pedido ---
     const handleConfirmOrder = () => {
+<<<<<<< Updated upstream
         alert("Confirmar pedido");
+=======
+        navigate('/RevisãoDoPedido');
+>>>>>>> Stashed changes
     }
 
 

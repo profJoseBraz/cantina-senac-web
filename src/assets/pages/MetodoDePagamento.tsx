@@ -12,7 +12,15 @@ import visa from '../../img/icons_pagamento/visa-logo-11.jpg'
 const MetodoDePagamento = () => {
 
     const handleReturnOrderReview = () => {
+<<<<<<< Updated upstream
         alert("voltar para o resumo do pedido")
+=======
+        navigate('/RevisãoDoPedido')
+    }
+
+    const handleGoToFinal = () => {
+        navigate('/RevisãoDoPedido/MetodoDePagamento/CheckoutDaCompra')
+>>>>>>> Stashed changes
     }
 
     return(
@@ -72,7 +80,7 @@ const MetodoDePagamento = () => {
                                         <img src={visa}></img>
                                 </div>
                             </div>
-                            <div className='button'>
+                            <div onClick={handleGoToFinal} className='button'>
                                 <MyButton>
                                     Código para retirada do pedido
                                 </MyButton>
