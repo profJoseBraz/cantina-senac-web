@@ -13,6 +13,8 @@ const MetodoDePagamento = () => {
 
     const handleReturnOrderReview = () => {
         alert("voltar para o resumo do pedido")
+
+    
     }
 
     return(
@@ -34,7 +36,6 @@ const MetodoDePagamento = () => {
                 orderReview={confirmed_icon}
                 payment={clocktime_icon}
                 purshaceConfirmation={empty_icon} 
-
                 colorDescOne="#0FA958"
                 opacityDescOne="1"
                 colorDescTwo="#0FA958"
