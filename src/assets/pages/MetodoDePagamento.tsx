@@ -8,11 +8,13 @@ import empty_icon from '../../img/icons_timeline/empty-circle.png'
 import Header from '../components/Header'
 import master from '../../img/icons_pagamento/MasterCard_early_1990s_logo.svg'
 import visa from '../../img/icons_pagamento/visa-logo-11.jpg'
+import { useNavigate } from 'react-router-dom'
 
 const MetodoDePagamento = () => {
+    const navigate = useNavigate();
 
     const handleReturnOrderReview = () => {
-        alert("voltar para o resumo do pedido")
+        navigate('/OrderReview')
     }
 
     return(
@@ -61,14 +63,14 @@ const MetodoDePagamento = () => {
                                 <div className='payment-method'>
                                     <h6> <input type="radio" id="3" name='tipo-pagamento'/><a>Cartão de Crédito</a></h6>
                                     <div className='card'>
-                                        <img src={mester}></img>
+                                        <img src={master}></img>
                                         <img src={visa}></img>
                                     </div>
                                 </div>
 
                                 <h6> <input type="radio" id="4" name='tipo-pagamento' /><a> Cartão de Débito</a></h6>
                                 <div className='card'>
-                                        <img src={mester}></img>
+                                        <img src={master}></img>
                                         <img src={visa}></img>
                                 </div>
                             </div>

@@ -44,6 +44,7 @@
     margin: 18px;
     margin-right: 100px;
     align-items: left;
+    margin-bottom: 0px;
 }
 
 .text .pagamento{
@@ -52,9 +53,8 @@
 }
 
 .button{
-    display: flex;
-    margin-left: 100px;
-    margin-top: 18%;
+    margin-left: 130px;
+    margin-top: 5%;
 }
 
 
@@ -87,23 +87,12 @@ img {
 }
 
 .card{
-    /* background-color: red; */
     display: grid;
     grid-template-columns: auto auto;
     justify-content: center;
     gap: 5px;
-    
     height: 20px;
-    width: 50%;
-    margin-left: 15px;
+    width: 27%;
+    margin-left: 65px;
+    margin-top: 0;
 }
-
-.vc img{
-    max-width: 100px;
-    font-size: 50px;
-    width: 100px;
-    margin-left: 190px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    color: rgb(21, 65, 211);
-}   

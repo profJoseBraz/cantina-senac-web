@@ -1,7 +1,6 @@
 import "./Final.css";
 import Header from "../components/Header";
 import TimelineOrder from "../components/TimelineOrder";
-
 import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
 import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
 
