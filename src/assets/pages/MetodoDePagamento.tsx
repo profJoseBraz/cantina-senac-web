@@ -8,13 +8,13 @@ import empty_icon from '../../img/icons_timeline/empty-circle.png'
 import Header from '../components/Header'
 import master from '../../img/icons_pagamento/MasterCard_early_1990s_logo.svg'
 import visa from '../../img/icons_pagamento/visa-logo-11.jpg'
+import { useNavigate } from 'react-router-dom'
 
 const MetodoDePagamento = () => {
+    const navigate = useNavigate();
 
     const handleReturnOrderReview = () => {
-        alert("voltar para o resumo do pedido")
-
-    
+        navigate('/OrderReview')
     }
 
     return(

@@ -1,6 +1,6 @@
 import "./Header.css";
 import cestaRetorno from '../../img/icons_header/cesta-com-voltar.png';
-import pedidoRetorno from '../../img/icons_header/cesta-com-voltar.png';
+import pedidoRetorno from '../../img/icons_header/voltarCardapio.png';
 import { CSSProperties, ReactNode } from "react";
 import SenacLogo from '../../img/icons_header/Senac_logo.svg.png'
 
@@ -24,7 +24,7 @@ function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno,
             <header>
                 <div className="head">
                     <div className="logo">
-                        <img src={SenacLogo}/>
+                        <img src={SenacLogo} />
                     </div>
                     <div style={styleCartIcon} className="cart">
                         <button onClick={onClick}>

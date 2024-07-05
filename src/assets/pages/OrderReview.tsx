@@ -1,21 +1,23 @@
 import './OrderReview.css'
 import Header from '../components/Header'
 import TimelineOrder from '../components/TimelineOrder'
-
-import paodequeijo from '../../img/produtos/salgados/paodequijo-criativo.jpeg'
+import paodequeijo from '../../img/produtos/salgados/pao-de-queijo.png'
 import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
 import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
 import empty_icon from '../../img/icons_timeline/empty-circle.png'
+import { useNavigate } from 'react-router-dom'
 
 
 const OrderReview = () => {
 
+  const navigate = useNavigate();
+
   const handleReturnShoppingCart = () => {
-    alert("Voltar para a tela do carrinho");
+    navigate('/Main');
 }
 
   const handleMethodPay = () => {
-    alert("Escolher método de pagamento");
+    navigate('/MetodoDePagamento');
 }
 
   return (
