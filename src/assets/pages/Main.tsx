@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Product from "../components/Product";
 import Search from "../components/Search";
 import "./Main.css";
-import { Products } from "../interfaces/Produto";
+import { Products } from "../interfaces/Production";
 import axios from "axios";
 
 function Main() {
@@ -33,23 +33,24 @@ function Main() {
 
     const handleOnClickTodos = () => {
         handleGetAllProducts()
-    };
+    }
+    
+    const handleOnClickBebidas = () => {
+       setCategoryId(1)
+    }
+
+    const handleOnClickMarmitas = () => {
+       setCategoryId(2)
+    }
+
+    const handleOnClickSalgados = () => {
+        setCategoryId(3)
+     }
 
      const handleOnClickSobremesas = () => {
         setCategoryId(4)
-     };
+     }
 
-     const handleOnClickMarmitas = () => {
-        setCategoryId(7)
-     };
-
-     const handleOnClickSalgados = () => {
-        setCategoryId(2)
-     };
-
-     const handleOnClickBebidas = () => {
-        setCategoryId(1)
-     };
 
      useEffect(() => {
         handleGetProdutsByCategory()
@@ -135,7 +136,7 @@ function Main() {
     const handleSetTotal = () => {
         let totalCart = 0;
         for (let i = 0; i < productsOnCart.length; i++) {
-          totalCart += parseInt(productsOnCart[i].valor) * (cartQuantities[productsOnCart[i].id_produto])
+          totalCart += parseInt(productsOnCart[i].valor_produto) * (cartQuantities[productsOnCart[i].id_produto])
         }
         return totalCart
       }
@@ -168,11 +169,11 @@ function Main() {
                         <Product
                         key={product.id_produto}
                         onClick={() => handleAddProduct(product)}
-                        restrictType={"product.restricoes"}
+                        restrictType={product.restricao_produto}
                         img={product.imagem_produto}
-                        name={product.nome}
-                        cost={product.valor}
-                        desc={product.descricao}
+                        name={product.nome_produto}
+                        cost={product.valor_produto}
+                        desc={product.descricao_produto}
                         quant={product.quantidade}>
                         </Product>
                     ))}

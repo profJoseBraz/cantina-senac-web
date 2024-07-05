@@ -61,14 +61,14 @@ const MetodoDePagamento = () => {
                                 <div className='payment-method'>
                                     <h6> <input type="radio" id="3" name='tipo-pagamento'/><a>Cartão de Crédito</a></h6>
                                     <div className='card'>
-                                        <img src={mester}></img>
+                                        <img src={master}></img>
                                         <img src={visa}></img>
                                     </div>
                                 </div>
 
                                 <h6> <input type="radio" id="4" name='tipo-pagamento' /><a> Cartão de Débito</a></h6>
                                 <div className='card'>
-                                        <img src={mester}></img>
+                                        <img src={master}></img>
                                         <img src={visa}></img>
                                 </div>
                             </div>
