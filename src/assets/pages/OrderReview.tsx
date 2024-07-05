@@ -13,11 +13,11 @@ const OrderReview = () => {
   const navigate = useNavigate();
 
   const handleReturnShoppingCart = () => {
-    navigate('/Main');
+    navigate('/');
 }
 
   const handleMethodPay = () => {
-    navigate('/MetodoDePagamento');
+    navigate('/RevisãoDoPedido/MetodoDePagamento');
 }
 
   return (

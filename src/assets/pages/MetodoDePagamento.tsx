@@ -14,7 +14,11 @@ const MetodoDePagamento = () => {
     const navigate = useNavigate();
 
     const handleReturnOrderReview = () => {
-        navigate('/OrderReview')
+        navigate('/RevisãoDoPedido')
+    }
+
+    const handleGoToFinal = () => {
+        navigate('/RevisãoDoPedido/MetodoDePagamento/CheckoutDaCompra')
     }
 
     return(
@@ -81,7 +85,7 @@ const MetodoDePagamento = () => {
                                     <span> - NÃO ACEITAMOS PIX - </span>
                                 </div>
                             </div>
-                            <div className='button'>
+                            <div onClick={handleGoToFinal} className='button'>
                                 <MyButton>
                                     Código para retirada do pedido
                                 </MyButton>

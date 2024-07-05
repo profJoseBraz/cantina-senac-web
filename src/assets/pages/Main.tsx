@@ -76,7 +76,7 @@ function Main() {
 
 // --- botão dentro carrinho de compras --> Ir para a tela de Revisão do Pedido ---
     const handleConfirmOrder = () => {
-        navigate('/OrderReview');
+        navigate('/RevisãoDoPedido');
     }
 
 
