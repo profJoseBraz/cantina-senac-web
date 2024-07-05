@@ -6,6 +6,7 @@ import Search from "../components/Search";
 import "./Main.css";
 import { Products } from "../interfaces/Production";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
 
@@ -14,6 +15,9 @@ function Main() {
         const res = await axios.get("https://cantina-senac-api-prod.up.railway.app/production")
         setProductsOnShop(res.data)
     }
+    const navigate = useNavigate();
+
+    
     useEffect(() => {
         handleGetAllProducts()
       }, [])
@@ -72,11 +76,7 @@ function Main() {
 
 // --- botão dentro carrinho de compras --> Ir para a tela de Revisão do Pedido ---
     const handleConfirmOrder = () => {
-<<<<<<< Updated upstream
-        alert("Confirmar pedido");
-=======
         navigate('/RevisãoDoPedido');
->>>>>>> Stashed changes
     }
 
 
@@ -92,6 +92,7 @@ function Main() {
         handleIncreaseTotal(product.id_produto)
     }
         console.log(productsOnCart)
+        console.log(product.imagem_produto)
 }
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---

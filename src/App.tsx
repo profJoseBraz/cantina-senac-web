@@ -3,21 +3,12 @@ import Final from './assets/pages/Final'
 import Main from './assets/pages/Main'
 import MetodoDePagamento from './assets/pages/MetodoDePagamento'
 import OrderReview from './assets/pages/OrderReview'
+import { HashRouter } from 'react-router-dom'
+import { Routes } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 function App() {
   return (
-<<<<<<< Updated upstream
-    <>
-      {/* <Final></Final> */}
-    
-      <Main />
-
-      {/* <OrderReview /> */}
-
-      {/* <MetodoDePagamento /> */}
-
-    </>
-=======
     <HashRouter>
       <Routes>
         <Route path= "/" element = {<Main/>}/>
@@ -26,7 +17,7 @@ function App() {
         <Route path='/RevisãoDoPedido/MetodoDePagamento/CheckoutDaCompra' element = {<Final/>}/>
       </Routes>
     </HashRouter>      
->>>>>>> Stashed changes
+
   )
 }
 

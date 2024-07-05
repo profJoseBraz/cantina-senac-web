@@ -1,7 +1,8 @@
 import { CSSProperties } from 'react'
 import './Cart.css'
-import paodequeijo from '../../img/produtos/salgados/paodequijo-criativo.jpeg'
 import triangleBG from '../../img/outros/triangle-decoration-cart.svg'
+import sadsaddsad from '../../../src/img/produtos/bebidas/coca-cola-lata.png'
+
 
 interface Props {
   onClickConfirm?: () => void
@@ -37,7 +38,7 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity, 
                     aria-hidden="true"
                   ></i>
                   <div className="img-counter-cart">
-                    <img src={paodequeijo} alt="" />
+                    <img src={product.imagem_produto} alt="" />
 
                     <div className="counter-cart">
                       <div

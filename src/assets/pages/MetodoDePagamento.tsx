@@ -8,19 +8,17 @@ import empty_icon from '../../img/icons_timeline/empty-circle.png'
 import Header from '../components/Header'
 import master from '../../img/icons_pagamento/MasterCard_early_1990s_logo.svg'
 import visa from '../../img/icons_pagamento/visa-logo-11.jpg'
+import { useNavigate } from 'react-router-dom'
 
 const MetodoDePagamento = () => {
+    const navigate = useNavigate();
 
     const handleReturnOrderReview = () => {
-<<<<<<< Updated upstream
-        alert("voltar para o resumo do pedido")
-=======
         navigate('/RevisãoDoPedido')
     }
 
     const handleGoToFinal = () => {
         navigate('/RevisãoDoPedido/MetodoDePagamento/CheckoutDaCompra')
->>>>>>> Stashed changes
     }
 
     return(
@@ -42,7 +40,6 @@ const MetodoDePagamento = () => {
                 orderReview={confirmed_icon}
                 payment={clocktime_icon}
                 purshaceConfirmation={empty_icon} 
-
                 colorDescOne="#0FA958"
                 opacityDescOne="1"
                 colorDescTwo="#0FA958"
@@ -58,26 +55,34 @@ const MetodoDePagamento = () => {
             </div>
                 
                 <div className='text'>
-                    <h6>Nome para retirada no pedido:</h6>
-                    <div className='text_box'>
+                    <div className='name'>
+                        <h6>Nome para retirada no pedido:</h6>
                         <input type='text' />
+                        </div>
+                    <div className='text_box'>
                         <div className='text_E_m_P'>
                             <h5>Escolha o método de pagamento:</h5>
                             <div className='pagamento'>
-                                <h6><input type="radio" id="1" name='tipo-pagamento'/><a>PIX</a></h6>
-                                <h6><input type="radio" id="2" name='tipo-pagamento'/><a>Dinheiro</a></h6>
                                 <div className='payment-method'>
-                                    <h6> <input type="radio" id="3" name='tipo-pagamento'/><a>Cartão de Crédito</a></h6>
+                                    <h6><input type="radio" id="1" name='tipo-pagamento'/><a>Dinheiro</a></h6>
+                                    <div></div>
+                                </div>
+                                <div className='payment-method'>
+                                    <h6> <input type="radio" id="2" name='tipo-pagamento'/><a>Cartão de Crédito</a></h6>
                                     <div className='card'>
-                                        <img src={mester}></img>
+                                        <img src={master}></img>
                                         <img src={visa}></img>
                                     </div>
                                 </div>
-
-                                <h6> <input type="radio" id="4" name='tipo-pagamento' /><a> Cartão de Débito</a></h6>
-                                <div className='card'>
-                                        <img src={mester}></img>
-                                        <img src={visa}></img>
+                                <div className='payment-method'>
+                                <h6> <input type="radio" id="3" name='tipo-pagamento' /><a> Cartão de Débito</a></h6>
+                                    <div className='card'>
+                                            <img src={master}></img>
+                                            <img src={visa}></img>
+                                    </div>
+                                </div>
+                                <div className='pix'>
+                                    <span> - NÃO ACEITAMOS PIX - </span>
                                 </div>
                             </div>
                             <div onClick={handleGoToFinal} className='button'>

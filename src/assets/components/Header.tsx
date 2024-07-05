@@ -1,6 +1,6 @@
 import "./Header.css";
 import cestaRetorno from '../../img/icons_header/cesta-com-voltar.png';
-import pedidoRetorno from '../../img/icons_header/cesta-com-voltar.png';
+import pedidoRetorno from '../../img/icons_header/voltarCardapio.png';
 import { CSSProperties, ReactNode } from "react";
 import SenacLogo from '../../img/icons_header/Senac_logo.svg.png'
 

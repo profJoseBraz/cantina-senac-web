@@ -2,15 +2,14 @@
     display: colum;
 }
 
-.text h6{
+.text .name h6{
     display: flex;
-    margin-top: 50pc;
-    margin-left: 26px; 
-    margin: 50px;
-    margin-right: 0px;
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-bottom: 0px;
 }
 
-.text_box input{
+.text .name input{
     display: flex;  
     width: 257px;
     height: 20px;
@@ -19,31 +18,28 @@
     background-color: transparent;
     color: black;
     margin-bottom: 15px;
-
-    
+    justify-content: center;
 }
 
 .text_E_m_P{
-    
     border-bottom: 0px;
     gap: 2vh;
 }
 
-
 .text_E_m_P h5{
     display: flex;
-   
     margin-bottom: 5%;
     border-bottom: solid .3vh rgb(161, 159, 159);
-    
+    text-align: center;
 }
-
 
 .text_box .pagamento h6{
     display: flex;
     margin: 18px;
     margin-right: 100px;
+    margin-bottom: 0px;
     align-items: left;
+    margin-bottom: 0px;
 }
 
 .text .pagamento{
@@ -51,12 +47,18 @@
     align-items: left;
 }
 
-.button{
-    display: flex;
-    margin-left: 100px;
-    margin-top: 18%;
+.text .pagamento .pix{
+    display: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 30px;
+    color: red;
 }
 
+.button{
+    margin-left: 130px;
+    margin-top: 5%;
+}
 
 input[type="radio"] {
     appearance: none;
@@ -77,33 +79,23 @@ input[type="radio"]:checked{
 
 .text_box .pagamento h6 a{
     margin-top: 5px;
- 
 }
 
-img {
-    width: 75%;
+.card img{
+    width: 65%;
     height: 75%;
     border: 25px;
+    margin-top: 0px;
 }
 
+
 .card{
-    /* background-color: red; */
     display: grid;
     grid-template-columns: auto auto;
     justify-content: center;
     gap: 5px;
-    
     height: 20px;
-    width: 50%;
-    margin-left: 15px;
+    width: 27%;
+    margin-left: 65px;
+    margin-top: 0;
 }
-
-.vc img{
-    max-width: 100px;
-    font-size: 50px;
-    width: 100px;
-    margin-left: 190px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    color: rgb(21, 65, 211);
-}   
