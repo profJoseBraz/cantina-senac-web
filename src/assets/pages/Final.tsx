@@ -1,11 +1,64 @@
 import "./Final.css";
+import { useEffect, useState } from "react";
+
 import Header from "../components/Header";
 import TimelineOrder from "../components/TimelineOrder";
 import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
 import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
 
 function Final() {
-    const code = "UF4A07";
+    const [minutes, setMinutes] = useState(29);
+    const [seconds, setSeconds] = useState(59);
+    const [code, setCode] = useState<string>(String(localStorage.getItem('code')));
+    const [date, setDate] = useState(new Date);
+    const [horario, setHorario] = useState<string>(String(localStorage.getItem('time')));
+
+    const handleTimer = () => {
+        setSeconds(seconds - 1);
+        if (seconds == 0) {
+            setMinutes(minutes - 1);
+            setSeconds(59);
+        };
+        if (seconds == 0 && minutes == 0) {
+            localStorage.clear();
+        };
+    };
+
+    useEffect(() => {
+        setTimeout(() => {handleTimer()}, 1000);
+
+        const keys = Object.keys(localStorage);
+
+        if(code === "null" || keys[0] === ""){
+            setCode(Math.random().toString(20).slice(2, 8).toLocaleUpperCase());
+        }
+
+        setDate(date);
+    
+        const hoursNow = date.getHours();
+        const minutesNow = date.getMinutes();
+        var somaMinutos = minutesNow + 30;
+        var somaHoras;
+    
+        if (somaMinutos > 60) {
+            somaMinutos = somaMinutos - 60;
+            somaHoras = hoursNow + 1;
+        } else {
+            somaHoras = hoursNow;
+        };
+
+        if(horario === "null" || keys[0] === ""){
+            setHorario(`${somaHoras}:${somaMinutos}`);
+        }
+    });
+
+    useEffect(() => {
+        localStorage.setItem("code", code);
+    }, [code])
+
+    useEffect(() => {
+        localStorage.setItem("time", horario);
+    }, [horario])
 
     return (
         <>
@@ -30,8 +83,9 @@ function Final() {
                 />
             </div>
             <div className="recieve-time">
-                <h3>Tempo para retirar seu pedido:</h3>
-                <h1>30:00</h1>
+                <h3>Horário para retirar seu pedido:</h3>
+                <h1>{horario}</h1>
+                <p>{`${minutes}:${seconds}`}</p>
             </div>
             <div className="recieve-code">
                 <h3>Código do pedido:</h3>
