@@ -1,7 +1,6 @@
 import { CSSProperties } from 'react'
 import './Cart.css'
 import triangleBG from '../../img/outros/triangle-decoration-cart.svg'
-import sadsaddsad from '../../../src/img/produtos/bebidas/coca-cola-lata.png'
 
 
 interface Props {

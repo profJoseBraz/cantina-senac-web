@@ -30,7 +30,7 @@ const OrderReview = () => {
             displayCounter={false}
             displayTitle={false}
             onClick={handleReturnShoppingCart}
-            textIconHeader="Voltar para o carrinho"
+            textIconHeader="Menu principal"
             />
 
             <TimelineOrder

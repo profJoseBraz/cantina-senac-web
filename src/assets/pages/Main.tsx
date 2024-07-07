@@ -10,12 +10,14 @@ import { useNavigate } from "react-router-dom";
 
 function Main() {
 
+    // --- useNavigate para navegar entre as páginas ---
+const navigate = useNavigate();
+
 // --- puxar todos os produtos disponíveis no dia ao entrar na página ---
     const handleGetAllProducts = async () => {
         const res = await axios.get("https://cantina-senac-api-prod.up.railway.app/production")
         setProductsOnShop(res.data)
     }
-    const navigate = useNavigate();
 
     
     useEffect(() => {
@@ -140,10 +142,52 @@ function Main() {
     const handleSetTotal = () => {
         let totalCart = 0;
         for (let i = 0; i < productsOnCart.length; i++) {
-          totalCart += parseInt(productsOnCart[i].valor_produto) * (cartQuantities[productsOnCart[i].id_produto])
+            totalCart += parseInt(productsOnCart[i].valor_produto) * (cartQuantities[productsOnCart[i].id_produto])
         }
         return totalCart
-      }
+    }
+    
+
+// --- verificar o tamanho do dispositivo e ajustar os ícones do HEADER ---
+const [topValue, setTopValue] = useState("")
+const [rightValue, setRightValue] = useState("")
+const [cartIconTranslate, setCartIconTranslate] = useState("")
+const [cartTranslate, setCartTranslate] = useState("")
+
+    const handleSetWindowWidthForStyles = () => {
+        if(window.innerWidth < 380){
+            console.log("a largura é menor 380px")
+            setTopValue("15px")
+            setRightValue("20px")
+
+            setCartIconTranslate("translateX(-32vh)")
+            setCartTranslate("40vh")
+        }
+        else if(window.innerWidth < 481
+
+        ){
+            console.log("a largura é menor que 481px")
+            setTopValue("10px")
+            setRightValue("25px")
+
+            setCartIconTranslate("translateX(-32vh)")
+            setCartTranslate("40vh")
+        }
+
+        else if(window.innerWidth < 769){
+            console.log("a tela-larg é menor que 769px")
+            setTopValue("20px")
+            setRightValue("35px")
+
+            setCartIconTranslate("translateX(-38vh)")
+            setCartTranslate("48vh")
+        }
+    }
+
+    useEffect( () => {
+        handleSetWindowWidthForStyles()
+    }, [])
+
     return (
         <>
             <div className="container">
@@ -157,18 +201,36 @@ function Main() {
                 textIconHeader=""
                 counterProductCart={productsOnCart.length}
 
-                styleCartIcon={{transform: cartOpen ?  "translateX(-40vh)" : "translateX(0)", transition: ".5s"}}
-                ></Header>
+                styleIconCart={{
+                    transform: cartOpen ?  cartIconTranslate : "translateX(0)",
+                    backgroundColor: cartOpen ?  "white" : "transparent",
+                    borderRadius: "50%",
+                    borderBottom: cartOpen ? "solid rgb(0, 74, 141) 4px" : "none",
+                    borderLeft: cartOpen ? "solid rgb(0, 74, 141) 4px" : "none",
+                    transition: "800ms",
+                    position: "absolute",
+                    top: cartOpen ? "3px" : topValue,
+                    right: rightValue,
+                    boxShadow: cartOpen ? "-10px 0px 20px rgba(0, 0, 0, 0.8)" : "none",
+                    zIndex: "2"}}
+
+                styleCartOpenned={{
+                    opacity: cartOpen ? "0.1" : "1",
+                    pointerEvents: cartOpen ? "none" : "all",
+                    overflow: "hidden",
+                    transition: "0.3s"}}
+                />
 
                 <Search
+                styleFilters={{opacity: cartOpen ? "0.1" : "1", pointerEvents: cartOpen ? "none" : "all", transition: "0.3s"}}
                 onClickTodos={handleOnClickTodos}
                 onClickBebidas={handleOnClickBebidas}
                 onClickSalgados={handleOnClickSalgados}
                 onClickMarmitas={handleOnClickMarmitas}
                 onClickSobremesas={handleOnClickSobremesas}
-                ></Search>
+                />
 
-                <div className="products">
+                <div style={{opacity: cartOpen ? "0.1" : "1", pointerEvents: cartOpen ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
                     {productsOnShop.map((product) => (
                         <Product
                         key={product.id_produto}
@@ -178,13 +240,14 @@ function Main() {
                         name={product.nome_produto}
                         cost={product.valor_produto}
                         desc={product.descricao_produto}
-                        quant={product.quantidade}>
-                        </Product>
+                        quant={product.quantidade}
+                        />
+                        
                     ))}
                 </div>
   
                 <Cart
-                style={{width: cartOpen ?  "40vh" : "0", transition: ".4s"}}
+                style={{width: cartOpen ?  cartTranslate : "0", boxShadow: cartOpen ? "-5px 0px 50px black" : "none", transition: ".7s"}}
                 onClickConfirm={handleConfirmOrder}
                 onClickDeleteProdCart={handleDeleteProduct}
                 onClickIncreaseQuantity={handleIncreaseTotal}
