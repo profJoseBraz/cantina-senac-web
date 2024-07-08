@@ -17,10 +17,10 @@ function Final() {
         setSeconds(seconds - 1);
         if (seconds == 0) {
             setMinutes(minutes - 1);
-            setSeconds(60);
+            setSeconds(59);
         };
         if (seconds == 0 && minutes == 0) {
-            alert("Timer zerou!");
+            localStorage.clear();
         };
     };
 
