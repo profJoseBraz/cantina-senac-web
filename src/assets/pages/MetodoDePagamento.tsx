@@ -32,7 +32,7 @@ const MetodoDePagamento = () => {
                 displayTitle={false}
                 counterProductCart={0}
                 onClick={handleReturnOrderReview}
-                textIconHeader="Voltar para o pedido"
+                textIconHeader="Revisar pedido"
                 />
             <div className='Timeline'>
             <TimelineOrder

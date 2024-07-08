@@ -1,8 +1,9 @@
 import "./Header.css";
-import cestaRetorno from '../../img/icons_header/cesta-com-voltar.png';
-import pedidoRetorno from '../../img/icons_header/voltarCardapio.png';
+import cestaRetorno from '../../img/icons_header/carrinho-com-produtos-voltar.png';
+import revisaoPedidoRetorno from '../../img/icons_header/revisao-pedido-voltar.png';
+import cartIcon from '../../img/icons_header/carrinho-vazio.png'
+import SenacLogo from '../../img/icons_header/senac-logo.png'
 import { CSSProperties, ReactNode } from "react";
-import SenacLogo from '../../img/icons_header/Senac_logo.svg.png'
 
 interface Prop {
     onClick?: () => void
@@ -14,41 +15,41 @@ interface Prop {
     displayRevisaoPedidoRetorno?: boolean
     
     textIconHeader?: ReactNode
-    styleCartIcon?: CSSProperties
+    styleCartOpenned?: CSSProperties
+    styleIconCart?: CSSProperties
 };
 
-function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartIcon, counterProductCart } : Prop) {
+function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartOpenned, styleIconCart, counterProductCart, }: Prop) {
 
     return (
         <>
             <header>
                 <div className="head">
                     <div className="logo">
-                        <img src={SenacLogo} />
+                        <img style={styleCartOpenned} src={SenacLogo} />
                     </div>
-                    <div style={styleCartIcon} className="cart">
+                    <div style={styleIconCart} className="cart">
                         <button onClick={onClick}>
-                            {displayIconCart &&(<i className="fa fa-shopping-cart" aria-hidden="true"></i>)}
+                            {displayIconCart &&(<img className="cart-icon"  src={cartIcon} alt="" />)}
 
                             {displayCestaRetorno &&(<img className="shopping-return"  src={cestaRetorno} alt="" />)}
 
-                            {displayRevisaoPedidoRetorno &&(<img className="review-return"  src={pedidoRetorno} alt="" />)}
+                            {displayRevisaoPedidoRetorno &&(<img className="review-return"  src={revisaoPedidoRetorno} alt="" />)}
 
                             {displayCounter &&(
                             <div className="counter">
                                 {counterProductCart}
                             </div>)}
                         </button>
-                        <span className="iconText" >{textIconHeader}</span>
+                        <span  className="iconText" >{textIconHeader}</span>
                     </div>
 
                 </div>
                 {displayTitle &&(
-                    <div className="title">
+                    <div style={styleCartOpenned} className="title">
                     <h2>Cantina Senac</h2>
                     <p>Realize seu pedido online</p>
                 </div>)}
-                
             </header>    
         </>
     );

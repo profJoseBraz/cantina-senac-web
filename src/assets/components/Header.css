@@ -1,6 +1,7 @@
 header {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .head {
@@ -16,17 +17,16 @@ header {
 
 .cart {
     width: 80px;
-    height: 100%;
+    height: 100px;
     position: relative;
     display: flex;
     align-items: end;
     justify-content: center;
 }
 .cart button {
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    color: black;
-    font-size: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cart button .shopping-return{
@@ -47,8 +47,8 @@ header {
     height: 20px;
 
     position: absolute;
-    top: 0px;
-    right: 5px;
+    top: 6px;
+    right: 7px;
 
     color: white;
     font-weight: 800;
@@ -80,7 +80,8 @@ header {
 .title p {
     font-size: 14px;
     margin-bottom: 0;
-    color: rgb(54, 54, 54);
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 1025px) and (max-width: 1350px) {
@@ -92,164 +93,161 @@ header {
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-    header {
-        display: flex;
-        flex-direction: column;
-    }
-    
     .head {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 12px 20px;
+        padding: 20px 35px;
     }
     
     .logo img {
-        max-width: 110px;
+        max-width: 195px;
     }
     
     .cart {
         width: 90px;
-        height: 100%;
-        position: relative;
+        height: 90px;
+
+        position: absolute;
+        right: 35px;
+        top: 20px;
+
         display: flex;
-        align-items: end;
+        align-items: center;
         justify-content: center;
-        border-radius: 50%;
+
+        padding: 20px;
     }
+
     .cart button {
         background-color: rgba(0, 0, 0, 0);
         border: none;
         color: black;
-        font-size: 50px;
     }
 
-    .cart button .shopping-return{
-        width: 75px;
+    .cart button .cart-icon {
+        width: 90px;
+        height: 90px;
+    }
+
+    .cart button .shopping-return {
+        width: 105px;
+        height: 115px;
     }
         
-    .cart button .review-return{
-        width: 75px;
+    .cart button .review-return {
+        width: 105px;
+        height: 115px;
     }    
 
     .counter {
-        width: 25px;
-        height: 25px;
+        width: 35px;
+        height: 35px;
+        right: 0;
 
-        font-size: 17px;
+        font-size: 24px;
         color: white;
         background-color: rgb(44, 44, 175);
         border-radius: 50%;
     }
 
-    .iconText{
+    .iconText {
         position: absolute;
-        bottom: 0px;
-
-        font-size: 8px;
+        bottom: -15px;
+        
+        font-size: 16px;
         font-weight: 800;
         color: rgba(0, 0, 0, 0.45);
     }
     
-    .title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .title h2 {
+        font-size: 45px;
     }
-    
-    .title h2, p {
-        margin: 10px;
-    }
-    
+
     .title p {
-        font-size: 14px;
-        margin-bottom: 0;
-        color: rgb(54, 54, 54);
+        font-size: 20px;
     }
 }
 
 @media (min-width: 380px) and (max-width: 480px) {
-    header {
-        display: flex;
-        flex-direction: column;
-    }
-    
     .head {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 12px 20px;
+        padding: 15px 25px;
     }
     
     .logo img {
-        max-width: 110px;
+        max-width: 125px;
     }
     
     .cart {
-        width: 90px;
-        height: 100%;
-        position: relative;
+        width: 75px;
+        height: 75px;
+
+        position: absolute;
+        right: 25px;
+        top: 10px;
+
         display: flex;
-        align-items: end;
+        align-items: center;
         justify-content: center;
+
+        padding: 5px;
     }
+
     .cart button {
         background-color: rgba(0, 0, 0, 0);
         border: none;
         color: black;
-        font-size: 50px;
+        font-size: 45px;
     }
 
-    .cart button .shopping-return{
-        width: 75px;
+    .cart button .cart-icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    .cart button .shopping-return {
+        width: 80px;
+        height: 90px;
     }
         
-    .cart button .review-return{
-        width: 55px;
+    .cart button .review-return {
+        width: 80px;
+        height: 90px;
     }    
 
     .counter {
-        width: 22px;
-        height: 22px;
+        width: 24px;
+        height: 24px;
+        right: 0;
 
-        font-size: 14px;
+        font-size: 16px;
         color: white;
         background-color: rgb(44, 44, 175);
         border-radius: 50%;
     }
 
-    .iconText{
+    .iconText {
         position: absolute;
-        bottom: 0px;
-
-        font-size: 8px;
+        bottom: -15px;
+        
+        font-size: 10px;
         font-weight: 800;
         color: rgba(0, 0, 0, 0.45);
     }
     
-    .title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .title h2 {
+        font-size: 27px;
     }
-    
-    .title h2, p {
-        margin: 10px;
-    }
-    
+
     .title p {
-        font-size: 14px;
-        margin-bottom: 0;
-        color: rgb(54, 54, 54);
+        font-size: 13px;
     }
 }
 
 @media (max-width: 379px) {
-    header {
-        display: flex;
-        flex-direction: column;
-    }
-    
     .head {
         display: flex;
         align-items: center;
@@ -258,35 +256,44 @@ header {
     }
     
     .logo img {
-        max-width: 110px;
+        max-width: 115px;
     }
     
     .cart {
-        width: 90px;
-        height: 100%;
-        position: relative;
+        width: 75px;
+        height: 75px;
+        position: absolute;
+        right: 15px;
+        top: 5px;
         display: flex;
-        align-items: end;
+        align-items: center;
         justify-content: center;
     }
+
     .cart button {
         background-color: rgba(0, 0, 0, 0);
         border: none;
         color: black;
-        font-size: 50px;
     }
 
-    .cart button .shopping-return{
-        width: 75px;
+    .cart button .cart-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cart button .shopping-return {
+        width: 60px;
+        height: 60px;
     }
         
-    .cart button .review-return{
-        width: 75px;
+    .cart button .review-return {
+        width: 70px;
+        height: 75px;
     }    
 
     .counter {
-        width: 22px;
-        height: 22px;
+        width: 21px;
+        height: 21px;
 
         font-size: 14px;
         color: white;
@@ -294,28 +301,16 @@ header {
         border-radius: 50%;
     }
 
-    .iconText{
+    .iconText {
         position: absolute;
-        bottom: 0px;
-
-        font-size: 8px;
+        bottom: -10px;
+        
+        font-size: 9px;
         font-weight: 800;
         color: rgba(0, 0, 0, 0.45);
     }
     
-    .title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .title h2, p {
-        margin: 10px;
-    }
-    
     .title p {
-        font-size: 14px;
-        margin-bottom: 0;
-        color: rgb(54, 54, 54);
+        font-size: 13px;
     }
 }
