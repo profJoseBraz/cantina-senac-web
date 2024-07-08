@@ -72,16 +72,21 @@ Endpoins:
                 - https://cantina-senac-api-prod.up.railway.app/paymentMethod?id=1
 -  ## production ⚙️
     - **GET**
-        - Parâmetros
-            - nenhum
-                - https://cantina-senac-api-prod.up.railway.app/production
-            - id
-                - https://cantina-senac-api-prod.up.railway.app/production?id=1
-            - productId
-                - https://cantina-senac-api-prod.up.railway.app/production?productId=1
-            - date
-                - https://cantina-senac-api-prod.up.railway.app/production?date=2024-01-01&operator==
-            - amount
-                - https://cantina-senac-api-prod.up.railway.app/production?amount=10&operator=>   
+        - **/production**
+            - Parâmetros
+                - nenhum
+                    - https://cantina-senac-api-prod.up.railway.app/production
+                - id
+                    - https://cantina-senac-api-prod.up.railway.app/production?id=1
+                - productId
+                    - https://cantina-senac-api-prod.up.railway.app/production?productId=1
+                - date
+                    - https://cantina-senac-api-prod.up.railway.app/production?date=2024-01-01&operator==
+                - amount
+                    - https://cantina-senac-api-prod.up.railway.app/production?amount=10&operator=>
+        - **/production/products**
+            - Parâmetros
+                - categoryId
+                    - https://cantina-senac-api-prod.up.railway.app/production/products?categoryId=1   
 
  **Obs: para filtragem de datas ou números utiliza-se os operadores **">"**, **"<"** e **"="** (maior, menor e igual, respectivamente)**

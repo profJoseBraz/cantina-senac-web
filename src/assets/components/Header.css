@@ -30,7 +30,8 @@ header {
 }
 
 .cart button .shopping-return{
-    width: 60px;
+    width: 75px;
+    height: 75px;
 }
     
 .cart button .review-return{
@@ -60,10 +61,10 @@ header {
 .iconText{
     position: absolute;
     bottom: 0px;
-
     font-size: 8px;
     font-weight: 800;
     color: rgba(0, 0, 0, 0.45);
+    text-align: center;
 }
 
 .title {
@@ -124,7 +125,7 @@ header {
     }
 
     .cart button .shopping-return{
-        width: 60px;
+        width: 75px;
     }
         
     .cart button .review-return{
@@ -200,11 +201,11 @@ header {
     }
 
     .cart button .shopping-return{
-        width: 60px;
+        width: 75px;
     }
         
     .cart button .review-return{
-        width: 75px;
+        width: 55px;
     }    
 
     .counter {
@@ -276,7 +277,7 @@ header {
     }
 
     .cart button .shopping-return{
-        width: 60px;
+        width: 75px;
     }
         
     .cart button .review-return{
