@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import Filter from "./Filter";
 import "./Search.css";
 
@@ -7,13 +8,15 @@ interface Props {
     onClickSobremesas: () => void
     onClickBebidas: () => void
     onClickMarmitas: () => void
+
+    styleFilters?: CSSProperties
 }
 
-function Search({onClickSalgados, onClickTodos, onClickSobremesas, onClickBebidas, onClickMarmitas}: Props) {
+function Search({onClickSalgados, onClickTodos, onClickSobremesas, onClickBebidas, onClickMarmitas, styleFilters}: Props) {
     
     return (
         <>
-            <nav>
+            <nav style={styleFilters}>
                 <div className="search">
                     <input type="search" placeholder="Buscar no cardápio..."/>
                     <i className="fa fa-search" aria-hidden="true"></i>
