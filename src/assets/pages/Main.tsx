@@ -235,7 +235,7 @@ const [cartTranslate, setCartTranslate] = useState("")
                         <Product
                         key={product.id_produto}
                         onClick={() => handleAddProduct(product)}
-                        restrictType={product.restricao_produto}
+                        restrictType={"product.restricao_produto"}
                         img={product.imagem_produto}
                         name={product.nome_produto}
                         cost={product.valor_produto}
