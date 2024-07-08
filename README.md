@@ -90,3 +90,31 @@ Endpoins:
                     - https://cantina-senac-api-prod.up.railway.app/production/products?categoryId=1   
 
  **Obs: para filtragem de datas ou números utiliza-se os operadores **">"**, **"<"** e **"="** (maior, menor e igual, respectivamente)**
+
+- ## products
+    - **GET**
+        - Parâmetros
+            - nenhum
+                - https://cantina-senac-api-prod.up.railway.app/products
+            - id
+                - https://cantina-senac-api-prod.up.railway.app/products?id=1
+            - categoryId
+                - https://cantina-senac-api-prod.up.railway.app/products?categoryId=1
+            - name
+                - https://cantina-senac-api-prod.up.railway.app/products?name=agua
+            - description
+                - https://cantina-senac-api-prod.up.railway.app/products?description=garrafa de agua
+    - **POST**
+        - **/add**
+            - https://cantina-senac-api-prod.up.railway.app/products/add
+                - **body**
+                - 
+                    ```json
+                    {
+                        "categoryId": 1,
+                        "name": "Novo prod",
+                        "description": "Novo prod descrição",
+                        "value": 10,
+                        "image": "Novo prod.jpg"
+                    }
+                  ``` 
