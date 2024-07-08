@@ -7,19 +7,27 @@ import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
 import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
 
 function Final() {
-    const [minutes, setMinutes] = useState(29);
-    const [seconds, setSeconds] = useState(59);
+    const [minutes, setMinutes] = useState(60);
+    const [minutesString, setMinutesString] = useState(String(minutes));
+    const [seconds, setSeconds] = useState(0);
+    const [secondsString, setSecondsString] = useState(String(seconds));
     const [code, setCode] = useState<string>(String(localStorage.getItem('code')));
     const [date, setDate] = useState(new Date);
-    const [horario, setHorario] = useState<string>(String(localStorage.getItem('time')));
+    const [hoursNow, setHoursNow] = useState(date.getHours());
+    const [minutesNow, setMinutesNow] = useState(date.getMinutes());
+    const [storedHours, setStoredHours] = useState<string>(String(localStorage.getItem('hours')));
+    const [storedMinutes, setStoredMinutes] = useState<string>(String(localStorage.getItem('minutes')));
+    const [horario, setHorario] = useState(`${localStorage.getItem('hours')}:${localStorage.getItem('minutes')}`);
 
     const handleTimer = () => {
         setSeconds(seconds - 1);
+        setSecondsString(String(seconds));
         if (seconds == 0) {
             setMinutes(minutes - 1);
+            setMinutesString(String(minutes));
             setSeconds(59);
         };
-        if (seconds == 0 && minutes == 0) {
+        if (seconds <= 0 && minutes <= 0) {
             localStorage.clear();
         };
     };
@@ -31,12 +39,12 @@ function Final() {
 
         if(code === "null" || keys[0] === ""){
             setCode(Math.random().toString(20).slice(2, 8).toLocaleUpperCase());
-        }
+        };
 
         setDate(date);
     
-        const hoursNow = date.getHours();
-        const minutesNow = date.getMinutes();
+        setHoursNow(hoursNow);
+        setMinutesNow(minutesNow);
         var somaMinutos = minutesNow + 30;
         var somaHoras;
     
@@ -47,18 +55,29 @@ function Final() {
             somaHoras = hoursNow;
         };
 
-        if(horario === "null" || keys[0] === ""){
-            setHorario(`${somaHoras}:${somaMinutos}`);
-        }
+        if(storedHours === "null" || keys[0] === ""){
+            setStoredHours(String(somaHoras));
+            setStoredMinutes(String(somaMinutos));
+            setHorario(`${String(somaHoras).padStart(2, "0")}:${String(somaMinutos).padStart(2, "0")}`);
+        };
+
+        var calcMinutes = parseInt(storedMinutes);
+
+        if (parseInt(storedHours) > hoursNow) {
+            calcMinutes = parseInt(storedMinutes) + 60;
+        };
+
+        if (minutes === 60) setMinutes(calcMinutes - minutesNow);
     });
 
     useEffect(() => {
         localStorage.setItem("code", code);
-    }, [code])
+    }, [code]);
 
     useEffect(() => {
-        localStorage.setItem("time", horario);
-    }, [horario])
+        localStorage.setItem("hours", String(storedHours));
+        localStorage.setItem("minutes", String(storedMinutes));
+    }, [storedHours]);
 
     return (
         <>
@@ -85,7 +104,7 @@ function Final() {
             <div className="recieve-time">
                 <h3>Horário para retirar seu pedido:</h3>
                 <h1>{horario}</h1>
-                <p>{`${minutes}:${seconds}`}</p>
+                <p>{`${minutesString.padStart(2, "0")}:${secondsString.padStart(2, "0")}`}</p>
             </div>
             <div className="recieve-code">
                 <h3>Código do pedido:</h3>
