@@ -7,7 +7,7 @@ import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
 import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
 
 function Final() {
-    const [minutes, setMinutes] = useState(60);
+    const [minutes, setMinutes] = useState(30);
     const [minutesString, setMinutesString] = useState(String(minutes));
     const [seconds, setSeconds] = useState(0);
     const [secondsString, setSecondsString] = useState(String(seconds));
@@ -33,7 +33,7 @@ function Final() {
     };
 
     useEffect(() => {
-        setTimeout(() => {handleTimer()}, 1000);
+        // setTimeout(() => {handleTimer()}, 1000);
 
         const keys = Object.keys(localStorage);
 
@@ -60,14 +60,6 @@ function Final() {
             setStoredMinutes(String(somaMinutos));
             setHorario(`${String(somaHoras).padStart(2, "0")}:${String(somaMinutos).padStart(2, "0")}`);
         };
-
-        var calcMinutes = parseInt(storedMinutes);
-
-        if (parseInt(storedHours) > hoursNow) {
-            calcMinutes = parseInt(storedMinutes) + 60;
-        };
-
-        if (minutes === 60) setMinutes(calcMinutes - minutesNow);
     });
 
     useEffect(() => {
@@ -77,7 +69,27 @@ function Final() {
     useEffect(() => {
         localStorage.setItem("hours", String(storedHours));
         localStorage.setItem("minutes", String(storedMinutes));
-    }, [storedHours]);
+    }, [storedHours, storedMinutes]);
+
+    useEffect(() => {
+        setTimeout(() => {handleTimer()}, 1000);
+        // alert("teste")
+    }, [seconds])
+
+    useEffect(() => {
+        // alert(localStorage.getItem("minutes"))
+
+        var calcMinutes = parseInt(storedMinutes);
+
+        if (parseInt(storedHours) > hoursNow) {
+            calcMinutes = parseInt(storedMinutes) + 60;
+        };
+
+        if (localStorage.getItem("minutes") != "null") setMinutes(calcMinutes - minutesNow);
+
+        // setMinutes(calcMinutes - minutesNow);
+    }, [Object.keys(localStorage)])
+
 
     return (
         <>
