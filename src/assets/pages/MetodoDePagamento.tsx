@@ -59,7 +59,7 @@ const MetodoDePagamento = () => {
                         <span>Nome para retirada no pedido:</span>
                         <input type='text' />
                     </div>
-                <div>
+                <div className='geral'>
                 <div className='content-paymnent-method'>
                     <span>Escolha o método de pagamento:</span>
 
@@ -86,6 +86,7 @@ const MetodoDePagamento = () => {
                             </div>
                         </div>
                     </div>
+                    
 
                     </div>
                         <div className='pix'>
@@ -93,6 +94,7 @@ const MetodoDePagamento = () => {
                         </div>
                     </div>
                 </div>
+                
                 <div onClick={handleGoToFinal} className='button'>
                     <MyButton>
                         Código para retirada do pedido
