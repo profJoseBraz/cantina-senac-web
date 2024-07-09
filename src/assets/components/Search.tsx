@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 import Filter from "./Filter";
 import "./Search.css";
+import MyButton from "./MyButton";
 
 interface Props {
     onClickTodos: () => void
