@@ -1,13 +1,23 @@
-export interface Products {
+export interface Productions {
     id: number
     data: string
     quantidade: number
     observacao: string
-    id_produto: number
-    id_categoria_produto: string
-    nome_produto: string
-    descricao_produto: string
-    valor_produto: string
-    imagem_produto: string
-    restricao_produto: string
+
+    produto:produto
+}
+
+export interface produto {
+    id: number
+    nome: string
+    descricao: string
+    valor: string
+    imagem: string
+    restricao: string
+
+    categoria: categoria
+}
+
+export interface categoria {
+    id: string
 }
