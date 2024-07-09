@@ -96,9 +96,9 @@ const MetodoDePagamento = () => {
                 </div>
                 
                 <div onClick={handleGoToFinal} className='button'>
-                    <MyButton>
+                    <button>
                         Código para retirada do pedido
-                    </MyButton>
+                    </button>
                 </div>
             </div>
                     
