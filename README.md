@@ -40,29 +40,29 @@ Endpoins:
                 - https://cantina-senac-api-prod.up.railway.app/orders?date=2024-01-01&operator=>
     - **POST**
         - **/addOrder**
-            - **body**:
-              
-              ```json
-                {
-                    "paymentMethodId": 1,
-                    "customerName": "Cliente Teste",
-                
-                    "orderItems": [
-                        {
-                            "productId": 1,
-                            "amount": 3
-                        },
-                        {
-                            "productId": 4,
-                            "amount": 5
-                        },
-                        {
-                            "productId": 2,
-                            "amount": 2
-                        }
-                    ]
-                }
-              ```
+            - https://cantina-senac-api-prod.up.railway.app/orders/addOrder
+                - **body**:
+                    ```json
+                    {
+                        "paymentMethodId": 1,
+                        "customerName": "Cliente Teste",
+                    
+                        "orderItems": [
+                            {
+                                "productId": 1,
+                                "amount": 3
+                            },
+                            {
+                                "productId": 4,
+                                "amount": 5
+                            },
+                            {
+                                "productId": 2,
+                                "amount": 2
+                            }
+                        ]
+                    }
+                    ```
 -  ## paymentMethod 💵💳
     - **GET**
         - Parâmetros
@@ -90,3 +90,46 @@ Endpoins:
                     - https://cantina-senac-api-prod.up.railway.app/production/products?categoryId=1   
 
  **Obs: para filtragem de datas ou números utiliza-se os operadores **">"**, **"<"** e **"="** (maior, menor e igual, respectivamente)**
+
+- ## products
+    - **GET**
+        - Parâmetros
+            - nenhum
+                - https://cantina-senac-api-prod.up.railway.app/products
+            - id
+                - https://cantina-senac-api-prod.up.railway.app/products?id=1
+            - categoryId
+                - https://cantina-senac-api-prod.up.railway.app/products?categoryId=1
+            - name
+                - https://cantina-senac-api-prod.up.railway.app/products?name=agua
+            - description
+                - https://cantina-senac-api-prod.up.railway.app/products?description=garrafa de agua
+    - **POST**
+        - **/add**
+            - https://cantina-senac-api-prod.up.railway.app/products/add
+                - **body** 
+                    ```json
+                    {
+                        "categoryId": 1,
+                        "name": "Novo prod",
+                        "description": "Novo prod descrição",
+                        "value": 10,
+                        "image": "Novo prod.jpg"
+                    }
+                    ```
+    - **PUT**
+        - **/update**
+            - https://cantina-senac-api-prod.up.railway.app/products/update?id=1
+                - **body**
+                   ```json
+                    {
+                        "categoryId": 1,
+                        "name": "Novo prod",
+                        "description": "Novo prod descrição",
+                        "value": 10,
+                        "image": "Novo prod.jpg"
+                    }
+                    ```
+    - **DELETE**
+        - **/delete**
+            - https://cantina-senac-api-prod.up.railway.app/products/delete?id=1

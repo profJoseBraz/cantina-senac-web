@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Product from "../components/Product";
 import Search from "../components/Search";
 import "./Main.css";
-import { Products } from "../interfaces/Production";
+import { Productions } from "../interfaces/Production";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -84,7 +84,7 @@ const navigate = useNavigate();
 
 // --- adicionar produto ao carrinho de compras ---
     const handleAddProduct = (product: any) => {
-    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.id_produto === product.id_produto);
+    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.produto.id === product.id_produto);
 
     if(!productAlreadyCart){
         setProductsOnCart([...productsOnCart, product])
@@ -99,7 +99,7 @@ const navigate = useNavigate();
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
     const handleDeleteProduct = (productId: any) => {
-        setProductsOnCart(productsOnCart.filter(product => product.id_produto != productId))
+        setProductsOnCart(productsOnCart.filter(product => product.produto.id != productId))
 
         setCartQuantities(prev => ({
             ...prev,
@@ -127,7 +127,7 @@ const navigate = useNavigate();
 
 
 // --- inicializando um array para armazenar os produtos requisitados ---
-    const [productsOnShop, setProductsOnShop] = useState<Products[]>([])
+    const [productsOnShop, setProductsOnShop] = useState<Productions[]>([])
 
 
 // --- estado do carrinho (aberto = true // fechado = false) ---
@@ -135,14 +135,14 @@ const navigate = useNavigate();
 
 
 // --- inicializando um array para armazenar os produtos do carrinho ---
-    const [productsOnCart, setProductsOnCart] = useState<Products[]>([])
+    const [productsOnCart, setProductsOnCart] = useState<Productions[]>([])
 
 
 // --- loop para somar todos os itens adicionados no carrinho ---
     const handleSetTotal = () => {
         let totalCart = 0;
         for (let i = 0; i < productsOnCart.length; i++) {
-            totalCart += parseInt(productsOnCart[i].valor_produto) * (cartQuantities[productsOnCart[i].id_produto])
+            totalCart += parseInt(productsOnCart[i].produto.valor) * (cartQuantities[productsOnCart[i].produto.id])
         }
         return totalCart
     }
@@ -231,16 +231,16 @@ const [cartTranslate, setCartTranslate] = useState("")
                 />
 
                 <div style={{opacity: cartOpen ? "0.1" : "1", pointerEvents: cartOpen ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
-                    {productsOnShop.map((product) => (
+                    {productsOnShop.map((production) => (
                         <Product
-                        key={product.id_produto}
-                        onClick={() => handleAddProduct(product)}
+                        key={production.produto.id}
+                        onClick={() => handleAddProduct(production)}
                         restrictType={"product.restricao_produto"}
-                        img={product.imagem_produto}
-                        name={product.nome_produto}
-                        cost={product.valor_produto}
-                        desc={product.descricao_produto}
-                        quant={product.quantidade}
+                        img={production.produto.imagem}
+                        name={production.produto.nome}
+                        cost={production.produto.valor}
+                        desc={production.produto.descricao}
+                        quant={production.quantidade}
                         />
                         
                     ))}
