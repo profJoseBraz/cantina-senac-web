@@ -36,8 +36,7 @@
 
 .button{
     margin-left: 130px;
-    margin-top: 5%;
-    
+    margin-top: 5%;    
 }
 
 .button button{
@@ -122,3 +121,36 @@ input[type="radio"]:checked{
 }
 
 
+@media (min-width: 1025px) and (max-width: 1350px) {
+    
+}
+
+@media (min-width: 769px) and (max-width: 1024px) and (max-height: 1400px) {
+    
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+    .body01 span{
+        background-color: red;
+    }
+    
+}
+
+@media (min-width: 430px) and (max-width: 500px) {
+    .card img{
+        width: 65%;
+        height: 85%;
+        border: 25px;
+        margin-top: 0px;
+    }
+    
+}
+
+@media (min-width: 350px) and (max-width: 429px) {
+    .button button{
+        width: 280px;
+        height: 30px;
+        font-size: 16px;
+    }
+    
+}
