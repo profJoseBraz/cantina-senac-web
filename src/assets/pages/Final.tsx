@@ -7,9 +7,9 @@ import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
 import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
 
 function Final() {
-    const [minutes, setMinutes] = useState(30);
+    const [minutes, setMinutes] = useState(29);
     const [minutesString, setMinutesString] = useState(String(minutes));
-    const [seconds, setSeconds] = useState(0);
+    const [seconds, setSeconds] = useState(1);
     const [secondsString, setSecondsString] = useState(String(seconds));
     const [code, setCode] = useState<string>(String(localStorage.getItem('code')));
     const [date, setDate] = useState(new Date);
@@ -22,7 +22,7 @@ function Final() {
     const handleTimer = () => {
         setSeconds(seconds - 1);
         setSecondsString(String(seconds));
-        if (seconds == 0) {
+        if (seconds == 0 && minutes > 0) {
             setMinutes(minutes - 1);
             setMinutesString(String(minutes));
             setSeconds(59);
@@ -72,7 +72,11 @@ function Final() {
     }, [storedHours, storedMinutes]);
 
     useEffect(() => {
-        setTimeout(() => {handleTimer()}, 1000);
+        const timer = setTimeout(() => {
+            handleTimer();
+        }, 1000);
+
+        return () => clearTimeout(timer);
         // alert("teste")
     }, [seconds])
 
@@ -88,7 +92,7 @@ function Final() {
         if (localStorage.getItem("minutes") != "null") setMinutes(calcMinutes - minutesNow);
 
         // setMinutes(calcMinutes - minutesNow);
-    }, [Object.keys(localStorage)])
+    }, [localStorage])
 
 
     return (
