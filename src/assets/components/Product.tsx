@@ -32,10 +32,6 @@ function Product({ name, img, cost, desc, quant, restrictType, onClick, } : Prop
                 <div className="add-cart-btn">
                     <button onClick={onClick} className="add-to-cart">Adicionar ao carrinho</button>
                 </div>
-                
-                <div className="quantity">
-                    <p>Quantidade disponível: {quant}</p>
-                </div>
             </div>
         </>
     );

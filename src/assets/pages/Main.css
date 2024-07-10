@@ -4,33 +4,71 @@
 }
 @media (min-width: 768px) and (max-width: 1024px) and (max-height: 1400px){
     .products {
+        width: 100%;
+        height: auto;
+        padding: 10px 0px 15px 0px;
+
         display: grid;
-        grid-template-columns: 205px 205px;
-        padding: 15px 20px 15px 20px;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 29% 29% 29%;
+        gap: 20px 30px;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
     .products {
+        width: 100%;
+        height: auto;
+        padding: 10px 0px 15px 0px;
+
         display: grid;
-        grid-template-columns: 175px 175px;
-        padding: 15px 20px 15px 23px;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 29% 29% 29%;
+        gap: 20px 30px;
+    }
+}
+
+@media (min-width: 381px) and (max-width: 480px) {
+    .products {
+        width: 100%;
+        height: auto;
+        padding: 10px 0px 15px 0px;
+
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 41% 41%;
+        gap: 15px 25px;
     }
 }
 
 
-@media (min-width: 350px) and (max-width: 480px) {
+@media (min-width: 350px) and (max-width: 380px) {
     .products {
+        width: 100%;
+        height: auto;
+        padding: 10px 0px 15px 0px;
+
         display: grid;
-        grid-template-columns: 175px 175px;
-        padding: 15px 20px 15px 20px;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 43% 43%;
+        gap: 15px 20px;
     }
 }
 
 @media (max-width: 349px) {
     .products {
+        width: 100%;
+        height: auto;
+        padding: 10px 0px 15px 0px;
+
         display: grid;
-        grid-template-columns: 175px 175px;
-        padding: 15px 0px 15px 13px;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 45% 45%;
+        gap: 15px;
     }
 }

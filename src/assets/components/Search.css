@@ -41,37 +41,64 @@ nav {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 5px;
-        margin-top: 5px;
-        border-top: 2px gray solid;
-        border-bottom: 2px gray solid;
+        align-items: center;
+        
+        border-top: 2px rgba(128, 128, 128, 0.25) solid;
+        border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
+        padding: 10px;
+        margin-top: 3px;
     }
 
     .search {
+        width: 90%;
+        height: auto;
+        position: relative;
+        
         display: flex;
         justify-content: center;
         align-items: center;
+        
+        padding: 2px 0px;
     }
     
     .search input {
-        background-color: white;
-        border: 2px gray solid;
-        border-radius: 15px;
-        outline: none;
-        font-size: 14px;
+        width: 100%;
+        height: 55px;
+        padding: 7px 20px;
+        
+        font-size: 27px;
+        font-weight: 500;
         color: black;
-        padding: 5px;
-        width: 390px;
+        
+        background-color: transparent;
+        border: 1px rgba(3, 3, 3, 0.4) solid;
+        border-radius: 10px;
+
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    .search input::placeholder {
+        font-size: 25px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.550);
     }
 
     .search i {
         position: absolute;
-        right: 17px;
+        right: 15px;
+        font-size: 30px;
     }
 
     .filters {
-        margin-top: 7px;
+        width: 100%;
+        height: auto;
+        
         display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        padding: 5px 0px;
+        gap: 45px;
     }
 }
 
@@ -89,7 +116,7 @@ nav {
     }
 
     .search {
-        width: 80%;
+        width: 95%;
         height: auto;
         position: relative;
         
@@ -102,10 +129,10 @@ nav {
     
     .search input {
         width: 100%;
-        height: 45px;
+        height: 55px;
         padding: 7px 12px;
         
-        font-size: 17px;
+        font-size: 20px;
         font-weight: 500;
         color: black;
         
@@ -117,14 +144,16 @@ nav {
     }
 
     .search input::placeholder {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 500;
-        color: rgba(0, 0, 0, 0.450);
+        color: rgba(0, 0, 0, 0.550);
     }
 
     .search i {
         position: absolute;
         right: 8px;
+        font-size: 25px;
+        right: 12px;
     }
 
     .filters {
@@ -136,7 +165,7 @@ nav {
         justify-content: center;
         
         padding: 5px 0px;
-        gap: 25px;
+        gap: 45px;
     }
 }
 
