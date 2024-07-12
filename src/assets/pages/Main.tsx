@@ -148,7 +148,7 @@ const navigate = useNavigate();
     }
     
 
-// --- verificar o tamanho do dispositivo e ajustar os ícones do HEADER ---
+// --- verificar o tamanho do dispositivo e ajustar os estilos da página (toda vez que a página carregar será setado o valor da largura da tela) ---
 const [topValue, setTopValue] = useState("")
 const [rightValue, setRightValue] = useState("")
 const [cartIconTranslate, setCartIconTranslate] = useState("")
@@ -158,29 +158,56 @@ const [cartTranslate, setCartTranslate] = useState("")
         if(window.innerWidth < 380){
             console.log("a largura é menor 380px")
             setTopValue("15px")
-            setRightValue("20px")
+            setRightValue("6vw")
 
-            setCartIconTranslate("translateX(-32vh)")
-            setCartTranslate("40vh")
+            setCartIconTranslate("translateX(-37vh)")
+            setCartTranslate("80vw")
         }
-        else if(window.innerWidth < 481
-
-        ){
+        else if(window.innerWidth < 481){
             console.log("a largura é menor que 481px")
             setTopValue("10px")
-            setRightValue("25px")
+            setRightValue("6vw")
 
-            setCartIconTranslate("translateX(-32vh)")
+            setCartIconTranslate("translateX(-33vh)")
             setCartTranslate("40vh")
         }
 
         else if(window.innerWidth < 769){
             console.log("a tela-larg é menor que 769px")
             setTopValue("20px")
-            setRightValue("35px")
+            setRightValue("7vw")
 
             setCartIconTranslate("translateX(-38vh)")
             setCartTranslate("48vh")
+        }
+
+        else if(window.innerWidth < 1025){
+            console.log("a tela-larg é menor que 1025px")
+            setTopValue("20px")
+            setRightValue("10vw")
+
+            setCartIconTranslate("translateX(-33vh)")
+            setCartTranslate("48vh")
+        }
+
+        else if(window.innerWidth < 1351){
+            console.log("a tela-larg é menor que 1351px")
+            setTopValue("20px")
+            setRightValue("43vw")
+
+            setCartIconTranslate("translateX(11vh)")
+            setCartTranslate("39.5vw")
+            setCartOpen(true)
+        }
+
+        else if(window.innerWidth > 1351){
+            console.log("a tela-larg é menor que 1351px")
+            setTopValue("20px")
+            setRightValue("43vw")
+
+            setCartIconTranslate("translateX(11vh)")
+            setCartTranslate("39.5vw")
+            setCartOpen(true)
         }
     }
 
@@ -202,27 +229,28 @@ const [cartTranslate, setCartTranslate] = useState("")
                 counterProductCart={productsOnCart.length}
 
                 styleIconCart={{
+                    pointerEvents: window.innerWidth < 1024 ? "all" : "none",
                     transform: cartOpen ?  cartIconTranslate : "translateX(0)",
                     backgroundColor: cartOpen ?  "white" : "transparent",
                     borderRadius: "50%",
                     borderBottom: cartOpen ? "solid rgb(0, 74, 141) 4px" : "none",
                     borderLeft: cartOpen ? "solid rgb(0, 74, 141) 4px" : "none",
                     transition: "800ms",
-                    position: "absolute",
+                    position: "fixed",
                     top: cartOpen ? "3px" : topValue,
                     right: rightValue,
-                    boxShadow: cartOpen ? "-10px 0px 20px rgba(0, 0, 0, 0.8)" : "none",
+                    boxShadow: cartOpen ? "-1px 0px 20px rgba(0, 0, 0, 0.9)" : "none",
                     zIndex: "2"}}
 
                 styleCartOpenned={{
-                    opacity: cartOpen ? "0.1" : "1",
-                    pointerEvents: cartOpen ? "none" : "all",
+                    opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
+                    pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all",
                     overflow: "hidden",
                     transition: "0.3s"}}
                 />
 
                 <Search
-                styleFilters={{opacity: cartOpen ? "0.1" : "1", pointerEvents: cartOpen ? "none" : "all", transition: "0.3s"}}
+                styleFilters={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", transition: "0.3s"}}
                 onClickTodos={handleOnClickTodos}
                 onClickBebidas={handleOnClickBebidas}
                 onClickSalgados={handleOnClickSalgados}
@@ -230,7 +258,7 @@ const [cartTranslate, setCartTranslate] = useState("")
                 onClickSobremesas={handleOnClickSobremesas}
                 />
 
-                <div style={{opacity: cartOpen ? "0.1" : "1", pointerEvents: cartOpen ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
+                <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
                     {productsOnShop.map((production) => (
                         <Product
                         key={production.produto.id}
@@ -247,7 +275,7 @@ const [cartTranslate, setCartTranslate] = useState("")
                 </div>
   
                 <Cart
-                style={{width: cartOpen ?  cartTranslate : "0", boxShadow: cartOpen ? "-5px 0px 50px black" : "none", transition: ".7s"}}
+                style={{width: cartOpen ?  cartTranslate : "0", boxShadow: cartOpen ? "-1px 0px 15px black" : "none", transition: ".7s"}}
                 onClickConfirm={handleConfirmOrder}
                 onClickDeleteProdCart={handleDeleteProduct}
                 onClickIncreaseQuantity={handleIncreaseTotal}

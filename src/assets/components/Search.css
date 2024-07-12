@@ -1,43 +1,71 @@
 nav {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 5px;
-        margin-top: 5px;
-        border-top: 2px gray solid;
-        border-bottom: 2px gray solid;
-    }
-
-    .search {
-        display: flex;
-        justify-content: center;
-        align-items: cente  r;
-    }
+    width: 100%;
     
-    .search input {
-        background-color: white;
-        border: 2px gray solid;
-        border-radius: 15px;
-        outline: none;
-        font-size: 14px;
-        color: black;
-        padding: 5px;
-        width: 340px;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    border-top: 2px rgba(128, 128, 128, 0.25) solid;
+    border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
+}
 
-    .search i {
-        position: absolute;
-        right: 17px;
-    }
+.search {
+    width: 90%;
+    height: auto;
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 5px 0px;
+}
 
-    .filters {
-        margin-top: 7px;
-        display: flex;
-    }
+.search input {
+    width: 100%;
+    height: 45px;
+    padding: 7px 20px;
+    
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    
+    background-color: transparent;
+    border: 1px rgba(3, 3, 3, 0.1) solid;
+    border-radius: 10px;
 
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
+}
 
-@media (min-width: 769px) and (max-width: 1024px) and (max-height: 1400px) {
+.search input::placeholder {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.450);
+}
+
+.search i {
+    position: absolute;
+    right: 15px;
+    font-size: 30px;
+}
+
+.filters {
+    width: 100%;
+    height: auto;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 10px 0px 5px 0px;
+    gap: 40px;
+}
+
+@media (min-width: 1025px) and (max-width: 1350px) {
     nav {
+        width: 60vw;
+        
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -45,8 +73,7 @@ nav {
         
         border-top: 2px rgba(128, 128, 128, 0.25) solid;
         border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
-        padding: 10px;
-        margin-top: 3px;
+        padding: 10px 0px;
     }
 
     .search {
@@ -58,29 +85,29 @@ nav {
         justify-content: center;
         align-items: center;
         
-        padding: 2px 0px;
+        padding: 5px 0px;
     }
     
     .search input {
         width: 100%;
-        height: 55px;
+        height: 45px;
         padding: 7px 20px;
         
-        font-size: 27px;
+        font-size: 20px;
         font-weight: 500;
         color: black;
         
         background-color: transparent;
-        border: 1px rgba(3, 3, 3, 0.4) solid;
+        border: 1px rgba(3, 3, 3, 0.1) solid;
         border-radius: 10px;
 
-        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
     }
 
     .search input::placeholder {
-        font-size: 25px;
+        font-size: 20px;
         font-weight: 500;
-        color: rgba(0, 0, 0, 0.550);
+        color: rgba(0, 0, 0, 0.450);
     }
 
     .search i {
@@ -97,13 +124,15 @@ nav {
         align-items: center;
         justify-content: center;
         
-        padding: 5px 0px;
-        gap: 45px;
+        padding: 10px 0px 5px 0px;
+        gap: 40px;
     }
 }
 
-@media (min-width: 651px) and (max-width: 768px) {
+
+@media (min-width: 769px) and (max-width: 1024px) and (max-height: 1400px) {
     nav {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -111,8 +140,73 @@ nav {
         
         border-top: 2px rgba(128, 128, 128, 0.25) solid;
         border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
-        padding: 10px;
-        margin-top: 3px;
+        padding: 10px 0px;
+    }
+
+    .search {
+        width: 90%;
+        height: auto;
+        position: relative;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        padding: 5px 0px;
+    }
+    
+    .search input {
+        width: 100%;
+        height: 55px;
+        padding: 7px 20px;
+        
+        font-size: 27px;
+        font-weight: 500;
+        color: black;
+        
+        background-color: transparent;
+        border: 1px rgba(3, 3, 3, 0.1) solid;
+        border-radius: 10px;
+
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
+    }
+
+    .search input::placeholder {
+        font-size: 25px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.450);
+    }
+
+    .search i {
+        position: absolute;
+        right: 15px;
+        font-size: 30px;
+    }
+
+    .filters {
+        width: 100%;
+        height: auto;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        padding: 15px 0px 5px 0px;
+        gap: 55px;
+    }
+}
+
+@media (min-width: 651px) and (max-width: 768px) {
+    nav {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        border-top: 2px rgba(128, 128, 128, 0.25) solid;
+        border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
+        padding: 10px 0px;
     }
 
     .search {
@@ -132,7 +226,7 @@ nav {
         height: 55px;
         padding: 7px 12px;
         
-        font-size: 20px;
+        font-size: 23px;
         font-weight: 500;
         color: black;
         
@@ -144,7 +238,7 @@ nav {
     }
 
     .search input::placeholder {
-        font-size: 18px;
+        font-size: 21px;
         font-weight: 500;
         color: rgba(0, 0, 0, 0.550);
     }
@@ -171,6 +265,7 @@ nav {
 
 @media (min-width: 481px) and (max-width: 650px) {
     nav {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -178,8 +273,7 @@ nav {
         
         border-top: 2px rgba(128, 128, 128, 0.25) solid;
         border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
-        padding: 10px;
-        margin-top: 3px;
+        padding: 10px 0px;
     }
 
     .search {
@@ -237,6 +331,7 @@ nav {
 
 @media (min-width: 381px) and (max-width: 480px) {
     nav {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -244,8 +339,7 @@ nav {
         
         border-top: 2px rgba(128, 128, 128, 0.25) solid;
         border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
-        padding: 10px;
-        margin-top: 3px;
+        padding: 10px 0px;
     }
 
     .search {
@@ -302,6 +396,7 @@ nav {
 
 @media (max-width: 380px) {
     nav {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -309,8 +404,7 @@ nav {
         
         border-top: 2px rgba(128, 128, 128, 0.25) solid;
         border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
-        padding: 10px;
-        margin-top: 3px;
+        padding: 10px 0px;
     }
 
     .search {

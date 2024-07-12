@@ -8,8 +8,8 @@
 }
 
 .filter button {
-    width: 43px;
-    height: 43px;
+    width: 60px;
+    height: 60px;
 
     display: flex;
     align-items: center;
@@ -23,16 +23,16 @@
 
 .filter button i{
     color: rgb(177, 72, 2);
-    font-size: 22px;
+    font-size: 30px;
 }
 
 .filter p {
-    margin: 2px 0px 0px 0px;
-    font-size: 10px;
+    margin: 5px 0px 0px 0px;
+    font-size: 15px;
     font-weight: 600;
 }
 
-@media (min-width: 769px) and (max-width: 1024px) and (max-height: 1400px) {
+@media (min-width: 1025px) and (max-width: 1350px) {
     .filter {
         display: flex;
         flex-direction: column;
@@ -63,7 +63,43 @@
     
     .filter p {
         margin: 5px 0px 0px 0px;
-        font-size: 20px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) and (max-height: 1400px) {
+    .filter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 12%;
+    }
+    
+    .filter button {
+        width: 80px;
+        height: 80px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: rgba(209, 49, 0, 0.35);
+        border: none;
+        border-radius: 30%;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.650);
+    }
+
+    .filter button i{
+        color: rgb(177, 72, 2);
+        font-size: 38px;
+    }
+    
+    .filter p {
+        margin: 5px 0px 0px 0px;
+        font-size: 22px;
         font-weight: 600;
     }
 }
