@@ -39,6 +39,7 @@ const navigate = useNavigate();
 
     const handleOnClickTodos = () => {
         handleGetAllProducts()
+        setCategoryId(0)
     }
     
     const handleOnClickBebidas = () => {
@@ -205,8 +206,8 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(11vh)")
-            setCartTranslate("39.5vw")
+            setCartIconTranslate("translateX(40vh)")
+            setCartTranslate("29vw")
             setCartOpen(true)
         }
     }
@@ -214,7 +215,7 @@ const [cartTranslate, setCartTranslate] = useState("")
     useEffect( () => {
         handleSetWindowWidthForStyles()
     }, [])
-
+    
     return (
         <>
             <div className="container">
@@ -256,6 +257,12 @@ const [cartTranslate, setCartTranslate] = useState("")
                 onClickSalgados={handleOnClickSalgados}
                 onClickMarmitas={handleOnClickMarmitas}
                 onClickSobremesas={handleOnClickSobremesas}
+
+                activeFilterTodos={categoryId == 0 ? "activeFilter" : ""}
+                activeFilterBeb={categoryId == 1 ? "activeFilter" : ""}
+                activeFilterMarm={categoryId == 2 ? "activeFilter" : ""}
+                activeFilterSalg={categoryId == 3 ? "activeFilter" : ""}
+                activeFilterSobr={categoryId == 4 ? "activeFilter" : ""}
                 />
 
                 <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">

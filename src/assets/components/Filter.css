@@ -21,6 +21,24 @@
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.650);
 }
 
+.filter button:hover {
+    background-color: rgba(209, 49, 0, 0.50);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.950);
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: .1s;
+}
+
+.filter .activeFilter {
+    background-color: rgba(209, 49, 0, 0.50);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.950);
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: .1s;
+
+    animation: completeBorder 800ms
+}
+
 .filter button i{
     color: rgb(177, 72, 2);
     font-size: 30px;
