@@ -96,7 +96,7 @@ Endpoins:
                     ```json
                     {
                         "productId": 1,
-                        "date": "2024-07-17",
+                        "date": "2024-07-17 16:57:00",
                         "amount": 50,
                         "observation": "teste"
                     }
