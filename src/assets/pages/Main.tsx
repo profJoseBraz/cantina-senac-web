@@ -85,14 +85,14 @@ const navigate = useNavigate();
 
 // --- adicionar produto ao carrinho de compras ---
     const handleAddProduct = (product: any) => {
-    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.produto.id === product.id_produto);
+    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.produto.id === product.id);
 
     if(!productAlreadyCart){
         setProductsOnCart([...productsOnCart, product])
-        handleIncreaseTotal(product.id_produto)
+        handleIncreaseTotal(product.id)
     }
     else{
-        handleIncreaseTotal(product.id_produto)
+        handleIncreaseTotal(product.id)
     }
         console.log(productsOnCart)
         console.log(product.imagem_produto)
