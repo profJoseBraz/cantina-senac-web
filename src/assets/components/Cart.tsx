@@ -27,54 +27,55 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity, 
           <div className="content-cart">
             {productsCart.length === 0 ? (<span className='emptyCart-warn'>Seu carrinho está vazio.</span>) :
             (
-              productsCart.map((product: any) => (
-                <div key={product.id_produto} className="box-produto-cart">
+              productsCart.map((production: any) => (
+                <div key={production.produto.id} className="box-produto-cart">
                   <i
                     onClick={() =>
-                      onClickDeleteProdCart && onClickDeleteProdCart(product.id_produto)
+                      onClickDeleteProdCart && onClickDeleteProdCart(production.produto.id)
                     }
                     className="fa fa-trash"
                     aria-hidden="true"
                   ></i>
                   <div className="img-counter-cart">
-                    <img src={product.imagem_produto} alt="" />
+                    <img src={production.produto.imagem} alt="" />
 
                     <div className="counter-cart">
+
+                      <div
+                        onClick={() =>
+                          onClickIncreaseQuantity &&
+                          onClickIncreaseQuantity(production.produto.id)
+                        }
+                        className="sum"
+                      >
+                        <span>+</span>
+                      </div>
+                      <div className="numberQtt">
+                        <span>{cartQuantities[production.produto.id] || 0}</span>
+                      </div>
+
                       <div
                         onClick={() =>
                           onClickDecreaseQuantity &&
-                          onClickDecreaseQuantity(product.id_produto)
+                          onClickDecreaseQuantity(production.produto.id)
                         }
                         className="minus"
                       >
                         <span>-</span>
                       </div>
 
-                      <div className="numberQtt">
-                        <span>{cartQuantities[product.id_produto] || 0}</span>
-                      </div>
-
-                      <div
-                        onClick={() =>
-                          onClickIncreaseQuantity &&
-                          onClickIncreaseQuantity(product.id_produto)
-                        }
-                        className="sum"
-                      >
-                        <span>+</span>
-                      </div>
                     </div>
                   </div>
 
                   <div className="infos-produto-cart">
-                    <span className="name-produto">{product.nome_produto}</span>
+                    <span className="name-produto">{production.produto.nome}</span>
                     <span className="preco-string">
-                      Valor: <span className="preco-produto">R$ {product.valor_produto} / un</span>
+                      Valor: <span className="preco-produto">R$ {production.produto.valor} / un</span>
                     </span>
 
                     <div className="subtotal-produto">
                       <span className="subtotal-string">
-                        Subtotal: <span className="subtotal-preco">R$ {product.valor_produto * cartQuantities[product.id_produto]}</span>
+                        Subtotal: <span className="subtotal-preco">R$ {production.produto.valor * cartQuantities[production.produto.id]}</span>
                       </span>
                     </div>
                   </div>
