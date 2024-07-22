@@ -179,16 +179,16 @@
     gap: .2vh;
 }
 .container-cart .content-cart .box-produto-cart .infos-produto-cart .name-produto{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 400;
     text-align: center;
 }
 .container-cart .content-cart .box-produto-cart .infos-produto-cart .preco-string{
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
 }
 .container-cart .content-cart .box-produto-cart .infos-produto-cart .preco-produto{
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: rgb(66, 107, 31);
 }
@@ -199,31 +199,32 @@
 }
 
 .container-cart .content-cart .box-produto-cart .infos-produto-cart .subtotal-string{
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
 }
 
 .container-cart .content-cart .box-produto-cart .infos-produto-cart .subtotal-preco{
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: rgb(66, 107, 31);
 }
 
 .container-cart .total-cart{
     position: absolute;
-    bottom: 45px;
+    bottom: 7%;
     left: 10px;
 }
 
 .container-cart .total-string{
-    font-size: 19px;
+    font-size: 25px;
     font-weight: 700;
 }
 
 .container-cart .total-preco{
-    font-size: 17px;
+    font-size: 25px;
     font-weight: 700;
     color: rgb(66, 107, 31);
+    
 }
 
 .container-cart button{
@@ -242,7 +243,7 @@
 
     background-color: rgb(245, 113, 75);
     box-shadow: 0px -1px 5px black;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
 
     transition: .1s;
@@ -260,8 +261,9 @@
     align-items: center;
     justify-content: center;
     
-    width: 30px;
-    height: 30px;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
 }
 
 .container-cart button:hover i{
@@ -291,7 +293,15 @@
 
 .emptyCart-warn{
     color: rgba(0, 0, 0, 0.300);
+    font-size: 30px;
     font-weight: 700;
+    margin-top: 100px;
+}
+
+.emptyCart-face{
+    position: absolute;
+    top: 200px;
+    opacity: .25;
 }
 
 @keyframes arrowMove {

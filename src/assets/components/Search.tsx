@@ -1,7 +1,6 @@
-import { CSSProperties } from "react";
+import { ChangeEventHandler, CSSProperties, DetailedHTMLProps, useState } from "react";
 import Filter from "./Filter";
 import "./Search.css";
-import MyButton from "./MyButton";
 
 interface Props {
     onClickTodos: () => void
@@ -17,16 +16,19 @@ interface Props {
     activeFilterSalg?: string
     activeFilterTodos?: string
     activeFilterSobr?: string
+
+    valueInputSearch?: ChangeEventHandler<HTMLInputElement>
+    realValueInputSearch?: string
 }
 
-function Search({onClickSalgados, onClickTodos, onClickSobremesas, onClickBebidas, onClickMarmitas, styleFilters, activeFilterBeb, activeFilterMarm, activeFilterSalg, activeFilterTodos, activeFilterSobr}: Props) {
+function Search({onClickSalgados, onClickTodos, onClickSobremesas, onClickBebidas, onClickMarmitas, styleFilters, activeFilterBeb, activeFilterMarm, activeFilterSalg, activeFilterTodos, activeFilterSobr, valueInputSearch, realValueInputSearch}: Props) {
     
     return (
         <>
             <nav style={styleFilters}>
                 <div className="search">
-                    <input type="search" placeholder="Buscar no cardápio..."/>
-                    <i className="fa fa-search" aria-hidden="true"></i>
+                    <input value={realValueInputSearch} onChange={valueInputSearch} type="search" placeholder="Buscar no cardápio..."/>
+                    <i className="fa fa-searchv" aria-hidden="true"></i>
                 </div>
                 <div className="filters">
                     <Filter onClick={onClickTodos} activeFilter={activeFilterTodos} icon="fa fa-star-o">Todos</Filter>

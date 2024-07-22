@@ -25,6 +25,20 @@ const navigate = useNavigate();
       }, [])
 
 
+// --- funções abaixo para aplicar filtros de pesquisa por nome nos produtos ---
+const [valueInputNameProduct, setValueInputNameProduct] = useState("")
+    const handleGetProductsByName = () => {
+        const searchResults = productsOnShop.filter(production =>
+        production.produto.nome.toLowerCase().includes(valueInputNameProduct.toLowerCase())
+        )
+            setProductsOnShop(searchResults)
+    }
+
+    useEffect(() => {
+        handleGetProductsByName()
+     }, [valueInputNameProduct])
+
+
 // --- funções abaixo para aplicar filtros de categoria nos produtos ---
     const [categoryId, setCategoryId] = useState(0)
     const handleGetProdutsByCategory = async () => {
@@ -61,7 +75,6 @@ const navigate = useNavigate();
 
      useEffect(() => {
         handleGetProdutsByCategory()
-        //console.log(categoryId)
      }, [categoryId])
 // -----------------------------------------------
 
@@ -202,7 +215,7 @@ const [cartTranslate, setCartTranslate] = useState("")
         }
 
         else if(window.innerWidth > 1351){
-            console.log("a tela-larg é menor que 1351px")
+            console.log("a tela-larg é maior que 1351px")
             setTopValue("20px")
             setRightValue("43vw")
 
@@ -263,6 +276,9 @@ const [cartTranslate, setCartTranslate] = useState("")
                 activeFilterMarm={categoryId == 2 ? "activeFilter" : ""}
                 activeFilterSalg={categoryId == 3 ? "activeFilter" : ""}
                 activeFilterSobr={categoryId == 4 ? "activeFilter" : ""}
+
+                valueInputSearch={(e) => setValueInputNameProduct(e.target.value)}
+                realValueInputSearch={valueInputNameProduct}
                 />
 
                 <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
