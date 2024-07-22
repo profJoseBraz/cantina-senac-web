@@ -97,7 +97,7 @@ header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 20px 35px;
+        padding: 20px 35px 0px 35px;
     }
     
     .logo img {
@@ -105,18 +105,18 @@ header {
     }
     
     .cart {
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 75px;
 
         position: absolute;
         right: 35px;
-        top: 20px;
+        top: 10px;
 
         display: flex;
         align-items: center;
         justify-content: center;
 
-        padding: 20px;
+        padding: 25px;
     }
 
     .cart button {
@@ -131,13 +131,13 @@ header {
     }
 
     .cart button .shopping-return {
-        width: 105px;
-        height: 115px;
+        width: 95px;
+        height: 105px;
     }
         
     .cart button .review-return {
-        width: 105px;
-        height: 115px;
+        width: 95px;
+        height: 105px;
     }    
 
     .counter {

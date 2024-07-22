@@ -18,14 +18,24 @@ function Product({ name, img, cost, desc, quant, restrictType, onClick, } : Prop
                 <div className="restriction">
                     {restrictType}
                 </div>
-                <img src={img}/>
+
+                <div className="image">
+                    <img src={img}/>
+                </div>
+
                 <div className="text-box">
-                    <h1 className="name">{name}</h1>
-                    <h2 className="cost">R$ {cost}</h2>
+                    <h2 className="name">{name}</h2>
+                    <h3 className="cost">R$ {cost}</h3>
                     <p className="desc">{desc}</p>
                 </div>
-                <button onClick={onClick} className="add-to-cart">Adicionar ao carrinho</button>
-                <p className="quant">Quantidade disponível: {quant}</p>
+
+                <div className="add-cart-btn">
+                    <button onClick={onClick} className="add-to-cart">Adicionar ao carrinho</button>
+                </div>
+                
+                <div className="quantity">
+                    <p>Quantidade disponível: {quant}</p>
+                </div>
             </div>
         </>
     );

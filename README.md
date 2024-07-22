@@ -89,6 +89,19 @@ Endpoins:
                 - categoryId
                     - https://cantina-senac-api-prod.up.railway.app/production/products?categoryId=1   
 
+    - **POST**
+        - **/production/add**
+            - https://cantina-senac-api-prod.up.railway.app/production/add
+                - **body**
+                    ```json
+                    {
+                        "productId": 1,
+                        "date": "2024-07-17 16:57:00",
+                        "amount": 50,
+                        "observation": "teste"
+                    }
+                    ``` 
+   
  **Obs: para filtragem de datas ou números utiliza-se os operadores **">"**, **"<"** e **"="** (maior, menor e igual, respectivamente)**
 
 - ## products
