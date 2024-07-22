@@ -11,9 +11,15 @@ interface Props {
     onClickMarmitas: () => void
 
     styleFilters?: CSSProperties
+
+    activeFilterBeb?: string
+    activeFilterMarm?: string
+    activeFilterSalg?: string
+    activeFilterTodos?: string
+    activeFilterSobr?: string
 }
 
-function Search({onClickSalgados, onClickTodos, onClickSobremesas, onClickBebidas, onClickMarmitas, styleFilters}: Props) {
+function Search({onClickSalgados, onClickTodos, onClickSobremesas, onClickBebidas, onClickMarmitas, styleFilters, activeFilterBeb, activeFilterMarm, activeFilterSalg, activeFilterTodos, activeFilterSobr}: Props) {
     
     return (
         <>
@@ -23,11 +29,11 @@ function Search({onClickSalgados, onClickTodos, onClickSobremesas, onClickBebida
                     <i className="fa fa-search" aria-hidden="true"></i>
                 </div>
                 <div className="filters">
-                    <Filter onClick={onClickTodos} icon="fa fa-star-o">Todos</Filter>
-                    <Filter onClick={onClickSalgados} icon="fa fa-cutlery">Salgados</Filter>
-                    <Filter onClick={onClickSobremesas} icon="fa fa-birthday-cake">Sobremesas</Filter>
-                    <Filter onClick={onClickBebidas} icon="fa fa-coffee">Bebidas</Filter>
-                    <Filter onClick={onClickMarmitas} icon="fa fa-cutlery">Marmitas</Filter>
+                    <Filter onClick={onClickTodos} activeFilter={activeFilterTodos} icon="fa fa-star-o">Todos</Filter>
+                    <Filter onClick={onClickSalgados} activeFilter={activeFilterSalg} icon="fa fa-cutlery">Salgados</Filter>
+                    <Filter onClick={onClickSobremesas} activeFilter={activeFilterSobr} icon="fa fa-birthday-cake">Sobremesas</Filter>
+                    <Filter onClick={onClickBebidas} activeFilter={activeFilterBeb} icon="fa fa-coffee">Bebidas</Filter>
+                    <Filter onClick={onClickMarmitas} activeFilter={activeFilterMarm} icon="fa fa-cutlery">Marmitas</Filter>
                 </div>
             </nav>
         </>

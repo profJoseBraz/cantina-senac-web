@@ -1,13 +1,11 @@
-
 .container-cart{
-    width: 40vh;
     height: 100vh;
 
     display: flex;
     align-items: center;
     flex-direction: column;
 
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     overflow: hidden;
@@ -19,13 +17,13 @@
 }
 
 .container-cart .title-cart{
-    width: 90%;
+    width: 60%;
     height: 40px;
-
+    margin-top: 50px;
+    
     text-align: center;
-    margin-top: 20px;
-    border-bottom: solid rgb(0, 74, 141) 4px;
     overflow: hidden;
+    border-bottom: 3px solid rgba(0, 74, 141, 0.1);
 }
 
 .container-cart .title-cart span{
@@ -43,14 +41,14 @@
     align-items: center;
     flex-direction: column;
 
-    margin-top: 20px;
+    margin-top: 40px;
     overflow-y: auto;
     gap: 15px;
 }
 
 .container-cart .content-cart .box-produto-cart{
-    width: 95%;
-    height: 20%;
+    width: 85%;
+    height: 15vh;
     display: flex;
     position: relative;
 
