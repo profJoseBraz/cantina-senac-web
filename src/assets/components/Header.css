@@ -17,8 +17,8 @@ header {
 }
 
 .cart {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 
     position: absolute;
 
@@ -26,7 +26,7 @@ header {
     align-items: center;
     justify-content: center;
 
-    padding: 35px;
+    padding: 30px;
 }
 
 .cart button {
@@ -39,8 +39,8 @@ header {
 }
 
 .cart button .cart-icon {
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
 }
 
 .cart button .shopping-return{
@@ -57,8 +57,8 @@ header {
     align-items: center;
     justify-content: center;
 
-    width: 27px;
-    height: 27px;
+    width: 33px;
+    height: 33px;
 
     position: absolute;
     top: 10px;
@@ -66,7 +66,7 @@ header {
 
     color: white;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 21px;
 
     border-radius: 50%;
     background-color: rgb(44, 44, 175);
@@ -113,8 +113,8 @@ header {
     }
     
     .cart {
-        width: 15px;
-        height: 15px;
+        width: 60px;
+        height: 60px;
         padding: 0;
 
         position: absolute;
@@ -125,7 +125,7 @@ header {
         align-items: center;
         justify-content: center;
 
-        padding: 30px;
+        padding: 25px;
     }
 
     .cart button {
@@ -135,8 +135,8 @@ header {
     }
 
     .cart button .cart-icon {
-        width: 45px;
-        height: 45px;
+        width: 70px;
+        height: 70px;
     }
 
     .cart button .shopping-return {
@@ -150,11 +150,11 @@ header {
     }    
 
     .counter {
-        width: 23px;
-        height: 23px;
+        width: 35px;
+        height: 35px;
         right: 0;
 
-        font-size: 15px;
+        font-size: 22px;
         color: white;
         background-color: rgb(44, 44, 175);
         border-radius: 50%;

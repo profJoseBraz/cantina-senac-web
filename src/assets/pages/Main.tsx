@@ -107,7 +107,6 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
         handleIncreaseTotal(product.id)
     }
         console.log(productsOnCart)
-        console.log(product.imagem_produto)
 }
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
@@ -160,6 +159,7 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
         return totalCart
     }
     
+    
 
 // --- verificar o tamanho do dispositivo e ajustar os estilos da página (toda vez que a página carregar será setado o valor da largura da tela) ---
 const [topValue, setTopValue] = useState("")
@@ -199,8 +199,8 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("5vw")
 
-            setCartIconTranslate("translateX(-45vw)")
-            setCartTranslate("60vw")
+            setCartIconTranslate("translateX(-60vw)")
+            setCartTranslate("70vw")
         }
 
         else if(window.innerWidth < 1351){
@@ -208,7 +208,7 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(8vw)")
+            setCartIconTranslate("translateX(10vw)")
             setCartTranslate("40vw")
             setCartOpen(true)
         }
