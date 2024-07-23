@@ -197,7 +197,6 @@ header {
     .cart {
         width: 80px;
         height: 75px;
-        padding: 0;
 
         position: absolute;
         right: 35px;
@@ -207,7 +206,7 @@ header {
         align-items: center;
         justify-content: center;
 
-        padding: 25px;
+        padding: 30px;
     }
 
     .cart button {
@@ -269,17 +268,16 @@ header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 15px 25px;
+        padding: 25px 45px 0px 45px;
     }
     
     .logo img {
-        max-width: 125px;
+        max-width: 190px;
     }
     
     .cart {
         width: 80px;
         height: 75px;
-        padding: 0;
 
         position: absolute;
         right: 35px;
@@ -289,7 +287,7 @@ header {
         align-items: center;
         justify-content: center;
 
-        padding: 25px;
+        padding: 30px;
     }
 
     .cart button {
@@ -314,10 +312,10 @@ header {
     }    
 
     .counter {
-        width: 24px;
-        height: 24px;
+        width: 35px;
+        height: 35px;
 
-        font-size: 16px;
+        font-size: 23px;
         color: white;
         background-color: rgb(44, 44, 175);
         border-radius: 50%;
@@ -360,15 +358,13 @@ header {
     .cart {
         width: 75px;
         height: 75px;
-        padding: 0;
+        padding: 10px;
         
         display: flex;
         align-items: center;
         justify-content: center;
 
         position: absolute;
-        right: 15px;
-        top: 5px;
     }
 
     .cart button {
@@ -440,13 +436,15 @@ header {
     .cart {
         width: 75px;
         height: 75px;
+
         position: absolute;
         right: 15px;
         top: 5px;
+        
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
+        padding: 5px;
     }
 
     .cart button {

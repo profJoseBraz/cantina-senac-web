@@ -19,7 +19,6 @@ const navigate = useNavigate();
         setProductsOnShop(res.data)
     }
 
-    
     useEffect(() => {
         handleGetAllProducts()
       }, [])
@@ -30,7 +29,7 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
     const handleGetProductsByName = () => {
         const searchResults = productsOnShop.filter(production =>
         production.produto.nome.toLowerCase().includes(valueInputNameProduct.toLowerCase())
-        )
+        )   
             setProductsOnShop(searchResults)
     }
 
@@ -174,16 +173,16 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("15px")
             setRightValue("6vw")
 
-            setCartIconTranslate("translateX(-37vh)")
+            setCartIconTranslate("translateX(-60vw)")
             setCartTranslate("80vw")
         }
         else if(window.innerWidth < 481){
             console.log("a largura é menor que 481px")
-            setTopValue("10px")
+            setTopValue("15px")
             setRightValue("6vw")
 
-            setCartIconTranslate("translateX(-33vh)")
-            setCartTranslate("40vh")
+            setCartIconTranslate("translateX(-60vw)")
+            setCartTranslate("80vw")
         }
 
         else if(window.innerWidth < 769){
@@ -191,17 +190,17 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("7vw")
 
-            setCartIconTranslate("translateX(-38vh)")
-            setCartTranslate("48vh")
+            setCartIconTranslate("translateX(-45vw)")
+            setCartTranslate("65vw")
         }
 
         else if(window.innerWidth < 1025){
             console.log("a tela-larg é menor que 1025px")
             setTopValue("20px")
-            setRightValue("10vw")
+            setRightValue("5vw")
 
-            setCartIconTranslate("translateX(-33vh)")
-            setCartTranslate("48vh")
+            setCartIconTranslate("translateX(-45vw)")
+            setCartTranslate("60vw")
         }
 
         else if(window.innerWidth < 1351){
@@ -209,8 +208,8 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(11vh)")
-            setCartTranslate("39.5vw")
+            setCartIconTranslate("translateX(8vw)")
+            setCartTranslate("40vw")
             setCartOpen(true)
         }
 
@@ -219,8 +218,8 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(40vh)")
-            setCartTranslate("29vw")
+            setCartIconTranslate("translateX(19vw)")
+            setCartTranslate("30vw")
             setCartOpen(true)
         }
     }
