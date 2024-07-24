@@ -142,13 +142,11 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 // --- inicializando um array para armazenar os produtos requisitados ---
     const [productsOnShop, setProductsOnShop] = useState<Productions[]>([])
 
+// --- inicializando um array para armazenar os produtos do carrinho ---
+const [productsOnCart, setProductsOnCart] = useState<Productions[]>([])
 
 // --- estado do carrinho (aberto = true // fechado = false) ---
     const [cartOpen, setCartOpen] = useState(false)
-
-
-// --- inicializando um array para armazenar os produtos do carrinho ---
-    const [productsOnCart, setProductsOnCart] = useState<Productions[]>([])
 
 
 // --- loop para somar todos os itens adicionados no carrinho ---
@@ -159,8 +157,7 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
         }
         return totalCart
     }
-    
-    
+
 
 // --- verificar o tamanho do dispositivo e ajustar os estilos da página (toda vez que a página carregar será setado o valor da largura da tela) ---
 const [topValue, setTopValue] = useState("")
@@ -228,6 +225,16 @@ const [cartTranslate, setCartTranslate] = useState("")
     useEffect( () => {
         handleSetWindowWidthForStyles()
     }, [])
+// -------------------------------------------------------
+const [statusClass, setStatusClass] = useState("")
+
+const handleSetStatusClass = (productId: any) => {
+    const prodsActiveOnShop = productsOnShop.find(productions => productions.produto.id == productId)
+
+    if(prodsActiveOnShop){
+        setStatusClass(prodsActiveOnShop.quantidade == 0 ? "disableClass" : "enableClass")
+    }
+  }
     
     return (
         <>
@@ -292,6 +299,7 @@ const [cartTranslate, setCartTranslate] = useState("")
                         cost={production.produto.valor}
                         desc={production.produto.descricao}
                         quant={production.quantidade}
+                        statusClassName={statusClass}
                         />
                         
                     ))}

@@ -1,4 +1,4 @@
-import { ChangeEventHandler, CSSProperties, DetailedHTMLProps, useState } from "react";
+import { ChangeEventHandler, CSSProperties} from "react";
 import Filter from "./Filter";
 import "./Search.css";
 
