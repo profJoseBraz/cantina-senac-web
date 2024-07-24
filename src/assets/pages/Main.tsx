@@ -10,8 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 function Main() {
 
-    // --- useNavigate para navegar entre as páginas ---
+// --- useNavigate() para navegar entre as páginas ---
 const navigate = useNavigate();
+
 
 // --- puxar todos os produtos disponíveis no dia ao entrar na página ---
     const handleGetAllProducts = async () => {
@@ -78,7 +79,7 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 // -----------------------------------------------
 
 
-// --- ação ao clickar no carrinho de compras ---
+// --- ação de clique no carrinho de compras ---
     const handleCart = () => {
         if(cartOpen){
             setCartOpen(false)
@@ -154,7 +155,7 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
     const handleSetTotal = () => {
         let totalCart = 0;
         for (let i = 0; i < productsOnCart.length; i++) {
-            totalCart += parseInt(productsOnCart[i].produto.valor) * (cartQuantities[productsOnCart[i].produto.id])
+            totalCart += productsOnCart[i].produto.valor * (cartQuantities[productsOnCart[i].produto.id])
         }
         return totalCart
     }

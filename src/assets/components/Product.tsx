@@ -4,14 +4,13 @@ import "./Product.css";
 interface Prop {
     name: ReactNode;
     img: string;
-    cost: ReactNode;
+    cost: number;
     desc: ReactNode;
-    quant: number;
     restrictType: ReactNode;
     onClick: () => void;
 };
 
-function Product({ name, img, cost, desc, quant, restrictType, onClick, } : Prop) {
+function Product({ name, img, cost, desc, restrictType, onClick, } : Prop) {
     return (
         <>
             <div className="product">
@@ -25,7 +24,7 @@ function Product({ name, img, cost, desc, quant, restrictType, onClick, } : Prop
 
                 <div className="text-box">
                     <h2 className="name">{name}</h2>
-                    <h3 className="cost">R$ {cost}</h3>
+                    <h3 className="cost">R$ {cost.toFixed(2).replace("\.",",")}</h3>
                     <p className="desc">{desc}</p>
                 </div>
 
