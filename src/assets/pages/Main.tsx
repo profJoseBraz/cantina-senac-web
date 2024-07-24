@@ -19,10 +19,23 @@ const navigate = useNavigate();
         setProductsOnShop(res.data)
     }
 
-    
     useEffect(() => {
         handleGetAllProducts()
       }, [])
+
+
+// --- funções abaixo para aplicar filtros de pesquisa por nome nos produtos ---
+const [valueInputNameProduct, setValueInputNameProduct] = useState("")
+    const handleGetProductsByName = () => {
+        const searchResults = productsOnShop.filter(production =>
+        production.produto.nome.toLowerCase().includes(valueInputNameProduct.toLowerCase())
+        )   
+            setProductsOnShop(searchResults)
+    }
+
+    useEffect(() => {
+        handleGetProductsByName()
+     }, [valueInputNameProduct])
 
 
 // --- funções abaixo para aplicar filtros de categoria nos produtos ---
@@ -61,7 +74,6 @@ const navigate = useNavigate();
 
      useEffect(() => {
         handleGetProdutsByCategory()
-        //console.log(categoryId)
      }, [categoryId])
 // -----------------------------------------------
 
@@ -95,7 +107,6 @@ const navigate = useNavigate();
         handleIncreaseTotal(product.id)
     }
         console.log(productsOnCart)
-        console.log(product.imagem_produto)
 }
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
@@ -148,6 +159,7 @@ const navigate = useNavigate();
         return totalCart
     }
     
+    
 
 // --- verificar o tamanho do dispositivo e ajustar os estilos da página (toda vez que a página carregar será setado o valor da largura da tela) ---
 const [topValue, setTopValue] = useState("")
@@ -161,16 +173,16 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("15px")
             setRightValue("6vw")
 
-            setCartIconTranslate("translateX(-37vh)")
-            setCartTranslate("80vw")
+            setCartIconTranslate("translateX(-60vw)")
+            setCartTranslate("translateX(0vw)")
         }
         else if(window.innerWidth < 481){
             console.log("a largura é menor que 481px")
-            setTopValue("10px")
+            setTopValue("15px")
             setRightValue("6vw")
 
-            setCartIconTranslate("translateX(-33vh)")
-            setCartTranslate("40vh")
+            setCartIconTranslate("translateX(-65vw)")
+            setCartTranslate("translateX(0vw)")
         }
 
         else if(window.innerWidth < 769){
@@ -178,17 +190,17 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("7vw")
 
-            setCartIconTranslate("translateX(-38vh)")
-            setCartTranslate("48vh")
+            setCartIconTranslate("translateX(-60vw)")
+            setCartTranslate("translateX(0vw)")
         }
 
         else if(window.innerWidth < 1025){
             console.log("a tela-larg é menor que 1025px")
             setTopValue("20px")
-            setRightValue("10vw")
+            setRightValue("5vw")
 
-            setCartIconTranslate("translateX(-33vh)")
-            setCartTranslate("48vh")
+            setCartIconTranslate("translateX(-60vw)")
+            setCartTranslate("translateX(0vw)")
         }
 
         else if(window.innerWidth < 1351){
@@ -196,18 +208,18 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(11vh)")
-            setCartTranslate("39.5vw")
+            setCartIconTranslate("translateX(10vw)")
+            setCartTranslate("translateX(0vw)")
             setCartOpen(true)
         }
 
         else if(window.innerWidth > 1351){
-            console.log("a tela-larg é menor que 1351px")
+            console.log("a tela-larg é maior que 1351px")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(40vh)")
-            setCartTranslate("29vw")
+            setCartIconTranslate("translateX(19vw)")
+            setCartTranslate("translateX(0vw)")
             setCartOpen(true)
         }
     }
@@ -232,7 +244,7 @@ const [cartTranslate, setCartTranslate] = useState("")
                 styleIconCart={{
                     pointerEvents: window.innerWidth < 1024 ? "all" : "none",
                     transform: cartOpen ?  cartIconTranslate : "translateX(0)",
-                    backgroundColor: cartOpen ?  "white" : "transparent",
+                    backgroundColor: cartOpen ?  "white" : "rgb(255, 255, 255, 0.8)",
                     borderRadius: "50%",
                     borderBottom: cartOpen ? "solid rgb(0, 74, 141) 4px" : "none",
                     borderLeft: cartOpen ? "solid rgb(0, 74, 141) 4px" : "none",
@@ -263,6 +275,9 @@ const [cartTranslate, setCartTranslate] = useState("")
                 activeFilterMarm={categoryId == 2 ? "activeFilter" : ""}
                 activeFilterSalg={categoryId == 3 ? "activeFilter" : ""}
                 activeFilterSobr={categoryId == 4 ? "activeFilter" : ""}
+
+                valueInputSearch={(e) => setValueInputNameProduct(e.target.value)}
+                realValueInputSearch={valueInputNameProduct}
                 />
 
                 <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
@@ -282,7 +297,7 @@ const [cartTranslate, setCartTranslate] = useState("")
                 </div>
   
                 <Cart
-                style={{width: cartOpen ?  cartTranslate : "0", boxShadow: cartOpen ? "-1px 0px 15px black" : "none", transition: ".7s"}}
+                style={{transform: cartOpen ?  cartTranslate : "translateX(80vh)", boxShadow: cartOpen ? "-1px 0px 15px black" : "none", transition: ".7s"}}
                 onClickConfirm={handleConfirmOrder}
                 onClickDeleteProdCart={handleDeleteProduct}
                 onClickIncreaseQuantity={handleIncreaseTotal}

@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react'
 import './Cart.css'
 import triangleBG from '../../img/outros/triangle-decoration-cart.svg'
+import cryingFace from '../../img/outros/cryingFace.svg'
 
 
 interface Props {
@@ -25,7 +26,13 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity, 
           </div>
 
           <div className="content-cart">
-            {productsCart.length === 0 ? (<span className='emptyCart-warn'>Seu carrinho está vazio.</span>) :
+            {productsCart.length === 0 ? (
+              <>
+                <span className='emptyCart-warn' >Seu carrinho está vazio.</span>
+                <img  className='emptyCart-face' src={cryingFace} alt="" />
+              </>
+            )
+              :
             (
               productsCart.map((production: any) => (
                 <div key={production.produto.id} className="box-produto-cart">
