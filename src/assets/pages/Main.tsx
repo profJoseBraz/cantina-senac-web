@@ -174,15 +174,15 @@ const [cartTranslate, setCartTranslate] = useState("")
             setRightValue("6vw")
 
             setCartIconTranslate("translateX(-60vw)")
-            setCartTranslate("80vw")
+            setCartTranslate("translateX(0vw)")
         }
         else if(window.innerWidth < 481){
             console.log("a largura é menor que 481px")
             setTopValue("15px")
             setRightValue("6vw")
 
-            setCartIconTranslate("translateX(-60vw)")
-            setCartTranslate("80vw")
+            setCartIconTranslate("translateX(-65vw)")
+            setCartTranslate("translateX(0vw)")
         }
 
         else if(window.innerWidth < 769){
@@ -190,8 +190,8 @@ const [cartTranslate, setCartTranslate] = useState("")
             setTopValue("20px")
             setRightValue("7vw")
 
-            setCartIconTranslate("translateX(-45vw)")
-            setCartTranslate("65vw")
+            setCartIconTranslate("translateX(-60vw)")
+            setCartTranslate("translateX(0vw)")
         }
 
         else if(window.innerWidth < 1025){
@@ -200,7 +200,7 @@ const [cartTranslate, setCartTranslate] = useState("")
             setRightValue("5vw")
 
             setCartIconTranslate("translateX(-60vw)")
-            setCartTranslate("70vw")
+            setCartTranslate("translateX(0vw)")
         }
 
         else if(window.innerWidth < 1351){
@@ -209,7 +209,7 @@ const [cartTranslate, setCartTranslate] = useState("")
             setRightValue("43vw")
 
             setCartIconTranslate("translateX(10vw)")
-            setCartTranslate("40vw")
+            setCartTranslate("translateX(0vw)")
             setCartOpen(true)
         }
 
@@ -219,7 +219,7 @@ const [cartTranslate, setCartTranslate] = useState("")
             setRightValue("43vw")
 
             setCartIconTranslate("translateX(19vw)")
-            setCartTranslate("30vw")
+            setCartTranslate("translateX(0vw)")
             setCartOpen(true)
         }
     }
@@ -244,7 +244,7 @@ const [cartTranslate, setCartTranslate] = useState("")
                 styleIconCart={{
                     pointerEvents: window.innerWidth < 1024 ? "all" : "none",
                     transform: cartOpen ?  cartIconTranslate : "translateX(0)",
-                    backgroundColor: cartOpen ?  "white" : "transparent",
+                    backgroundColor: cartOpen ?  "white" : "rgb(255, 255, 255, 0.8)",
                     borderRadius: "50%",
                     borderBottom: cartOpen ? "solid rgb(0, 74, 141) 4px" : "none",
                     borderLeft: cartOpen ? "solid rgb(0, 74, 141) 4px" : "none",
@@ -297,7 +297,7 @@ const [cartTranslate, setCartTranslate] = useState("")
                 </div>
   
                 <Cart
-                style={{width: cartOpen ?  cartTranslate : "0", boxShadow: cartOpen ? "-1px 0px 15px black" : "none", transition: ".7s"}}
+                style={{transform: cartOpen ?  cartTranslate : "translateX(80vh)", boxShadow: cartOpen ? "-1px 0px 15px black" : "none", transition: ".7s"}}
                 onClickConfirm={handleConfirmOrder}
                 onClickDeleteProdCart={handleDeleteProduct}
                 onClickIncreaseQuantity={handleIncreaseTotal}
