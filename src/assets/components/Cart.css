@@ -36,7 +36,7 @@
 
 .container-cart .content-cart{
     width: 95%;
-    height: 68%;
+    height: 65%;
     padding: 20px 0px 20px 0px;
     margin-top: 30px;
 
@@ -65,8 +65,8 @@
 
 .container-cart .content-cart .box-produto-cart .fa-trash{
     position: absolute;
-    top: 4px;
-    left: 8px;
+    top: 3px;
+    left: 5px;
 
     border-radius: 50%;
     padding: 5px;
