@@ -107,7 +107,6 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
     else{
         handleIncreaseTotal(product.id)
     }
-        console.log(productsOnCart)
 }
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
@@ -136,7 +135,6 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
             [productId]: prev[productId] > 1 ? prev[productId] - 1 : 1
         }))
     }
-     console.log(cartQuantities)
 
 
 // --- inicializando um array para armazenar os produtos requisitados ---
@@ -226,15 +224,22 @@ const [cartTranslate, setCartTranslate] = useState("")
         handleSetWindowWidthForStyles()
     }, [])
 // -------------------------------------------------------
-const [statusClass, setStatusClass] = useState("")
+const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
 
-const handleSetStatusClass = (productId: any) => {
-    const prodsActiveOnShop = productsOnShop.find(productions => productions.produto.id == productId)
+    const handleSetStatusClass = (productId: number) => {
+        const prodsActiveOnShop = productsOnShop.find(productions => productions.produto.id === productId)
 
-    if(prodsActiveOnShop){
-        setStatusClass(prodsActiveOnShop.quantidade == 0 ? "disableClass" : "enableClass")
+        const statusClass = prodsActiveOnShop?.quantidade === 50 ? 'product-disable' : 'product-enable'
+
+        setStatusClass(prev => ({ ...prev, [productId]: statusClass }))
     }
-  }
+
+    useEffect(() => {
+    productsOnShop.forEach(production => {
+        handleSetStatusClass(production.produto.id)
+    })
+    }, [productsOnShop])
+
     
     return (
         <>
@@ -299,9 +304,8 @@ const handleSetStatusClass = (productId: any) => {
                         cost={production.produto.valor}
                         desc={production.produto.descricao}
                         quant={production.quantidade}
-                        statusClassName={statusClass}
+                        statusClassName={statusClass[production.produto.id]}
                         />
-                        
                     ))}
                 </div>
   

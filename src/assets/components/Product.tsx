@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import "./Product.css";
 
 interface Prop {
@@ -9,15 +9,15 @@ interface Prop {
     desc: ReactNode;
     restrictType: ReactNode;
     onClick: () => void;
-    statusClassName?: string
+
+    statusClassName?: any
 };
 
 function Product({ name, img, cost, desc, restrictType, onClick, quant, statusClassName } : Prop) {
 
     return (
         <>
-            {/* <div className={statusClassName}> */}
-            <div className="product">
+            <div className={statusClassName}>
                 <div className="restriction">
                     {restrictType}
                 </div>
