@@ -1,6 +1,6 @@
 nav {
     width: 70vw;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +8,7 @@ nav {
     
     border-top: 2px rgba(128, 128, 128, 0.25) solid;
     border-bottom: 2px rgba(128, 128, 128, 0.25) solid;
-    padding: 15px 0px 5px 0px;
+    padding: 15px 0px 10px 0px;
 }
 
 .search {

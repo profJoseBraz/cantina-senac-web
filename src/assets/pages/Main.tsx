@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Cart from "../components/Cart";
 import Header from "../components/Header";
 import Product from "../components/Product";
@@ -224,6 +224,9 @@ const [cartTranslate, setCartTranslate] = useState("")
         handleSetWindowWidthForStyles()
     }, [])
 // -------------------------------------------------------
+
+
+// -------------------------- observa se o produto está com a quantia == 0, caso verdadeiro, className: disable ---------------------------
 const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
 
     const handleSetStatusClass = (productId: number) => {
@@ -241,10 +244,32 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
     }, [productsOnShop])
 
     
+// -------------------------- pegar a posição da tela para estilizar a nav --> position: fixed ---------------------------
+const logoRef = useRef<HTMLDivElement>(null)
+
+const [distanceOfTop, setDistanceOfTop] = useState(0)
+
+  const getWindowPosition = () => {
+    if (logoRef.current) {
+      setDistanceOfTop(logoRef.current.getBoundingClientRect().top)
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getWindowPosition()
+    }, 100)
+
+    return () => clearInterval(interval)
+  }, [])
+
+
     return (
         <>
             <div className="container">
                 <Header
+                headerRef={logoRef}
+
                 onClick={handleCart}    
                 displayIconCart={true}
                 displayCounter={true}
@@ -276,7 +301,14 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
                 />
 
                 <Search
-                styleFilters={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", transition: "0.3s"}}
+                styleFilters={{
+                    opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
+                     pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all",
+                       position: distanceOfTop < -100 ? "fixed" : "relative",
+                        top: distanceOfTop < -100 ? "0" : "",
+                         backgroundColor: distanceOfTop < -100 ? "white " : "transparent",
+                          boxShadow: distanceOfTop < -100 ? "-5px 0px 15px black" : "0px 0px 0px white"}}
+
                 onClickTodos={handleOnClickTodos}
                 onClickBebidas={handleOnClickBebidas}
                 onClickSalgados={handleOnClickSalgados}
@@ -293,7 +325,7 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
                 realValueInputSearch={valueInputNameProduct}
                 />
 
-                <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
+                <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s", marginTop: distanceOfTop < -100 ? "15vh" : ""}} className="products">
                     {productsOnShop.map((production) => (
                         <Product
                         key={production.produto.id}
