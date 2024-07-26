@@ -72,12 +72,6 @@
         border-top: 2px solid black;
         border-right: 2px solid black;
         border-bottom: 2px solid black;
-    }
-    90%{
-        border-left: 2px solid black;
-        border-top: 2px solid black;
-        border-right: 2px solid black;
-        border-bottom: 2px solid black;
         transform: scale(1.15);
     }
     100%{

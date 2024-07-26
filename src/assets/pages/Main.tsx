@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Cart from "../components/Cart";
 import Header from "../components/Header";
 import Product from "../components/Product";
@@ -112,7 +112,6 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
     else{
         handleIncreaseTotal(product.id)
     }
-        console.log(productsOnCart)
 }
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
@@ -141,19 +140,16 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
             [productId]: prev[productId] > 1 ? prev[productId] - 1 : 1
         }))
     }
-     console.log(cartQuantities)
 
 
 // --- inicializando um array para armazenar os produtos requisitados ---
     const [productsOnShop, setProductsOnShop] = useState<Productions[]>([])
 
+// --- inicializando um array para armazenar os produtos do carrinho ---
+const [productsOnCart, setProductsOnCart] = useState<Productions[]>([])
 
 // --- estado do carrinho (aberto = true // fechado = false) ---
     const [cartOpen, setCartOpen] = useState(false)
-
-
-// --- inicializando um array para armazenar os produtos do carrinho ---
-    const [productsOnCart, setProductsOnCart] = useState<Productions[]>([])
 
 
 // --- loop para somar todos os itens adicionados no carrinho ---
@@ -164,8 +160,7 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
         }
         return totalCart
     }
-    
-    
+
 
 // --- verificar o tamanho do dispositivo e ajustar os estilos da página (toda vez que a página carregar será setado o valor da largura da tela) ---
 const [topValue, setTopValue] = useState("")
@@ -243,10 +238,6 @@ const [cartTranslate, setCartTranslate] = useState("")
     useEffect( () => {
         handleSetWindowWidthForStyles()
     }, [])
-<<<<<<< Updated upstream
-    
-=======
-// -------------------------------------------------------
 
 
 // -------------------------- observa se o produto está com a quantia == 0, caso verdadeiro, className: disable ---------------------------
@@ -265,6 +256,7 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
         handleSetStatusClass(production.produto.id)
     })
     }, [productsOnShop])
+// --------------------------------------
 
 
 // -------------------------- quando adicionar um novo item no carrinho, haverá uma animação no contador ---------------------------
@@ -281,21 +273,17 @@ const [addConterClass, setAddConterClass] = useState("")
     useEffect(() => {
         handleSetCounterClass()
     }, [productsOnCart.length])
+//----------------------------------------
 
 
-// -------------------------- quando adicionar um novo item no carrinho, haverá uma animação no contador ---------------------------
+// -------------------------- Caso a requisição demore, haverá esqueletos de loadings(produtos da vitrine) ---------------------------
 const [isntLoadingSKL, setIsntLoadingSKL] = useState(false)
-
->>>>>>> Stashed changes
+        
     return (
         <>
             <div className="container">
                 <Header
-<<<<<<< Updated upstream
-=======
                 counterClass={addConterClass}
-
->>>>>>> Stashed changes
                 onClick={handleCart}    
                 displayIconCart={true}
                 displayCounter={true}
@@ -327,14 +315,10 @@ const [isntLoadingSKL, setIsntLoadingSKL] = useState(false)
                 />
 
                 <Search
-<<<<<<< Updated upstream
-                styleFilters={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", transition: "0.3s"}}
-=======
                 styleFilters={{
                     opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
                      pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all"}}
-
->>>>>>> Stashed changes
+                  
                 onClickTodos={handleOnClickTodos}
                 onClickBebidas={handleOnClickBebidas}
                 onClickSalgados={handleOnClickSalgados}
@@ -351,22 +335,6 @@ const [isntLoadingSKL, setIsntLoadingSKL] = useState(false)
                 realValueInputSearch={valueInputNameProduct}
                 />
 
-<<<<<<< Updated upstream
-                <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
-                    {productsOnShop.map((production) => (
-                        <Product
-                        key={production.produto.id}
-                        onClick={() => handleAddProduct(production)}
-                        restrictType={"product.restricao_produto"}
-                        img={production.produto.imagem}
-                        name={production.produto.nome}
-                        cost={production.produto.valor}
-                        desc={production.produto.descricao}
-                        quant={production.quantidade}
-                        />
-                        
-                    ))}
-=======
                 <div className="products" style={{
                     opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
                      pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all",
@@ -388,8 +356,6 @@ const [isntLoadingSKL, setIsntLoadingSKL] = useState(false)
                         )))
                         :
                         (<ProductSkeleton boxProds={15} />)}
-                    
->>>>>>> Stashed changes
                 </div>
   
                 <Cart

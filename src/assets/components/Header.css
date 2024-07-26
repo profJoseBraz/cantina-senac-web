@@ -3,6 +3,7 @@ header {
     display: flex;
     flex-direction: column;
     position: relative;
+    /* animation: closeHeader .3s normal forwards; */
 }
 
 .head {
@@ -118,8 +119,7 @@ header {
     margin: 0px 0px 10px 0px;
 }
 
-<<<<<<< Updated upstream
-=======
+
 @keyframes newItemCart {
    0%{
     transform: scale(1);
@@ -228,7 +228,6 @@ header {
     }
 }
 
->>>>>>> Stashed changes
 @media (min-width: 1025px) and (max-width: 1350px) {
     header {
         width: 60vw;
