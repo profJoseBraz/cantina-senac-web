@@ -14,7 +14,6 @@ interface Prop {
 };
 
 function Product({ name, img, cost, desc, restrictType, onClick, quant, statusClassName } : Prop) {
-
     return (
         <>
             <div className={statusClassName}>

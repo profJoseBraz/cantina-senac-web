@@ -7,6 +7,7 @@ import "./Main.css";
 import { Productions } from "../interfaces/Production";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ProductSkeleton from "../components/ProductSkeleton";
 
 function Main() {
 
@@ -22,6 +23,11 @@ const navigate = useNavigate();
 
     useEffect(() => {
         handleGetAllProducts()
+
+        setTimeout(() => {
+            setLoadingSKL(false)
+        }, 2000);
+        
       }, [])
 
 
@@ -36,6 +42,11 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
     useEffect(() => {
         handleGetProductsByName()
+        
+        setTimeout(() => {
+            setLoadingSKL(false)
+        }, 2000);
+        
      }, [valueInputNameProduct])
 
 
@@ -75,6 +86,11 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
      useEffect(() => {
         handleGetProdutsByCategory()
+        
+        setTimeout(() => {
+            setLoadingSKL(false)
+        }, 2000);
+        
      }, [categoryId])
 // -----------------------------------------------
 
@@ -209,12 +225,22 @@ const [cartTranslate, setCartTranslate] = useState("")
             setCartOpen(true)
         }
 
-        else if(window.innerWidth > 1351){
-            console.log("a tela-larg é maior que 1351px")
+        else if(window.innerWidth < 1500){
+            console.log("a tela-larg é menor que 1500px")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(19vw)")
+            setCartIconTranslate("translateX(10vw)")
+            setCartTranslate("translateX(0vw)")
+            setCartOpen(true)
+        }
+
+        else if(window.innerWidth > 1500){
+            console.log("a tela-larg é maior que 1500px")
+            setTopValue("20px")
+            setRightValue("43vw")
+
+            setCartIconTranslate("translateX(18vw)")
             setCartTranslate("translateX(0vw)")
             setCartOpen(true)
         }
@@ -223,13 +249,15 @@ const [cartTranslate, setCartTranslate] = useState("")
     useEffect( () => {
         handleSetWindowWidthForStyles()
     }, [])
-// -------------------------------------------------------
+
+
+// -------------------------- observa se o produto está com a quantia == 0, caso verdadeiro, className: disable ---------------------------
 const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
 
     const handleSetStatusClass = (productId: number) => {
         const prodsActiveOnShop = productsOnShop.find(productions => productions.produto.id === productId)
 
-        const statusClass = prodsActiveOnShop?.quantidade === 50 ? 'product-disable' : 'product-enable'
+        const statusClass = prodsActiveOnShop?.quantidade === 0 ? 'product-disable' : 'product-enable'
 
         setStatusClass(prev => ({ ...prev, [productId]: statusClass }))
     }
@@ -239,12 +267,38 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
         handleSetStatusClass(production.produto.id)
     })
     }, [productsOnShop])
+// --------------------------------------
 
-    
+
+// -------------------------- quando adicionar um novo item no carrinho, haverá uma animação no contador ---------------------------
+const [addConterClass, setAddConterClass] = useState("")
+
+    const handleSetCounterClass = () => {
+        setAddConterClass("counter-itemAdded")
+
+        setTimeout(() => {
+            setAddConterClass("counter")
+        }, 100)
+    }
+
+    useEffect(() => {
+        handleSetCounterClass()
+    }, [productsOnCart.length])
+//----------------------------------------
+
+
+// -------------------------- Caso a requisição demore, haverá esqueletos de loadings(produtos da vitrine) ---------------------------
+const [isLoadingSKL, setLoadingSKL] = useState(false)
+
+    useEffect(() => {
+        setLoadingSKL(true)
+    }, [valueInputNameProduct, categoryId])
+        
     return (
         <>
             <div className="container">
                 <Header
+                counterClass={addConterClass}
                 onClick={handleCart}    
                 displayIconCart={true}
                 displayCounter={true}
@@ -276,7 +330,10 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
                 />
 
                 <Search
-                styleFilters={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", transition: "0.3s"}}
+                styleFilters={{
+                    opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
+                     pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all"}}
+                  
                 onClickTodos={handleOnClickTodos}
                 onClickBebidas={handleOnClickBebidas}
                 onClickSalgados={handleOnClickSalgados}
@@ -293,20 +350,28 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
                 realValueInputSearch={valueInputNameProduct}
                 />
 
-                <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
-                    {productsOnShop.map((production) => (
-                        <Product
-                        key={production.produto.id}
-                        onClick={() => handleAddProduct(production)}
-                        restrictType={"product.restricao_produto"}
-                        img={production.produto.imagem}
-                        name={production.produto.nome}
-                        cost={production.produto.valor}
-                        desc={production.produto.descricao}
-                        quant={production.quantidade}
-                        statusClassName={statusClass[production.produto.id]}
-                        />
-                    ))}
+                <div className="products" style={{
+                    opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
+                     pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all",
+                      overflow: "hidden", transition: "0.3s"}}>
+
+                    {isLoadingSKL ?
+                        (<ProductSkeleton boxProds={productsOnShop.length} />)
+                        :
+                        (productsOnShop.map((production) => (
+                            <Product
+                                key={production.produto.id}
+                                onClick={() => handleAddProduct(production)}
+                                restrictType={"production.produto.restricao"}
+                                img={production.produto.imagem}
+                                name={production.produto.nome}
+                                cost={production.produto.valor}
+                                desc={production.produto.descricao}
+                                quant={production.quantidade}
+                                statusClassName={statusClass[production.produto.id]}
+                            />
+                        )))}
+                       
                 </div>
   
                 <Cart

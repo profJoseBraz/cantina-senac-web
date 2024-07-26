@@ -12,8 +12,22 @@
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: 29% 29% 29%;
-    gap: 20px 30px;
+    grid-template-columns: 22% 22% 22% 22%;
+    gap: 40px 30px;
+}
+
+@media (min-width: 1351px) and (max-width: 1500px) {
+    .products {
+        width: 60vw;
+        height: auto;
+        padding: 10px 0px 15px 0px;
+
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 29% 29% 29%;
+        gap: 20px 30px;
+    }
 }
 
 @media (min-width: 1025px) and (max-width: 1350px) {

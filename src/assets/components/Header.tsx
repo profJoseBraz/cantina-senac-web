@@ -3,7 +3,7 @@ import cestaRetorno from '../../img/icons_header/carrinho-com-produtos-voltar.pn
 import revisaoPedidoRetorno from '../../img/icons_header/revisao-pedido-voltar.png';
 import cartIcon from '../../img/icons_header/carrinho-vazio.png'
 import SenacLogo from '../../img/icons_header/senac-logo.png'
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode, RefObject } from "react";
 
 interface Prop {
     onClick?: () => void
@@ -17,9 +17,10 @@ interface Prop {
     textIconHeader?: ReactNode
     styleCartOpenned?: CSSProperties
     styleIconCart?: CSSProperties
+    counterClass?: string
 };
 
-function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartOpenned, styleIconCart, counterProductCart, }: Prop) {
+function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartOpenned, styleIconCart, counterProductCart, counterClass}: Prop) {
 
     return (
         <>
@@ -37,7 +38,7 @@ function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno,
                             {displayRevisaoPedidoRetorno &&(<img className="review-return"  src={revisaoPedidoRetorno} alt="" />)}
 
                             {displayCounter &&(
-                            <div className="counter">
+                            <div className={counterClass}>
                                 {counterProductCart}
                             </div>)}
                         </button>
