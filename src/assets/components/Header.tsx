@@ -17,9 +17,18 @@ interface Prop {
     textIconHeader?: ReactNode
     styleCartOpenned?: CSSProperties
     styleIconCart?: CSSProperties
+<<<<<<< Updated upstream
 };
 
 function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartOpenned, styleIconCart, counterProductCart, }: Prop) {
+=======
+    headerRef?: RefObject<HTMLDivElement>
+
+    counterClass?: string
+};
+
+function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartOpenned, styleIconCart, counterProductCart, counterClass}: Prop) {
+>>>>>>> Stashed changes
 
     return (
         <>
@@ -37,7 +46,7 @@ function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno,
                             {displayRevisaoPedidoRetorno &&(<img className="review-return"  src={revisaoPedidoRetorno} alt="" />)}
 
                             {displayCounter &&(
-                            <div className="counter">
+                            <div className={counterClass}>
                                 {counterProductCart}
                             </div>)}
                         </button>

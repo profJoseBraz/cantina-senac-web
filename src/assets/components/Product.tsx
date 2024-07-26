@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 import "./Product.css";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 interface Prop {
     name: ReactNode;
