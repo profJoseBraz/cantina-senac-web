@@ -67,10 +67,31 @@ header {
 
     color: white;
     font-weight: 800;
-    font-size: 21px;
+    font-size: 19px;
 
     border-radius: 50%;
     background-color: rgb(44, 44, 175);
+}
+
+.counter-itemAdded {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 33px;
+    height: 33px;
+
+    position: absolute;
+    top: 10px;
+    right: 2px;
+
+    color: white;
+    font-weight: 800;
+    font-size: 19px;
+
+    border-radius: 50%;
+    background-color: rgb(44, 44, 175);
+    animation: newItemCart 100ms normal forwards;
 }
 
 .iconText{
@@ -98,13 +119,112 @@ header {
     margin: 0px 0px 10px 0px;
 }
 
-@keyframes closeHeader {
+
+@keyframes newItemCart {
    0%{
-        height: auto;
+    transform: scale(1);
+    }
+
+    50%{
+        transform: scale(1.2);
     }
 
     100%{
-        height: 0vh;
+        transform: scale(1);
+    }
+}
+
+
+@media (min-width: 1351px) and (max-width: 1500px) {
+    header {
+        width: 60vw;
+    }
+
+    .head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logo img {
+        max-width: 185px;
+    }
+    
+    .cart {
+        width: 60px;
+        height: 60px;
+        padding: 0;
+
+        position: absolute;
+        right: 35px;
+        top: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 25px;
+    }
+
+    .cart button {
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        color: black;
+    }
+
+    .cart button .cart-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .cart button .shopping-return {
+        width: 85px;
+        height: 95px;
+    }
+        
+    .cart button .review-return {
+        width: 85px;
+        height: 95px;
+    }    
+
+    .counter {
+        width: 35px;
+        height: 35px;
+        right: 0;
+
+        font-size: 22px;
+        color: white;
+        background-color: rgb(44, 44, 175);
+        border-radius: 50%;
+    }
+
+    .counter-itemAdded {
+        width: 35px;
+        height: 35px;
+        right: 0;
+
+        font-size: 22px;
+        color: white;
+        background-color: rgb(44, 44, 175);
+        border-radius: 50%;
+        animation: newItemCart 100ms normal forwards;
+    }
+
+    .iconText {
+        position: absolute;
+        bottom: -15px;
+        
+        font-size: 16px;
+        font-weight: 800;
+        color: rgba(0, 0, 0, 0.45);
+    }
+    
+    .title h2 {
+        font-size: 45px;
+    }
+
+    .title p {
+        font-size: 20px;
     }
 }
 
@@ -169,6 +289,17 @@ header {
         color: white;
         background-color: rgb(44, 44, 175);
         border-radius: 50%;
+    }
+    .counter-itemAdded {
+        width: 35px;
+        height: 35px;
+        right: 0;
+
+        font-size: 22px;
+        color: white;
+        background-color: rgb(44, 44, 175);
+        border-radius: 50%;
+        animation: newItemCart 100ms normal forwards;
     }
 
     .iconText {
@@ -251,6 +382,17 @@ header {
         background-color: rgb(44, 44, 175);
         border-radius: 50%;
     }
+    .counter-itemAdded {
+        width: 35px;
+        height: 35px;
+        right: 0;
+
+        font-size: 24px;
+        color: white;
+        background-color: rgb(44, 44, 175);
+        border-radius: 50%;
+        animation: newItemCart 100ms normal forwards;
+    }
 
     .iconText {
         position: absolute;
@@ -331,6 +473,16 @@ header {
         background-color: rgb(44, 44, 175);
         border-radius: 50%;
     }
+    .counter-itemAdded {
+        width: 35px;
+        height: 35px;
+
+        font-size: 23px;
+        color: white;
+        background-color: rgb(44, 44, 175);
+        border-radius: 50%;
+        animation: newItemCart 100ms normal forwards;
+    }
 
     .iconText {
         position: absolute;
@@ -408,6 +560,16 @@ header {
         color: white;
         background-color: rgb(44, 44, 175);
         border-radius: 50%;
+    }
+    .counter-itemAdded {
+        width: 24px;
+        height: 24px;
+
+        font-size: 16px;
+        color: white;
+        background-color: rgb(44, 44, 175);
+        border-radius: 50%;
+        animation: newItemCart 100ms normal forwards;
     }
 
     .iconText {
@@ -487,6 +649,17 @@ header {
         color: white;
         background-color: rgb(44, 44, 175);
         border-radius: 50%;
+    }
+
+    .counter-itemAdded {
+        width: 21px;
+        height: 21px;
+
+        font-size: 14px;
+        color: white;
+        background-color: rgb(44, 44, 175);
+        border-radius: 50%;
+        animation: newItemCart 100ms normal forwards;
     }
 
     .iconText {

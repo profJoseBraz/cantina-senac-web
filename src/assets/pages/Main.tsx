@@ -7,6 +7,8 @@ import "./Main.css";
 import { Productions } from "../interfaces/Production";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ProductSkeleton from "../components/ProductSkeleton";
+import Skeleton from "react-loading-skeleton";
 
 function Main() {
 
@@ -22,6 +24,9 @@ const navigate = useNavigate();
 
     useEffect(() => {
         handleGetAllProducts()
+        setTimeout(() => {
+            setIsntLoadingSKL(true)
+        }, 2000);
       }, [])
 
 
@@ -209,12 +214,22 @@ const [cartTranslate, setCartTranslate] = useState("")
             setCartOpen(true)
         }
 
-        else if(window.innerWidth > 1351){
-            console.log("a tela-larg é maior que 1351px")
+        else if(window.innerWidth < 1500){
+            console.log("a tela-larg é menor que 1500px")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(19vw)")
+            setCartIconTranslate("translateX(10vw)")
+            setCartTranslate("translateX(0vw)")
+            setCartOpen(true)
+        }
+
+        else if(window.innerWidth > 1500){
+            console.log("a tela-larg é maior que 1500px")
+            setTopValue("20px")
+            setRightValue("43vw")
+
+            setCartIconTranslate("translateX(18vw)")
             setCartTranslate("translateX(0vw)")
             setCartOpen(true)
         }
@@ -223,7 +238,6 @@ const [cartTranslate, setCartTranslate] = useState("")
     useEffect( () => {
         handleSetWindowWidthForStyles()
     }, [])
-// -------------------------------------------------------
 
 
 // -------------------------- observa se o produto está com a quantia == 0, caso verdadeiro, className: disable ---------------------------
@@ -242,34 +256,34 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
         handleSetStatusClass(production.produto.id)
     })
     }, [productsOnShop])
+// --------------------------------------
 
-    
-// -------------------------- pegar a posição da tela para estilizar a nav --> position: fixed ---------------------------
-const logoRef = useRef<HTMLDivElement>(null)
 
-const [distanceOfTop, setDistanceOfTop] = useState(0)
+// -------------------------- quando adicionar um novo item no carrinho, haverá uma animação no contador ---------------------------
+const [addConterClass, setAddConterClass] = useState("")
 
-  const getWindowPosition = () => {
-    if (logoRef.current) {
-      setDistanceOfTop(logoRef.current.getBoundingClientRect().top)
+    const handleSetCounterClass = () => {
+        setAddConterClass("counter-itemAdded")
+
+        setTimeout(() => {
+            setAddConterClass("counter")
+        }, 100)
     }
-  }
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getWindowPosition()
-    }, 100)
-
-    return () => clearInterval(interval)
-  }, [])
+    useEffect(() => {
+        handleSetCounterClass()
+    }, [productsOnCart.length])
+//----------------------------------------
 
 
+// -------------------------- Caso a requisição demore, haverá esqueletos de loadings(produtos da vitrine) ---------------------------
+const [isntLoadingSKL, setIsntLoadingSKL] = useState(false)
+        
     return (
         <>
             <div className="container">
                 <Header
-                headerRef={logoRef}
-
+                counterClass={addConterClass}
                 onClick={handleCart}    
                 displayIconCart={true}
                 displayCounter={true}
@@ -303,12 +317,8 @@ const [distanceOfTop, setDistanceOfTop] = useState(0)
                 <Search
                 styleFilters={{
                     opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
-                     pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all",
-                       position: distanceOfTop < -100 ? "fixed" : "relative",
-                        top: distanceOfTop < -100 ? "0" : "",
-                         backgroundColor: distanceOfTop < -100 ? "white " : "transparent",
-                          boxShadow: distanceOfTop < -100 ? "-5px 0px 15px black" : "0px 0px 0px white"}}
-
+                     pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all"}}
+                  
                 onClickTodos={handleOnClickTodos}
                 onClickBebidas={handleOnClickBebidas}
                 onClickSalgados={handleOnClickSalgados}
@@ -325,20 +335,27 @@ const [distanceOfTop, setDistanceOfTop] = useState(0)
                 realValueInputSearch={valueInputNameProduct}
                 />
 
-                <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s", marginTop: distanceOfTop < -100 ? "15vh" : ""}} className="products">
-                    {productsOnShop.map((production) => (
-                        <Product
-                        key={production.produto.id}
-                        onClick={() => handleAddProduct(production)}
-                        restrictType={"product.restricao_produto"}
-                        img={production.produto.imagem}
-                        name={production.produto.nome}
-                        cost={production.produto.valor}
-                        desc={production.produto.descricao}
-                        quant={production.quantidade}
-                        statusClassName={statusClass[production.produto.id]}
-                        />
-                    ))}
+                <div className="products" style={{
+                    opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
+                     pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all",
+                      overflow: "hidden", transition: "0.3s"}}>
+
+                    {isntLoadingSKL ? (
+                        productsOnShop.map((production) => (
+                            <Product
+                                key={production.produto.id}
+                                onClick={() => handleAddProduct(production)}
+                                restrictType={"production.produto.restricao"}
+                                img={production.produto.imagem}
+                                name={production.produto.nome}
+                                cost={production.produto.valor}
+                                desc={production.produto.descricao}
+                                quant={production.quantidade}
+                                statusClassName={statusClass[production.produto.id]}
+                            />
+                        )))
+                        :
+                        (<ProductSkeleton boxProds={15} />)}
                 </div>
   
                 <Cart
