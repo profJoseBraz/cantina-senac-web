@@ -1,5 +1,3 @@
-
-import MyButton from '../components/MyButton'
 import TimelineOrder from '../components/TimelineOrder'
 import './MetodoDePagamento.css'
 import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
