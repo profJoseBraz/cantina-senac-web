@@ -17,6 +17,7 @@ interface Prop {
     textIconHeader?: ReactNode
     styleCartOpenned?: CSSProperties
     styleIconCart?: CSSProperties
+    counterClass?: string
 };
 
 function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno, displayTitle, displayRevisaoPedidoRetorno, textIconHeader, styleCartOpenned, styleIconCart, counterProductCart, counterClass}: Prop) {
@@ -24,7 +25,7 @@ function Header({ onClick, displayIconCart, displayCounter, displayCestaRetorno,
     return (
         <>
             <header>
-                <div ref={headerRef} className="head">
+                <div className="head">
                     <div className="logo">
                         <img style={styleCartOpenned} src={SenacLogo} />
                     </div>

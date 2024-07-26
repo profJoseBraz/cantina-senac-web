@@ -38,7 +38,7 @@
 
 .product-enable .image img {
     width: 100%;
-    height: 200px;
+    height: 180px;
 }
 
 .product-enable .name {
@@ -56,7 +56,7 @@
 }
 
 .product-enable .desc {
-    margin: 0px 0px 2px 0px;
+    margin: 0px 2px 4px 0px;
     font-size: 13px;
     font-weight: 400;
     text-align: left;
@@ -130,7 +130,7 @@
 
 .product-disable .image img {
     width: 100%;
-    height: 200px;
+    height: 180px;
 }
 
 .product-disable .name {
@@ -166,6 +166,173 @@
     border-radius: 0px 0px 8px 8px;
 }
 
+@media (min-width: 1351px) and (max-width: 1500px) {
+/* ESTILIZ. PARA O PRODS HABILITADOS */
+    .product-enable {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        border: 1px rgba(0, 0, 0, 0.4) solid;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.35);
+    }
+
+    .product-enable .restriction {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        border-radius: 6px 6px 0px 0px;
+        font-size: 15px;
+        font-weight: 700;
+        padding: 7px 0px;
+        background-color: rgba(250, 128, 114, 0.35);
+    }
+
+    .text-box {
+        width: 98%;
+        height: 100%;
+        padding: 0px 0px 0px 8px;
+    }
+
+    .product-enable .image {
+        width: 100%;
+        height: auto;
+        
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.10);
+    }
+
+    .product-enable .image img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .product-enable .name {
+        margin: 5px 0px 0px 0px;
+        text-align: left;
+        font-size: 23px;
+        font-weight: 600;
+    }
+
+    .product-enable .cost {
+        margin: 2px;
+        font-size: 22px;
+        font-weight: 600;
+        color: rgba(0, 128, 0, 0.650);
+    }
+
+    .product-enable .desc {
+        margin: 0px 0px 2px 0px;
+        font-size: 13px;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .product-enable .add-cart-btn {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-enable .add-cart-btn .add-to-cart {
+        width: 100%;
+        height: 40px;
+
+        font-size: 17.5px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        color: white;
+
+        border: 1px rgba(0, 0, 0, 0.4) solid;
+        background-color: rgb(44, 44, 175);
+        border-radius: 0px 0px 8px 8px;
+    }
+
+/* ESTILIZ. PARA O PRODS DESABILITADOS */
+    .product-disable {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        border: 1px rgba(0, 0, 0, 0.4) solid;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.35);
+    }
+
+    .product-disable .restriction {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        border-radius: 6px 6px 0px 0px;
+        font-size: 15px;
+        font-weight: 700;
+        padding: 7px 0px;
+        background-color: rgba(250, 128, 114, 0.35);
+    }
+
+    .text-box {
+        width: 98%;
+        height: 100%;
+        padding: 0px 0px 0px 8px;
+    }
+
+    .product-disable .image {
+        width: 100%;
+        height: auto;
+        
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.10);
+    }
+
+    .product-disable .image img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .product-enable .name {
+        margin: 5px 0px 0px 0px;
+        text-align: left;
+        font-size: 23px;
+        font-weight: 600;
+    }
+
+    .product-enable .cost {
+        margin: 2px;
+        font-size: 22px;
+        font-weight: 600;
+        color: rgba(0, 128, 0, 0.650);
+    }
+
+    .product-disable .desc {
+        margin: 0px 0px 2px 0px;
+        font-size: 13px;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .product-disable .add-cart-btn {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-disable .add-cart-btn .add-to-cart {
+        width: 100%;
+        height: 40px;
+
+        font-size: 17.5px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        color: white;
+
+        border: 1px rgba(0, 0, 0, 0.4) solid;
+        background-color: rgb(44, 44, 175);
+        border-radius: 0px 0px 8px 8px;
+    }
+}
 
 @media (min-width: 1025px) and (max-width: 1350px) {
 /* ESTILIZ. PARA O PRODS HABILITADOS */

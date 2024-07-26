@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Cart from "../components/Cart";
 import Header from "../components/Header";
 import Product from "../components/Product";
@@ -8,7 +8,6 @@ import { Productions } from "../interfaces/Production";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ProductSkeleton from "../components/ProductSkeleton";
-import Skeleton from "react-loading-skeleton";
 
 function Main() {
 
@@ -24,9 +23,11 @@ const navigate = useNavigate();
 
     useEffect(() => {
         handleGetAllProducts()
+
         setTimeout(() => {
-            setIsntLoadingSKL(true)
+            setLoadingSKL(false)
         }, 2000);
+        
       }, [])
 
 
@@ -41,6 +42,11 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
     useEffect(() => {
         handleGetProductsByName()
+        
+        setTimeout(() => {
+            setLoadingSKL(false)
+        }, 2000);
+        
      }, [valueInputNameProduct])
 
 
@@ -80,6 +86,11 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
      useEffect(() => {
         handleGetProdutsByCategory()
+        
+        setTimeout(() => {
+            setLoadingSKL(false)
+        }, 2000);
+        
      }, [categoryId])
 // -----------------------------------------------
 
@@ -246,7 +257,7 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
     const handleSetStatusClass = (productId: number) => {
         const prodsActiveOnShop = productsOnShop.find(productions => productions.produto.id === productId)
 
-        const statusClass = prodsActiveOnShop?.quantidade === 50 ? 'product-disable' : 'product-enable'
+        const statusClass = prodsActiveOnShop?.quantidade === 0 ? 'product-disable' : 'product-enable'
 
         setStatusClass(prev => ({ ...prev, [productId]: statusClass }))
     }
@@ -277,7 +288,11 @@ const [addConterClass, setAddConterClass] = useState("")
 
 
 // -------------------------- Caso a requisição demore, haverá esqueletos de loadings(produtos da vitrine) ---------------------------
-const [isntLoadingSKL, setIsntLoadingSKL] = useState(false)
+const [isLoadingSKL, setLoadingSKL] = useState(false)
+
+    useEffect(() => {
+        setLoadingSKL(true)
+    }, [valueInputNameProduct, categoryId])
         
     return (
         <>
@@ -340,8 +355,10 @@ const [isntLoadingSKL, setIsntLoadingSKL] = useState(false)
                      pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all",
                       overflow: "hidden", transition: "0.3s"}}>
 
-                    {isntLoadingSKL ? (
-                        productsOnShop.map((production) => (
+                    {isLoadingSKL ?
+                        (<ProductSkeleton boxProds={productsOnShop.length} />)
+                        :
+                        (productsOnShop.map((production) => (
                             <Product
                                 key={production.produto.id}
                                 onClick={() => handleAddProduct(production)}
@@ -353,9 +370,8 @@ const [isntLoadingSKL, setIsntLoadingSKL] = useState(false)
                                 quant={production.quantidade}
                                 statusClassName={statusClass[production.produto.id]}
                             />
-                        )))
-                        :
-                        (<ProductSkeleton boxProds={15} />)}
+                        )))}
+                       
                 </div>
   
                 <Cart
