@@ -15,15 +15,15 @@ interface Props {
   cartQuantities: { [key: number]: number }
   totalCart: number
   production?: string
+  delProdClass?: any
 }
 
-const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity,  onClickIncreaseQuantity, style, productsCart, cartQuantities, totalCart, }: Props) => {
+const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity,  onClickIncreaseQuantity, style, productsCart, cartQuantities, totalCart, delProdClass }: Props) => {
   
   const [subTotal, setSubTotal] = useState<{ [key: number]: number }>({})
 
   const subTotalMult = (production: any) => {
     const quantityEachProdInCart = cartQuantities[production.produto.id]
-
     return production.produto.valor * quantityEachProdInCart
   }
   
@@ -55,7 +55,7 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity, 
               :
             (
               productsCart.map((production: any) => (
-                <div key={production.produto.id} className="box-produto-cart">
+                <div key={production.produto.id} className={delProdClass[production.produto.id] || "box-produto-cart"}>
                   <i
                     onClick={() =>
                       onClickDeleteProdCart && onClickDeleteProdCart(production.produto.id)
