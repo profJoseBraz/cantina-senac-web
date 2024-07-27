@@ -114,11 +114,16 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
 // --- adicionar produto ao carrinho de compras ---
     const handleAddProduct = (product: any) => {
-    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.produto.id === product.id);
+    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.produto.id === product.id)
 
     if(!productAlreadyCart){
         setProductsOnCart([...productsOnCart, product])
         handleIncreaseTotal(product.id)
+
+        setAddDelProdClass(prev => ({
+            ...prev,
+            [product.id]: "box-produto-cart",
+          }))
     }
     else{
         handleIncreaseTotal(product.id)
@@ -127,12 +132,32 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
     const handleDeleteProduct = (productId: any) => {
-        setProductsOnCart(productsOnCart.filter(product => product.produto.id != productId))
+        if(slowDel == 1){
+            setAlertSlow(true)
+                setTimeout(() => {
+                    setAlertSlow(false)
+                }, 3000)
+        }
+        else{
+            setSlowDel(slowDel + 1)
+            setAddDelProdClass(prev => ({
+                ...prev,
+                [productId]: "box-produto-cart-out",
+            }))
 
-        setCartQuantities(prev => ({
-            ...prev,
-            [productId]: 0
-        }))
+            setTimeout(() => {
+                setProductsOnCart(productsOnCart.filter(product => product.produto.id != productId))
+
+                setCartQuantities(prev => ({
+                    ...prev,
+                    [productId]: 0
+                }))
+                
+                setTimeout(() => {
+                    setSlowDel(0)
+                }, 100)
+            }, 500)
+        }
       }
 
 // --- interação quantidade de cada produto ---
@@ -154,13 +179,15 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
 
 // --- inicializando um array para armazenar os produtos requisitados ---
-    const [productsOnShop, setProductsOnShop] = useState<Productions[]>([])
+const [productsOnShop, setProductsOnShop] = useState<Productions[]>([])
+
 
 // --- inicializando um array para armazenar os produtos do carrinho ---
 const [productsOnCart, setProductsOnCart] = useState<Productions[]>([])
 
+
 // --- estado do carrinho (aberto = true // fechado = false) ---
-    const [cartOpen, setCartOpen] = useState(false)
+const [cartOpen, setCartOpen] = useState(false)
 
 
 // --- loop para somar todos os itens adicionados no carrinho ---
@@ -267,7 +294,6 @@ const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
         handleSetStatusClass(production.produto.id)
     })
     }, [productsOnShop])
-// --------------------------------------
 
 
 // -------------------------- quando adicionar um novo item no carrinho, haverá uma animação no contador ---------------------------
@@ -284,8 +310,17 @@ const [addConterClass, setAddConterClass] = useState("")
     useEffect(() => {
         handleSetCounterClass()
     }, [productsOnCart.length])
-//----------------------------------------
 
+
+// -------------------------- quando remover um item do carrinho, haverá uma animação de remoção ---------------------------
+// -------------------------- obs: a classe é aplicada quando adiciona e remove o produto do carrinho
+const [addDelProdClass, setAddDelProdClass] = useState({})
+
+// esse slowDel está sendo usado para corrigir um bug, evitando o usuário exlcuir vários produtos do carrinho de forma rápida
+const [slowDel, setSlowDel] = useState(0)
+
+// esse slowDel está sendo usado para corrigir um bug, evitando o usuário exlcuir vários produtos do carrinho de forma rápida
+const [alertSlow, setAlertSlow] = useState(false)
 
 // -------------------------- Caso a requisição demore, haverá esqueletos de loadings(produtos da vitrine) ---------------------------
 const [isLoadingSKL, setLoadingSKL] = useState(false)
@@ -381,10 +416,15 @@ const [isLoadingSKL, setLoadingSKL] = useState(false)
                 onClickIncreaseQuantity={handleIncreaseTotal}
                 onClickDecreaseQuantity={handleDecreaseTotal}
 
+                delProdClass={addDelProdClass}
                 productsCart={productsOnCart}
                 cartQuantities={cartQuantities}
                 totalCart={handleSetTotal()}
                 />
+
+                <div className={alertSlow ? "slowDel-dialog-open" : "slowDel-dialog-close"}>
+                    <span>Remova um produto por vez.</span>
+                </div>
             </div>
         </>
     );
