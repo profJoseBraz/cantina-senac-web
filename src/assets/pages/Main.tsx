@@ -92,6 +92,8 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 // --- botão dentro carrinho de compras --> Ir para a tela de Revisão do Pedido ---
     const handleConfirmOrder = () => {
         navigate('/RevisãoDoPedido');
+        localStorage.setItem("Produtos", JSON.stringify(productsOnCart))
+        localStorage.setItem("quantidades", JSON.stringify(cartQuantities))
     }
 
 
@@ -106,7 +108,7 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
     else{
         handleIncreaseTotal(product.id)
     }
-        console.log(productsOnCart)
+        // console.log("PRODUCTS ON CART: " + productsOnCart)
 }
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
