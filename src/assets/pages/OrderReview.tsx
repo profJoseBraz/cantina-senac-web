@@ -44,11 +44,11 @@ const OrderReview = () => {
     const produtosFromLocalStorage = localStorage.getItem('Produtos');
     if (produtosFromLocalStorage) {
       setProdutos(JSON.parse(produtosFromLocalStorage));
-    }
+    };
     const quantidadeFromLocalStorage = localStorage.getItem('quantidades');
     if (quantidadeFromLocalStorage) {
       setQuantidade(JSON.parse(quantidadeFromLocalStorage));
-    }
+    };
   }, []);
 
   return (

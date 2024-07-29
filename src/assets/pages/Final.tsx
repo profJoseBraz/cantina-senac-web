@@ -6,6 +6,16 @@ import TimelineOrder from "../components/TimelineOrder";
 import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
 import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
 
+interface Produto {
+    id: number;
+    produto: {
+        nome: string;
+        imagem: string;
+        valor: number;
+        id: number;
+    };
+}
+
 function Final() {
     const [minutes, setMinutes] = useState(29);
     const [minutesString, setMinutesString] = useState(String(minutes));
@@ -17,7 +27,9 @@ function Final() {
     const [minutesNow, setMinutesNow] = useState(date.getMinutes());
     const [storedHours, setStoredHours] = useState<string>(String(localStorage.getItem('hours')));
     const [storedMinutes, setStoredMinutes] = useState<string>(String(localStorage.getItem('minutes')));
-    const [horario, setHorario] = useState(`${localStorage.getItem('hours')}:${localStorage.getItem('minutes')}`);
+    const [horario, setHorario] = useState(`${localStorage.getItem('hours')?.padStart(2, "0")}:${localStorage.getItem('minutes')?.padStart(2, "0")}`);
+    const [produtos, setProdutos] = useState<Produto[]>([]);
+    const [quantidade, setQuantidade] = useState([]);
 
     const handleTimer = () => {
         setSeconds(seconds - 1);
@@ -60,7 +72,16 @@ function Final() {
             setStoredMinutes(String(somaMinutos));
             setHorario(`${String(somaHoras).padStart(2, "0")}:${String(somaMinutos).padStart(2, "0")}`);
         };
-    });
+
+        const produtosFromLocalStorage = localStorage.getItem('Produtos');
+        if (produtosFromLocalStorage) {
+            setProdutos(JSON.parse(produtosFromLocalStorage));
+        };
+        const quantidadeFromLocalStorage = localStorage.getItem('quantidades');
+        if (quantidadeFromLocalStorage) {
+            setQuantidade(JSON.parse(quantidadeFromLocalStorage));
+        };
+    }, []);
 
     useEffect(() => {
         localStorage.setItem("code", code);
@@ -93,7 +114,6 @@ function Final() {
 
         // setMinutes(calcMinutes - minutesNow);
     }, [localStorage])
-
 
     return (
         <>
@@ -129,8 +149,9 @@ function Final() {
             <div className="recieve-resume">
                 <h3>Resumo</h3>
                 <div className="recieve-itens">
-                    <h4>2x Pão de Queijo</h4>
-                    <h4>3x Café s/ Leite</h4>
+                    {produtos.map((produto) => 
+                        <h4>{`${quantidade[produto.id]}x ${produto.produto.nome}`}</h4>
+                    )}
                 </div>
             </div>
             <div className="thanks">

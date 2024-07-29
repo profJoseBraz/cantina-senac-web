@@ -15,6 +15,12 @@ function Main() {
 const navigate = useNavigate();
 
 
+    // --- verifica se há os minutos do timer do localstorage, se houver, redireciona para a final.tsx ---
+    if (localStorage.getItem("minutes")) {
+        navigate("/RevisãoDoPedido/MetodoDePagamento/CheckoutDaCompra");
+    };
+
+
 // --- puxar todos os produtos disponíveis no dia ao entrar na página ---
     const handleGetAllProducts = async () => {
         const res = await axios.get("https://cantina-senac-api-prod.up.railway.app/production")
@@ -27,6 +33,14 @@ const navigate = useNavigate();
         setTimeout(() => {
             setLoadingSKL(false)
         }, 2000);
+
+        if (localStorage.getItem("Produtos")) {
+            setProductsOnCart(JSON.parse(String(localStorage.getItem("Produtos"))));
+        }
+
+        if (localStorage.getItem("quantidades")) {
+            setCartQuantities(JSON.parse(String(localStorage.getItem("quantidades"))));
+        };
         
       }, [])
 
