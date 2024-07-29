@@ -25,7 +25,7 @@
     background-color: rgba(209, 49, 0, 0.50);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.950);
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(0.90);
     transition: .1s;
 }
 
@@ -37,6 +37,10 @@
     transition: .1s;
 
     animation: completeBorder 600ms normal forwards
+}
+
+.filter .activeFilter:hover {
+    transform: scale(1.1);
 }
 
 .filter button i{
@@ -52,22 +56,30 @@
 
 @keyframes completeBorder {
     0%{
-        border-left: 1px solid black;
+        border-left: 2px solid black;
     }
-    25%{
-        border-left: 1px solid black;
-        border-top: 1px solid black;
+    30%{
+        border-left: 2px solid black;
+        border-top: 2px solid black;
+    }
+    60%{
+        border-left: 2px solid black;
+        border-top: 2px solid black;
+        border-right: 2px solid black;
+    }
+    90%{
+        border-left: 2px solid black;
+        border-top: 2px solid black;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+        transform: scale(1.15);
     }
     100%{
-        border-left: 1px solid black;
-        border-top: 1px solid black;
-        border-right: 1px solid black;
-    }
-    100%{
-        border-left: 1px solid black;
-        border-top: 1px solid black;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
+        border-left: 2px solid black;
+        border-top: 2px solid black;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+        transform: scale(1.1);
     }
 }
 

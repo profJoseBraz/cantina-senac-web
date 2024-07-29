@@ -7,11 +7,13 @@ import "./Main.css";
 import { Productions } from "../interfaces/Production";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ProductSkeleton from "../components/ProductSkeleton";
 
 function Main() {
 
-    // --- useNavigate para navegar entre as páginas ---
+// --- useNavigate() para navegar entre as páginas ---
 const navigate = useNavigate();
+
 
 // --- puxar todos os produtos disponíveis no dia ao entrar na página ---
     const handleGetAllProducts = async () => {
@@ -21,6 +23,11 @@ const navigate = useNavigate();
 
     useEffect(() => {
         handleGetAllProducts()
+
+        setTimeout(() => {
+            setLoadingSKL(false)
+        }, 2000);
+        
       }, [])
 
 
@@ -35,6 +42,11 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
     useEffect(() => {
         handleGetProductsByName()
+        
+        setTimeout(() => {
+            setLoadingSKL(false)
+        }, 2000);
+        
      }, [valueInputNameProduct])
 
 
@@ -74,11 +86,16 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
      useEffect(() => {
         handleGetProdutsByCategory()
+        
+        setTimeout(() => {
+            setLoadingSKL(false)
+        }, 2000);
+        
      }, [categoryId])
 // -----------------------------------------------
 
 
-// --- ação ao clickar no carrinho de compras ---
+// --- ação de clique no carrinho de compras ---
     const handleCart = () => {
         if(cartOpen){
             setCartOpen(false)
@@ -99,26 +116,50 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 
 // --- adicionar produto ao carrinho de compras ---
     const handleAddProduct = (product: any) => {
-    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.produto.id === product.id);
+    let productAlreadyCart = productsOnCart.some(prodSelected => prodSelected.produto.id === product.id)
 
     if(!productAlreadyCart){
         setProductsOnCart([...productsOnCart, product])
         handleIncreaseTotal(product.id)
+
+        setAddDelProdClass(prev => ({
+            ...prev,
+            [product.id]: "box-produto-cart",
+          }))
     }
     else{
         handleIncreaseTotal(product.id)
     }
-        // console.log("PRODUCTS ON CART: " + productsOnCart)
 }
 
 // --- remover produto do carrinho de compras e zerar sua quantidade ---
     const handleDeleteProduct = (productId: any) => {
-        setProductsOnCart(productsOnCart.filter(product => product.produto.id != productId))
+        if(slowDel == 1){
+            setAlertSlow(true)
+                setTimeout(() => {
+                    setAlertSlow(false)
+                }, 3000)
+        }
+        else{
+            setSlowDel(slowDel + 1)
+            setAddDelProdClass(prev => ({
+                ...prev,
+                [productId]: "box-produto-cart-out",
+            }))
 
-        setCartQuantities(prev => ({
-            ...prev,
-            [productId]: 0
-        }))
+            setTimeout(() => {
+                setProductsOnCart(productsOnCart.filter(product => product.produto.id != productId))
+
+                setCartQuantities(prev => ({
+                    ...prev,
+                    [productId]: 0
+                }))
+                
+                setTimeout(() => {
+                    setSlowDel(0)
+                }, 100)
+            }, 500)
+        }
       }
 
 // --- interação quantidade de cada produto ---
@@ -137,31 +178,29 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
             [productId]: prev[productId] > 1 ? prev[productId] - 1 : 1
         }))
     }
-     console.log(cartQuantities)
 
 
 // --- inicializando um array para armazenar os produtos requisitados ---
-    const [productsOnShop, setProductsOnShop] = useState<Productions[]>([])
-
-
-// --- estado do carrinho (aberto = true // fechado = false) ---
-    const [cartOpen, setCartOpen] = useState(false)
+const [productsOnShop, setProductsOnShop] = useState<Productions[]>([])
 
 
 // --- inicializando um array para armazenar os produtos do carrinho ---
-    const [productsOnCart, setProductsOnCart] = useState<Productions[]>([])
+const [productsOnCart, setProductsOnCart] = useState<Productions[]>([])
+
+
+// --- estado do carrinho (aberto = true // fechado = false) ---
+const [cartOpen, setCartOpen] = useState(false)
 
 
 // --- loop para somar todos os itens adicionados no carrinho ---
     const handleSetTotal = () => {
         let totalCart = 0;
         for (let i = 0; i < productsOnCart.length; i++) {
-            totalCart += parseInt(productsOnCart[i].produto.valor) * (cartQuantities[productsOnCart[i].produto.id])
+            totalCart += productsOnCart[i].produto.valor * (cartQuantities[productsOnCart[i].produto.id])
         }
         return totalCart
     }
-    
-    
+
 
 // --- verificar o tamanho do dispositivo e ajustar os estilos da página (toda vez que a página carregar será setado o valor da largura da tela) ---
 const [topValue, setTopValue] = useState("")
@@ -215,12 +254,22 @@ const [cartTranslate, setCartTranslate] = useState("")
             setCartOpen(true)
         }
 
-        else if(window.innerWidth > 1351){
-            console.log("a tela-larg é maior que 1351px")
+        else if(window.innerWidth < 1500){
+            console.log("a tela-larg é menor que 1500px")
             setTopValue("20px")
             setRightValue("43vw")
 
-            setCartIconTranslate("translateX(19vw)")
+            setCartIconTranslate("translateX(10vw)")
+            setCartTranslate("translateX(0vw)")
+            setCartOpen(true)
+        }
+
+        else if(window.innerWidth > 1500){
+            console.log("a tela-larg é maior que 1500px")
+            setTopValue("20px")
+            setRightValue("43vw")
+
+            setCartIconTranslate("translateX(18vw)")
             setCartTranslate("translateX(0vw)")
             setCartOpen(true)
         }
@@ -229,11 +278,64 @@ const [cartTranslate, setCartTranslate] = useState("")
     useEffect( () => {
         handleSetWindowWidthForStyles()
     }, [])
-    
+
+
+// -------------------------- observa se o produto está com a quantia == 0, caso verdadeiro, className: disable ---------------------------
+const [statusClass, setStatusClass] = useState<{ [key: number]: string }>({})
+
+    const handleSetStatusClass = (productId: number) => {
+        const prodsActiveOnShop = productsOnShop.find(productions => productions.produto.id === productId)
+
+        const statusClass = prodsActiveOnShop?.quantidade === 0 ? 'product-disable' : 'product-enable'
+
+        setStatusClass(prev => ({ ...prev, [productId]: statusClass }))
+    }
+
+    useEffect(() => {
+    productsOnShop.forEach(production => {
+        handleSetStatusClass(production.produto.id)
+    })
+    }, [productsOnShop])
+
+
+// -------------------------- quando adicionar um novo item no carrinho, haverá uma animação no contador ---------------------------
+const [addConterClass, setAddConterClass] = useState("")
+
+    const handleSetCounterClass = () => {
+        setAddConterClass("counter-itemAdded")
+
+        setTimeout(() => {
+            setAddConterClass("counter")
+        }, 100)
+    }
+
+    useEffect(() => {
+        handleSetCounterClass()
+    }, [productsOnCart.length])
+
+
+// -------------------------- quando remover um item do carrinho, haverá uma animação de remoção ---------------------------
+// -------------------------- obs: a classe é aplicada quando adiciona e remove o produto do carrinho
+const [addDelProdClass, setAddDelProdClass] = useState({})
+
+// esse slowDel está sendo usado para corrigir um bug, evitando o usuário exlcuir vários produtos do carrinho de forma rápida
+const [slowDel, setSlowDel] = useState(0)
+
+// esse slowDel está sendo usado para corrigir um bug, evitando o usuário exlcuir vários produtos do carrinho de forma rápida
+const [alertSlow, setAlertSlow] = useState(false)
+
+// -------------------------- Caso a requisição demore, haverá esqueletos de loadings(produtos da vitrine) ---------------------------
+const [isLoadingSKL, setLoadingSKL] = useState(false)
+
+    useEffect(() => {
+        setLoadingSKL(true)
+    }, [valueInputNameProduct, categoryId])
+        
     return (
         <>
             <div className="container">
                 <Header
+                counterClass={addConterClass}
                 onClick={handleCart}    
                 displayIconCart={true}
                 displayCounter={true}
@@ -265,7 +367,10 @@ const [cartTranslate, setCartTranslate] = useState("")
                 />
 
                 <Search
-                styleFilters={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", transition: "0.3s"}}
+                styleFilters={{
+                    opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
+                     pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all"}}
+                  
                 onClickTodos={handleOnClickTodos}
                 onClickBebidas={handleOnClickBebidas}
                 onClickSalgados={handleOnClickSalgados}
@@ -282,20 +387,28 @@ const [cartTranslate, setCartTranslate] = useState("")
                 realValueInputSearch={valueInputNameProduct}
                 />
 
-                <div style={{opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1", pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all", overflow: "hidden", transition: "0.3s"}} className="products">
-                    {productsOnShop.map((production) => (
-                        <Product
-                        key={production.produto.id}
-                        onClick={() => handleAddProduct(production)}
-                        restrictType={"product.restricao_produto"}
-                        img={production.produto.imagem}
-                        name={production.produto.nome}
-                        cost={production.produto.valor}
-                        desc={production.produto.descricao}
-                        quant={production.quantidade}
-                        />
-                        
-                    ))}
+                <div className="products" style={{
+                    opacity: cartOpen && window.innerWidth < 1024 ? "0.1" : "1",
+                     pointerEvents: cartOpen && window.innerWidth < 1024 ? "none" : "all",
+                      overflow: "hidden", transition: "0.3s"}}>
+
+                    {isLoadingSKL ?
+                        (<ProductSkeleton boxProds={productsOnShop.length} />)
+                        :
+                        (productsOnShop.map((production) => (
+                            <Product
+                                key={production.produto.id}
+                                onClick={() => handleAddProduct(production)}
+                                restrictType={"production.produto.restricao"}
+                                img={production.produto.imagem}
+                                name={production.produto.nome}
+                                cost={production.produto.valor}
+                                desc={production.produto.descricao}
+                                quant={production.quantidade}
+                                statusClassName={statusClass[production.produto.id]}
+                            />
+                        )))}
+                       
                 </div>
   
                 <Cart
@@ -305,10 +418,15 @@ const [cartTranslate, setCartTranslate] = useState("")
                 onClickIncreaseQuantity={handleIncreaseTotal}
                 onClickDecreaseQuantity={handleDecreaseTotal}
 
+                delProdClass={addDelProdClass}
                 productsCart={productsOnCart}
                 cartQuantities={cartQuantities}
                 totalCart={handleSetTotal()}
                 />
+
+                <div className={alertSlow ? "slowDel-dialog-open" : "slowDel-dialog-close"}>
+                    <span>Remova um produto por vez.</span>
+                </div>
             </div>
         </>
     );

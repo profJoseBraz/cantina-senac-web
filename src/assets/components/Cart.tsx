@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react'
+import { CSSProperties, useEffect, useState } from 'react'
 import './Cart.css'
 import triangleBG from '../../img/outros/triangle-decoration-cart.svg'
 import cryingFace from '../../img/outros/cryingFace.svg'
@@ -14,10 +14,30 @@ interface Props {
   productsCart: any
   cartQuantities: { [key: number]: number }
   totalCart: number
+  production?: string
+  delProdClass?: any
 }
 
-const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity,  onClickIncreaseQuantity, style, productsCart, cartQuantities, totalCart }: Props) => {
+const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity,  onClickIncreaseQuantity, style, productsCart, cartQuantities, totalCart, delProdClass }: Props) => {
   
+  const [subTotal, setSubTotal] = useState<{ [key: number]: number }>({})
+
+  const subTotalMult = (production: any) => {
+    const quantityEachProdInCart = cartQuantities[production.produto.id]
+    return production.produto.valor * quantityEachProdInCart
+  }
+  
+  useEffect(() => {
+    const newSubTotal: { [key: number]: number } = {}
+  
+    productsCart.forEach((production: any) => {
+      newSubTotal[production.produto.id] = subTotalMult(production)
+    })
+    
+    setSubTotal(newSubTotal);
+  }, [cartQuantities, productsCart])
+
+
   return (
     <>
       <aside style={style} className="container-cart">
@@ -35,7 +55,7 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity, 
               :
             (
               productsCart.map((production: any) => (
-                <div key={production.produto.id} className="box-produto-cart">
+                <div key={production.produto.id} className={delProdClass[production.produto.id] || "box-produto-cart"}>
                   <i
                     onClick={() =>
                       onClickDeleteProdCart && onClickDeleteProdCart(production.produto.id)
@@ -77,12 +97,12 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity, 
                   <div className="infos-produto-cart">
                     <span className="name-produto">{production.produto.nome}</span>
                     <span className="preco-string">
-                      Valor: <span className="preco-produto">R$ {production.produto.valor} / un</span>
+                      Valor: <span className="preco-produto">R$ {production.produto.valor.toFixed(2).replace("\.", ",")} / un</span>
                     </span>
 
                     <div className="subtotal-produto">
                       <span className="subtotal-string">
-                        Subtotal: <span className="subtotal-preco">R$ {production.produto.valor * cartQuantities[production.produto.id]}</span>
+                        Subtotal: <span className="subtotal-preco">R$ {subTotal[production.produto.id]?.toFixed(2).replace(".", ",")}</span>
                       </span>
                     </div>
                   </div>
@@ -95,7 +115,7 @@ const Cart = ({onClickConfirm, onClickDeleteProdCart,  onClickDecreaseQuantity, 
           <button onClick={onClickConfirm} >Confirmar Pedido <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
 
           <div className="total-cart">
-            <span className='total-string'>Total: <span className='total-preco'>R$ {totalCart.toFixed(2)}</span></span>
+            <span className='total-string'>Total: <span className='total-preco'>R$ {totalCart.toFixed(2).replace("\.", ",")}</span></span>
           </div>
 
           <img className='triangle-one' src={triangleBG} alt="" />
