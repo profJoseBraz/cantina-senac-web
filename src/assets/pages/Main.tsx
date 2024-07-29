@@ -109,6 +109,8 @@ const [valueInputNameProduct, setValueInputNameProduct] = useState("")
 // --- botão dentro carrinho de compras --> Ir para a tela de Revisão do Pedido ---
     const handleConfirmOrder = () => {
         navigate('/RevisãoDoPedido');
+        localStorage.setItem("Produtos", JSON.stringify(productsOnCart))
+        localStorage.setItem("quantidades", JSON.stringify(cartQuantities))
     }
 
 
