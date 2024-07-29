@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import OrderReviewProduct from '../components/OrderReviewProduct'
 import { useEffect, useState } from 'react'
 
+// --- interface para tipagem do produto ---
 interface Produto {
   id: number;
   produto: {
@@ -19,6 +20,7 @@ interface Produto {
 }
 
 const OrderReview = () => {
+  // --- useState dos produtos e suas quantidades ---
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [quantidade, setQuantidade] = useState([]);
 
@@ -32,6 +34,7 @@ const OrderReview = () => {
     navigate('/RevisãoDoPedido/MetodoDePagamento');
 }
 
+  // --- calcula o preço total do pedido ---
   const handleTotal = () => {
     let total = 0;
     for (let i = 0; i < produtos.length; i++) {
@@ -41,6 +44,7 @@ const OrderReview = () => {
   };
 
   useEffect(() => {
+    // --- puxa as informações de produtos e quantidades do localstorage ---
     const produtosFromLocalStorage = localStorage.getItem('Produtos');
     if (produtosFromLocalStorage) {
       setProdutos(JSON.parse(produtosFromLocalStorage));
@@ -87,6 +91,7 @@ const OrderReview = () => {
                   <span>Revise o seu pedido:</span>
               </div>
               <div className='box-orders'>
+                {/* --- map dos produtos, utilizando o componente OrderReviewProduct --- */}
                 {produtos.map((produto) => 
                   <OrderReviewProduct nome={produto.produto.nome} imagem={produto.produto.imagem} preco={produto.produto.valor} quantidade={quantidade[produto.id]}></OrderReviewProduct>
                 )}

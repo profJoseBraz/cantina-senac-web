@@ -6,6 +6,7 @@ import TimelineOrder from "../components/TimelineOrder";
 import confirmed_icon from '../../img/icons_timeline/concluded-circle.png'
 import clocktime_icon from '../../img/icons_timeline/clocktime-circle.png'
 
+// --- interface para tipagem do produto ---
 interface Produto {
     id: number;
     produto: {
@@ -17,20 +18,32 @@ interface Produto {
 }
 
 function Final() {
+    // --- useStates dos minutos e segundos do timer ---
     const [minutes, setMinutes] = useState(29);
     const [minutesString, setMinutesString] = useState(String(minutes));
     const [seconds, setSeconds] = useState(1);
     const [secondsString, setSecondsString] = useState(String(seconds));
+
+    // --- useState do código ---
     const [code, setCode] = useState<string>(String(localStorage.getItem('code')));
+
+    // --- useStates para pegar horas e minutos atuais ---
     const [date, setDate] = useState(new Date);
     const [hoursNow, setHoursNow] = useState(date.getHours());
     const [minutesNow, setMinutesNow] = useState(date.getMinutes());
+
+    // --- useStates para as horas e minutos do localstorage ---
     const [storedHours, setStoredHours] = useState<string>(String(localStorage.getItem('hours')));
     const [storedMinutes, setStoredMinutes] = useState<string>(String(localStorage.getItem('minutes')));
+
+    // --- useState do horário de retirada a ser mostrado ---
     const [horario, setHorario] = useState(`${localStorage.getItem('hours')?.padStart(2, "0")}:${localStorage.getItem('minutes')?.padStart(2, "0")}`);
+
+    // --- useState dos produtos e suas quantidades ---
     const [produtos, setProdutos] = useState<Produto[]>([]);
     const [quantidade, setQuantidade] = useState([]);
 
+    // --- função que roda o timer ---
     const handleTimer = () => {
         setSeconds(seconds - 1);
         setSecondsString(String(seconds));
@@ -39,6 +52,7 @@ function Final() {
             setMinutesString(String(minutes));
             setSeconds(59);
         };
+        // --- condicional que limpa o localstorage quando o timer zera ---
         if (seconds <= 0 && minutes <= 0) {
             localStorage.clear();
         };
@@ -47,16 +61,20 @@ function Final() {
     useEffect(() => {
         // setTimeout(() => {handleTimer()}, 1000);
 
+        // --- constante para verificação do localstorage ---
         const keys = Object.keys(localStorage);
 
+        // --- gera o código se não houver código no localstorage ---
         if(code === "null" || keys[0] === ""){
             setCode(Math.random().toString(20).slice(2, 8).toLocaleUpperCase());
         };
 
+        // --- variáveis de hora e minutos ---
         setDate(date);
     
         setHoursNow(hoursNow);
         setMinutesNow(minutesNow);
+        // --- soma para obter o horário de retirada do pedido ---
         var somaMinutos = minutesNow + 30;
         var somaHoras;
     
@@ -67,12 +85,14 @@ function Final() {
             somaHoras = hoursNow;
         };
 
+        // --- se não houver horas e minutos no localstorage, utiliza as horas e minutos calculados ---
         if(storedHours === "null" || keys[0] === ""){
             setStoredHours(String(somaHoras));
             setStoredMinutes(String(somaMinutos));
             setHorario(`${String(somaHoras).padStart(2, "0")}:${String(somaMinutos).padStart(2, "0")}`);
         };
 
+        // --- puxa as informações de produtos e quantidades do localstorage ---
         const produtosFromLocalStorage = localStorage.getItem('Produtos');
         if (produtosFromLocalStorage) {
             setProdutos(JSON.parse(produtosFromLocalStorage));
@@ -84,19 +104,23 @@ function Final() {
     }, []);
 
     useEffect(() => {
+        // --- adiciona o código ao localstorage ---
         localStorage.setItem("code", code);
     }, [code]);
 
     useEffect(() => {
+        // --- adiciona horas e minutos ao localstorage ---
         localStorage.setItem("hours", String(storedHours));
         localStorage.setItem("minutes", String(storedMinutes));
     }, [storedHours, storedMinutes]);
 
     useEffect(() => {
+        // --- chama a função do timer a cada 1000 milisegundos (1 segundo) ---
         const timer = setTimeout(() => {
             handleTimer();
         }, 1000);
 
+        // --- limpa timeouts anteriores para evitar problemas ---
         return () => clearTimeout(timer);
         // alert("teste")
     }, [seconds])
@@ -104,6 +128,7 @@ function Final() {
     useEffect(() => {
         // alert(localStorage.getItem("minutes"))
 
+        // --- calculo para o timer caso a página seja recarregada --- 
         var calcMinutes = parseInt(storedMinutes);
 
         if (parseInt(storedHours) > hoursNow) {
@@ -149,6 +174,7 @@ function Final() {
             <div className="recieve-resume">
                 <h3>Resumo</h3>
                 <div className="recieve-itens">
+                    {/* --- map dos produtos --- */}
                     {produtos.map((produto) => 
                         <h4>{`${quantidade[produto.id]}x ${produto.produto.nome}`}</h4>
                     )}

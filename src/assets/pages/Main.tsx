@@ -34,6 +34,7 @@ const navigate = useNavigate();
             setLoadingSKL(false)
         }, 2000);
 
+        // --- casos tenha algum produto no localstorage, puxa tais produtos e suas quantidades e as coloca no carrinho ---
         if (localStorage.getItem("Produtos")) {
             setProductsOnCart(JSON.parse(String(localStorage.getItem("Produtos"))));
         }
