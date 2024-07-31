@@ -7,8 +7,11 @@ import Header from '../components/Header'
 import master from '../../img/icons_pagamento/MasterCard_early_1990s_logo.svg'
 import visa from '../../img/icons_pagamento/visa-logo-11.jpg'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const MetodoDePagamento = () => {
+    const [name, setName] = useState('');
+
     const navigate = useNavigate();
 
     const handleReturnOrderReview = () => {
@@ -18,6 +21,11 @@ const MetodoDePagamento = () => {
     const handleGoToFinal = () => {
         navigate('/RevisãoDoPedido/MetodoDePagamento/CheckoutDaCompra')
     }
+
+    const handleName = (e : any) => {
+        setName(e.target.value);
+    };
+    console.log(name);
 
     return(
         <>
@@ -54,7 +62,7 @@ const MetodoDePagamento = () => {
                 <div className='content-payment'>
                     <div className='client-name'>
                         <span>Nome para retirada no pedido:</span>
-                        <input type='text' />
+                        <input type='text' onChange={handleName}/>
                     </div>
                     <div className='geral'>
                         <div className='content-paymnent-method'>
